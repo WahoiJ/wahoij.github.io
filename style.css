@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Boku&family=Yusei+Magic&display=swap');
+body{
+	margin-top:160px;
+	align-items: center;
+	text-align: center;
+}
+
+button{
+	margin:0;
+	padding:0;
+	background: transparent;
+	border:none;
+}
+header {
+	position:absolute;
+    width: 100%; /* 幅いっぱいを指定 */
+    height: 150px; /* 高さを指定 */
+    justify-content: center;/* 真ん中指定 */
+	align-items: center; /* 中の要素を上下中央に並べる */
+    padding: 20px; /* ヘッダーに上下余白を指定 */
+    box-sizing: border-box; /* padding分を含んで幅を100%にするため */
+	margin:0px 0px 20px;
+    top: 0; /* 上下の固定位置を上から0pxにする */
+    left: 0; /* 左右の固定位置を左から0pxにする */
+    display: flex; /* 中の要素を横並びにする */
+	 background: #DEB887; /* 背景色を指定 */
+	 
+}
+footer {
+	bottom:0px;
+	width: 100%;
+}
+h1{
+	white-space: nowrap;
+	font-family: 'Yusei Magic', sans-serif;
+	color:#2E8B57;
+	
+}
+h2{
+		white-space: nowrap;
+		font-family: 'Yuji Boku', serif;
+		color:#2F4F4F;
+}
+.whole{
+	font-size:2vh;
+}
+.t1{ 
+
+	font-size:2vh;
+}
+
+.t2{
+	margin-top:10px;
+	
+}
+.Links{
+		display:flex;
+	padding:0;
+    flex-wrap: wrap;
+	justify-content: center;
+}
+.Links>div{
+	width:180px;
+}
+.SNS{
+	display:flex;
+	padding:0;
+    flex-wrap: wrap;
+	justify-content: center;
+}
+.SNS>div{
+	width:180px;
+}
+header .gnav .menu {
+    display: flex; /* 中の要素を横並びにする */
+}
+
+header .gnav .menu li {
+    list-style: none; /* リストの[・]を消す */
+}
+
+header .gnav .menu li + li {
+    margin-left: 40px; /* メニューそれぞれに間隔をあけるため */
+}
+
