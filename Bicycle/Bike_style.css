@@ -164,3 +164,9 @@ bottom: 0px;
 right: 20px;
 content: '”';
 }
+
+iframe[width][height] {
+  aspect-ratio: attr(width) / attr(height);
+  max-width: 100%;
+  height: auto;
+}
