@@ -26,3 +26,7 @@ var filename = path.split("/").reverse()[0].split('.')[0];
 	
 	
 }
+
+document.querySelectorAll( 'iframe[width][height]' ).forEach( ( iframe ) => {
+  iframe.style.aspectRatio = iframe.width + '/' + iframe.height;
+} );
