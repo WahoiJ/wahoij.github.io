@@ -37,7 +37,21 @@ body{
  .pct{
 	max-width: 70%;
 	  display:block; margin: auto;
+	    background-color: limegreen;
+  transform-origin: left left;
+  transition: transform .1s;
+
 	}
+	
+.pct:active{
+	transform:scale(1.5,1.5)
+}
+.pct.scale{
+	;
+}
+.pct.scale:hover{
+	cursor:zoom-out;
+}
 	 
 	 
 	 @media screen and (max-width: 768px) {
