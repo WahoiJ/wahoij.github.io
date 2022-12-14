@@ -83,3 +83,77 @@ header .gnav .menu li + li {
     margin-left: 40px; /* メニューそれぞれに間隔をあけるため */
 }
 
+
+
+.toggle-switch{
+  display: block;
+  width: 12em;
+  font-size: 1em;
+  background: #55BEFC;
+  box-shadow: 1px 0 3px 0 #000;
+  text-align: center;
+}
+
+#side-menu-toggle{
+  display: none;
+}
+
+/* 非チェック時の.menu-list */
+#side-menu-toggle:not(:checked) ~ .menu-list{
+  width: 0;
+}
+
+/* チェック時の.menu-list */
+#side-menu-toggle:checked ~ .menu-list{
+  width: 40em;
+}
+
+.menu-list{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  background: #F0F0F0;
+  box-shadow: 1px 1px 3px 0 #000;
+  overflow: hidden;
+
+  /* menu表示時のアニメーション */
+  transition: 1s;
+}
+
+.menu-list > .list-item{
+  list-style: none;
+}
+
+.menu-list > .list-item a{
+  display: block;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+  /* 単一行で表示 */
+  white-space: nowrap;
+  /* リンク下線非表示 */
+  text-decoration: none;
+  outline: none;
+}
+
+/* css4  */
+.menu-list > .list-item a:-webkit-any-link{
+  color: #000;
+}
+
+.menu-list > .list-item a:-moz-any-link{
+  color: #000;
+}
+
+/* any-link 未対応ブラウザ用 */
+.menu-list > .list-item a:link,
+.menu-list > .list-item a:visited{
+  color: #000;
+}
+
+/* リンクホバー時 */
+.menu-list > .list-item a:hover{
+  background: #303030;
+  color: #fff;
+}
+
