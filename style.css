@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Yuji+Boku&family=Yusei+Magic&display=swap');
 body{
+	
 	margin-top:160px;
 	align-items: center;
 	text-align: center;
@@ -83,11 +84,15 @@ header .gnav .menu li + li {
     margin-left: 40px; /* メニューそれぞれに間隔をあけるため */
 }
 
+img{
+	
+  object-fit: cover;
+}
 
 
 .toggle-switch{
   display: block;
-  width: 12em;
+  width: 1em;
   font-size: 1em;
   background: #55BEFC;
   box-shadow: 1px 0 3px 0 #000;
@@ -109,18 +114,34 @@ header .gnav .menu li + li {
 }
 
 .menu-list{
-  display: inline-block;
-  padding: 0;
+  padding:0;
   margin: 0;
-  background: #F0F0F0;
+  background: #FFFFFF;
   box-shadow: 1px 1px 3px 0 #000;
   overflow: hidden;
+  
 
   /* menu表示時のアニメーション */
-  transition: 1s;
+  transition: 0.2s;
+}
+
+.menu-list > .list-item0{
+text-align: left;
+color:#FFFFFF;
+background:#1A0D04;
+padding:1em;
+}
+
+.menu-list > .list-item1{
+  padding:0;
+  margin: 0;
+color:#000000;
+display:inline-flex;
+
 }
 
 .menu-list > .list-item{
+  text-align:left;
   list-style: none;
 }
 
