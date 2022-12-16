@@ -6,12 +6,20 @@ body{
 	text-align: center;
 }
 
-button{
+button.TR{
 	margin:0;
 	padding:0;
 	background: transparent;
 	border:none;
 }
+
+#side-menu{
+	position:absolute; 
+	top:1;
+	left:1;
+}
+
+
 header {
 	position:absolute;
     width: 100%; /* 幅いっぱいを指定 */
@@ -84,10 +92,13 @@ header .gnav .menu li + li {
     margin-left: 40px; /* メニューそれぞれに間隔をあけるため */
 }
 
+
+
 img{
 	
   object-fit: cover;
 }
+
 
 
 .toggle-switch{
@@ -98,6 +109,7 @@ img{
   box-shadow: 1px 0 3px 0 #000;
   text-align: center;
 }
+
 
 #side-menu-toggle{
   display: none;
@@ -124,6 +136,12 @@ img{
   /* menu表示時のアニメーション */
   transition: 0.2s;
 }
+ .Sprits{
+	 list-style:none;
+	   padding:0;
+  margin: 0;
+ }
+
 
 .menu-list > .list-item0{
 text-align: left;
@@ -137,7 +155,16 @@ padding:1em;
   margin: 0;
 color:#000000;
 display:inline-flex;
+text-align:left;
 
+}
+
+button.IF
+{
+	   
+	  width: 34em;
+  height:6em;
+  font-size:large;
 }
 
 .menu-list > .list-item{
