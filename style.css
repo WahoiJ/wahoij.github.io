@@ -169,7 +169,6 @@ button.IF
 
 .IF-index
 {
-	align-items:right;
 	font-size:30px;
 
   
@@ -211,5 +210,22 @@ button.IF
 .menu-list > .list-item a:hover{
   background: #303030;
   color: #fff;
+}
+
+.gage-item{
+	display:flex;
+	vertical-align:middle
+}
+
+.gage{
+    border: 1px solid #333;
+    background: #999;
+    width: 200px;
+	margin-left:100px;
+}
+.gage>div{
+	padding-left:20px;
+    height: 10px;
+    background: #78d461;
 }
 
