@@ -34,6 +34,8 @@
   gtag('config', 'G-9CBDYCV7V3');
   	</script>
 	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
 
         <title>ミンミンゼミの最終定理</title>
 		
@@ -48,7 +50,7 @@
 		<header>
 											<div id="side-menu">
   <input id="side-menu-toggle" type="checkbox">
-  <label class="toggle-switch" for="side-menu-toggle"><img src="HoI4/flag.png" width="500%" alt="flag">
+  <label class="toggle-switch" for="side-menu-toggle"><img src="HoI4/flag.png" width="500%" alt="flag" style="border:solid">
   </label>
   <ul class="menu-list">
     <li class="list-item0">個人</li>
@@ -57,11 +59,13 @@
 	<Span title="わくせい(WahoiJ)
 	この画像は友人がStableDiffusionで
 	私をTSさせたもの">
-	<img src="HoI4/SD.png"alt="SD" width="150em" height="300em">
-	<center>わくせい・WahoiJ</center>
+	<img src="HoI4/SD.png"alt="SD" width="150em" height="240em" style="border:solid">
+	<center style="border:solid">わくせい・WahoiJ</center>
 	</span>
 	<ul class="Sprits">
-	<button type= "button" class="IF"> 
+	<button type= "button" class="IF" title="全正面作戦
+	進捗:20/180日
+	自爆率:+20"> 
 	<span>
 	<img src="HoI4/notitle.jpg"alt="SD" height="75px">
 	</span>
@@ -72,11 +76,12 @@
 <div class="gage">
     <div style="width:22%"></div>
 </div></li>
-	</ul>
+	</ul class="I-Sprits2">
 	</button>
 	
-	<li>個人精神</li>
-	<li>
+	<li class="I-Sprits">個人精神</li>
+	
+	<li class="I-Sprits2">
 	<span title="突然の腰痛
 	移動可能時間:-10%">
 	<img src="HoI4/LBP.png" width="10%">
@@ -93,11 +98,25 @@
 	</span>
 	</li>
 	</ul>
-	
 	</li>
 	
+	<li>
+	<div class="Party">
+	<button>非同盟/中道主義<br><br>選挙なし</button>
+	<button>
+      <canvas id="myChart" width="200px" height="70px"></canvas>
+    <script src='Voting.js'></script>
+	</button>
+	</div>
+	</li>
+	
+	<li>test</li>
+	<li>test</li>
+	<li>test</li>
    </ul>
 </div>
+
+
 		<div>
 		<h1>ミンミンゼミの最終定理<h1>
 
@@ -167,11 +186,6 @@
 			 
 			 </div>
 			 
-			</div>
-			
-			
-			
-
 			</div>
 			<br><br><br><br><br><br><br><br><br>
 			<footer>

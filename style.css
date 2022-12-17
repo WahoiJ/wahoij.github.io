@@ -129,6 +129,8 @@ img{
   padding:0;
   margin: 0;
   background: #FFFFFF;
+  background-color:#2d4d4d;
+  color: #FFFFFF;
   box-shadow: 1px 1px 3px 0 #000;
   overflow: hidden;
   
@@ -141,11 +143,19 @@ img{
 	   padding:0;
   margin: 0;
  }
+.I-Sprits{
+	padding:1em;
+}
+
+.I-Sprits2{
+	padding:1em;
+	background-color:#3c6666;
+}
+
 
 
 .menu-list > .list-item0{
 text-align: left;
-color:#FFFFFF;
 background:#1A0D04;
 padding:1em;
 }
@@ -153,17 +163,18 @@ padding:1em;
 .menu-list > .list-item1{
   padding:0;
   margin: 0;
-color:#000000;
 display:inline-flex;
 text-align:left;
 
 }
 button.IF
 {
+	color: #FFFFFF;
 	width: 40em;
   height:6em;
   display:flex;
   	align-items:center;
+	background-color:#4d3327;
 
 }
 
@@ -228,4 +239,13 @@ button.IF
     height: 10px;
     background: #78d461;
 }
-
+.Party
+{display:flex;
+  	align-items:middle;
+}
+.Party>button{
+color: #FFFFFF;
+width:50%;
+height:11em;
+background: #303030;
+}
