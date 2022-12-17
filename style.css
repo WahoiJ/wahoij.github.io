@@ -158,13 +158,21 @@ display:inline-flex;
 text-align:left;
 
 }
-
 button.IF
 {
-	   
-	  width: 34em;
+	width: 40em;
   height:6em;
-  font-size:large;
+  display:flex;
+  	align-items:center;
+
+}
+
+.IF-index
+{
+	align-items:right;
+	font-size:30px;
+
+  
 }
 
 .menu-list > .list-item{
