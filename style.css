@@ -134,10 +134,11 @@ img{
   box-shadow: 1px 1px 3px 0 #000;
   overflow: hidden;
   
-
   /* menu表示時のアニメーション */
   transition: 0.2s;
 }
+
+
  .Sprits{
 	 list-style:none;
 	   padding:0;
@@ -167,6 +168,14 @@ display:inline-flex;
 text-align:left;
 
 }
+.list-item2{
+padding:1em;
+text-align:left;
+}
+.list-item3{
+background-color:#3c6666;
+}
+
 button.IF
 {
 	color: #FFFFFF;
