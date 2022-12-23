@@ -112,3 +112,15 @@ body{
     padding: 15px 0;
     height: auto;
     opacity: 1;
+}
+
+canvas {
+  display: inline;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+	canvas{
+		width: 100%;
+	}
+}
