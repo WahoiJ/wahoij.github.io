@@ -3,7 +3,7 @@ const init = function(){
 	const div = document.createElement('div');
 
 	const input = document.createElement('input');
-	input.setAttribute("placeholder", "yyyydd");
+	input.setAttribute("placeholder", "yyyymm");
 	const btn = document.createElement('button');
 	const btn2 = document.createElement('button');
 	var Year;
