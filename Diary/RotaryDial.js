@@ -17,7 +17,7 @@ class RotaryDial {
 	
 		this.size = this.canvasSize-2;
 		
-		this.discFillColor = discFillColor || 'transparent';
+		this.discFillColor = discFillColor || 'gray';
 		
 		this.discStrokeColor = discStrokeColor || 'black';
 		
@@ -47,7 +47,7 @@ class RotaryDial {
 		
 		this.TWOPI = Math.PI * 2;
 		
-		this.offset = this.size * 0.25;
+		this.offset = this.size * 0.3;
 		
 		this.outerCircle = this.size/2;
 		
@@ -55,7 +55,7 @@ class RotaryDial {
 		
 		this.c = this.canvas.getContext('2d');
 		
-		this.c.font = this.size * 0.08+"px Arial";
+		this.c.font = this.size * 0.1+"px Arial";
 		
 		this.c.textAlign = "center";
 		
