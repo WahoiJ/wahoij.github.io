@@ -41,7 +41,7 @@
 	 
 
 </head>
-<body>
+<body id="WBG">
 		<a href="../../index.html">
 		<header>
 		<div>
@@ -54,11 +54,76 @@
 		</header>
 	</a>
 <form id="Entrance">
-<div>あなたは<a id="Counter"></a>好きですか？</div>
+<div id="WC">あなたは<a id="Counter" style="color:red"></a>好きですか？</a></div>
 <br>
-<input type="button" id="btnAdd" value="閉じる">
+<input type="button" id="btnAdd" value="？？？">
 </form>
 <article id="content">
+<script>
+
+
+let counter, btnAdd;
+let n;
+ 
+function addCount(){
+    n++;
+		if(n==1)
+	{ WBG.style.backgroundColor ="#10100E";
+		WC.style.color="white";
+	      Counter.textContent="イ";
+		  btnAdd.value="閉じる";
+	}
+	else if(n==2)
+	{
+	Counter.textContent="イン";
+	}
+		else if(n==3)
+	{
+	Counter.textContent="インタ";
+	}
+		else if(n==4)
+	{
+	Counter.textContent="インター";
+	}
+	else if(n==5)
+	{
+	Counter.textContent="インターネ";
+	}
+	else if(n==6)
+	{
+	Counter.textContent="インターネッ";
+	}
+	else if(n==7)
+	{
+	Counter.textContent="インターネット";
+	}
+		else if(n==8)
+	{
+	btnAdd.value="開く";
+	}
+	else if(n==9)
+	{
+	WBG.style.backgroundColor ="white";
+	document.getElementById("content").style.display ="block";
+	document.getElementById("Entrance").style.display ="none";
+	}
+}
+ 
+window.addEventListener("load", ()=>{
+    // 起動時の処理
+	WBG = document.getElementById("WBG");
+	WC = document.getElementById("WC");
+    counter = document.getElementById("Counter");
+    btnAdd = document.getElementById("btnAdd");
+	document.getElementById("content").style.display ="none";
+    n = 0;
+ 
+    btnAdd.addEventListener("click", addCount);
+
+});
+</script>
+
+
 <!--ここから本文-->
 投稿日2023-02-19<br><br>
 
@@ -116,65 +181,6 @@
 <br>
 <br>
 <iframe src="https://store.steampowered.com/widget/1451940/" frameborder="0" width="646" height="190"></iframe>
-<script>
-
-
-let counter, btnAdd;
-let n;
- 
-function addCount(){
-    n++;
-		if(n==1)
-	{
-	      Counter.textContent="イ";
-	}
-	else if(n==2)
-	{
-	Counter.textContent="イン";
-	}
-		else if(n==3)
-	{
-	Counter.textContent="インタ";
-	}
-		else if(n==4)
-	{
-	Counter.textContent="インター";
-	}
-	else if(n==5)
-	{
-	Counter.textContent="インターネ";
-	}
-	else if(n==6)
-	{
-	Counter.textContent="インターネッ";
-	}
-	else if(n==7)
-	{
-	Counter.textContent="インターネット";
-	}
-		else if(n==8)
-	{
-	btnAdd.value="開く";
-	}
-	else if(n==9)
-	{
-	
-	document.getElementById("content").style.display ="block";
-	document.getElementById("Entrance").style.display ="none";
-	}
-}
- 
-window.addEventListener("load", ()=>{
-    // 起動時の処理
-    counter = document.getElementById("Counter");
-    btnAdd = document.getElementById("btnAdd");
-	document.getElementById("content").style.display ="none";
-    n = 0;
- 
-    btnAdd.addEventListener("click", addCount);
-
-});
-</script>
 
 
 	
