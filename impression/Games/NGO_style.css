@@ -75,9 +75,9 @@ ol{
 	}
 	 
 	 }
-	 
-	 
-	 
+form{
+	padding-bottom:100%;
+}
 	 header {
 	position:absolute;
     width: 100%; /* 幅いっぱいを指定 */
