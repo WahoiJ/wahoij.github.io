@@ -2,34 +2,29 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="favicons/icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="canonical" href="https://wahoij.github.io/">
     
-    <!-- Primary Meta Tags -->
+    <!-- SEO基本設定 -->
     <title>ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記</title>
-    <meta name="title" content="ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記">
     <meta name="description" content="ゲーム攻略・自転車整備・イラスト制作の記録と日記。個人の趣味を発信するウェブサイト。">
+    <meta name="keywords" content="ゲーム,自転車,イラスト,日記,趣味">
 
-    <!-- Open Graph / Facebook -->
+    <!-- OGP設定 -->
     <meta property="og:type" content="website">
+    <meta property="og:title" content="ミンミンゼミの最終定理">
+    <meta property="og:site_name" content="ミンミンゼミの最終定理">
+    <meta property="og:description" content="ゲームや自転車整備、イラスト制作の記録を発信する個人サイト">
+    <meta property="og:image" content="https://wahoij.github.io/favicons/icon.png">
     <meta property="og:url" content="https://wahoij.github.io/">
-    <meta property="og:title" content="ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記">
-    <meta property="og:description" content="ゲーム攻略・自転車整備・イラスト制作の記録と日記。個人の趣味を発信するウェブサイト。">
-    <meta property="og:image" content="https://wahoij.github.io/favicons/ogp.png">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wahoij.github.io/">
-    <meta property="twitter:title" content="ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記">
-    <meta property="twitter:description" content="ゲーム攻略・自転車整備・イラスト制作の記録と日記。個人の趣味を発信するウェブサイト。">
-    <meta property="twitter:image" content="https://wahoij.github.io/favicons/ogp.png">
+    <!-- Twitterカード -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="ミンミンゼミの最終定理">
+    <meta name="twitter:description" content="ゲームや自転車整備、イラスト制作の記録を発信する個人サイト">
+    <meta name="twitter:image" content="https://wahoij.github.io/favicons/icon.png">
 
-    <!-- Favicon -->
-    <link rel="icon" href="/favicons/icon.png">
-    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
-
-    <!-- Stylesheet -->
+    <!-- スタイルシート -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Google Analytics -->
@@ -44,53 +39,88 @@
 
 <body>
     <header role="banner">
-        <h1><a href="https://ja.wikipedia.org/wiki/ミンミンゼミ" class="minmin">ミンミンゼミ</a>の最終定理</h1>
-        <p class="subtitle">~徒歩5分の電撃戦~</p>
+        <div>
+            <h1><a href="https://ja.wikipedia.org/wiki/ミンミンゼミ" class="minmin">ミンミンゼミ</a>の最終定理</h1>
+            <h2>~徒歩5分の電撃戦~</h2>
+        </div>
     </header>
 
     <main role="main">
-        <section aria-labelledby="accessCounter">
-            <h2 id="accessCounter" class="visually-hidden">アクセスカウンター</h2>
-            <p>ようこそ、表層ウェブの深淵へ！
-                <span class="access-count">
-                    <script src="counter.js"></script>
-                    <noscript><img src="https://counter1.fc2.com/counter_img.php?id=14567688&main=1" alt="カウンター"></noscript>
-                </span>thの方！
-            </p>
-        </section>
+        <div class="whole">
+            <div class="t2">
+                <!-- アクセスカウンター -->
+                <p class="t1">ようこそ、表層ウェブの深淵へ！
+                    <button onclick="onGuard()" class="TR"><font color="white">.</font>
+                        <span id="discription">
+                            <script src="counter.js"></script>
+                            <noscript><img src="https://counter1.fc2.com/counter_img.php?id=14567688&main=1" alt="アクセスカウンター"></noscript>
+                        </span>
+                    </button>thの方！
+                </p>
+                <div id="test"></div>
 
-        <section aria-labelledby="linkSection">
-            <h2 id="linkSection">コンテンツ一覧</h2>
-            <div class="link-grid">
-                <!-- 各リンクにaria-labelを追加 -->
-                <a href="Diary/DiaryLink.html" aria-label="日記一覧">
-                    <img src="icons/Diary.png" alt="日記アイコン">
-                </a>
-                <!-- 他のリンクも同様に修正 -->
-            </div>
-        </section>
+                <!-- リンク集 -->
+                <h3>リンク集</h3>
+                <div class="Links" aria-label="主要コンテンツへのリンク">
+                    <div>
+                        <a href="Diary/DiaryLink.html" aria-label="日記一覧">
+                            <img src="icons/Diary.png" alt="日記アイコン">
+                        </a>
+                        <a href="VM/VendingMachine.html" aria-label="自販機コンテンツ">
+                            <img src="icons/VendingMachine.png" alt="自販機アイコン">
+                        </a>
+                        <a href="impression/Links.html" aria-label="作品感想一覧">
+                            <img src="icons/implosion.png" alt="作品感想アイコン">
+                        </a>
+                        <a href="Bicycle/BCLinks.html" aria-label="自転車関連コンテンツ">
+                            <img src="icons/Cycle.png" alt="自転車アイコン">
+                        </a>
+                        <a href="Electric/ELinks.html" aria-label="電子工作コンテンツ">
+                            <img src="icons/Electric.png" alt="電子工作アイコン">
+                        </a>
+                    </div>
+                </div>
 
-        <section aria-labelledby="snsSection">
-            <h2 id="snsSection">SNSリンク</h2>
-            <div class="sns-grid">
-                <!-- 各SNSリンクにaria-labelを追加 -->
-                <a href="https://twitter.com/ADlGCrQjlnyDKCg" aria-label="Twitterアカウント">
-                    <img src="icons/twitter.png" alt="Twitterアイコン">
-                </a>
-                <!-- 他のSNSリンクも同様に修正 -->
+                <!-- SNSリンク -->
+                <h3>SNS等</h3>
+                <div class="SNS" aria-label="ソーシャルメディアリンク">
+                    <div>
+                        <a href="https://twitter.com/ADlGCrQjlnyDKCg" aria-label="Twitterプロフィール">
+                            <img src="icons/twitter.png" alt="Twitterアイコン">
+                        </a>
+                        <a href="https://www.pixiv.net/users/21139402" aria-label="Pixivプロフィール">
+                            <img src="icons/pixiv.png" alt="Pixivアイコン">
+                        </a>
+                        <a href="https://www.nicovideo.jp/user/12164559/video" aria-label="ニコニコ動画">
+                            <img src="icons/niconico.png" alt="ニコニコ動画アイコン">
+                        </a>
+                        <a href="https://wahoijhobby.booth.pm/" aria-label="BOOTHショップ">
+                            <img src="icons/dummy.png" alt="BOOTHアイコン">
+                        </a>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer role="contentinfo">
-        <div class="footer-content">
-            <p><small>&copy; 2023 ミンミンゼミの最終定理</small></p>
-            <ul class="footer-links">
-                <li><a href="GAPolicy.html">プライバシーポリシー</a></li>
-                <li><a href="contact.html">お問い合わせ</a></li>
-            </ul>
-        </div>
+        <hr>
+        <p>※<a href="GAPolicy.html" aria-label="Google Analyticsポリシー">Google Analytics</a>で解析を行ってます</p>
+        <p>Amazonのアソシエイトとして、サイト管理者わくせいは適格販売により収入を得ようとしたけど登録情報間違えて１円も入らなかったわ。</p>
+        <p>
+            サイト管理者：わくせい<br>
+            問い合わせメールアドレス:wahoijbusiness2025@gmail.com<br>
+            最終更新日: <time id="modify"></time>
+        </p>
     </footer>
+
+    <script>
+        /* 更新日の取得 */
+        const last = new Date(document.lastModified);
+        const year = last.getFullYear();
+        const month = last.getMonth() + 1;
+        const date = last.getDate();
+        document.getElementById('modify').textContent = `${year}-${month}-${date}`;
+    </script>
 </body>
-</html>
 </html>
