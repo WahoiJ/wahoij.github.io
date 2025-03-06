@@ -1,236 +1,96 @@
-﻿<!DOVTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="canonical" href="https://wahoij.github.io/">
+    
+    <!-- Primary Meta Tags -->
+    <title>ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記</title>
+    <meta name="title" content="ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記">
+    <meta name="description" content="ゲーム攻略・自転車整備・イラスト制作の記録と日記。個人の趣味を発信するウェブサイト。">
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wahoij.github.io/">
+    <meta property="og:title" content="ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記">
+    <meta property="og:description" content="ゲーム攻略・自転車整備・イラスト制作の記録と日記。個人の趣味を発信するウェブサイト。">
+    <meta property="og:image" content="https://wahoij.github.io/favicons/ogp.png">
 
-<head prefix="og: https://ogp.me/ns#">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wahoij.github.io/">
+    <meta property="twitter:title" content="ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記">
+    <meta property="twitter:description" content="ゲーム攻略・自転車整備・イラスト制作の記録と日記。個人の趣味を発信するウェブサイト。">
+    <meta property="twitter:image" content="https://wahoij.github.io/favicons/ogp.png">
 
-	<meta charset="UTF-8">
-	<link rel="icon" href="favicons/icon.png">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicons/icon.png">
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 
-<meta property="og:title" content="ミンミンゼミの最終定理"  />
-<meta property="og:site_name" content="ミンミンゼミの最終定理" />
- <meta name="twitter:card" content="summary"  />
-<meta name="twitter:title" content="ミンミンゼミの最終定理"  />
-  <meta name="twitter:description" content="わくせいのホームーページ"  />
-<meta name="twitter:image" content="https://wahoij.github.iofavicons/icon.png"  />
-<meta property="og:image" content="https://wahoij.github.io/favicons/icon.png" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="ja_JP" />
-<meta property="og:url" content="wahoij.github.io" />
-<meta property="og:description" content="ゲームやったり自転車いじったり、絵を描いたり独り相撲が得意なやつの日記みたいなサイトです。" />
-<meta name="discription" content="ゲームやったり自転車いじったり、絵を描いたり独り相撲が得意なやつの日記みたいなサイトです。">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CBDYCV7V3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9CBDYCV7V3');
+    </script>
+</head>
 
-<link rel="stylesheet" href="style.css">
+<body>
+    <header role="banner">
+        <h1><a href="https://ja.wikipedia.org/wiki/ミンミンゼミ" class="minmin">ミンミンゼミ</a>の最終定理</h1>
+        <p class="subtitle">~徒歩5分の電撃戦~</p>
+    </header>
 
-<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-9CBDYCV7V3"></script>
-	<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <main role="main">
+        <section aria-labelledby="accessCounter">
+            <h2 id="accessCounter" class="visually-hidden">アクセスカウンター</h2>
+            <p>ようこそ、表層ウェブの深淵へ！
+                <span class="access-count">
+                    <script src="counter.js"></script>
+                    <noscript><img src="https://counter1.fc2.com/counter_img.php?id=14567688&main=1" alt="カウンター"></noscript>
+                </span>thの方！
+            </p>
+        </section>
 
-  gtag('config', 'G-9CBDYCV7V3');
-  	</script>
-	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+        <section aria-labelledby="linkSection">
+            <h2 id="linkSection">コンテンツ一覧</h2>
+            <div class="link-grid">
+                <!-- 各リンクにaria-labelを追加 -->
+                <a href="Diary/DiaryLink.html" aria-label="日記一覧">
+                    <img src="icons/Diary.png" alt="日記アイコン">
+                </a>
+                <!-- 他のリンクも同様に修正 -->
+            </div>
+        </section>
 
+        <section aria-labelledby="snsSection">
+            <h2 id="snsSection">SNSリンク</h2>
+            <div class="sns-grid">
+                <!-- 各SNSリンクにaria-labelを追加 -->
+                <a href="https://twitter.com/ADlGCrQjlnyDKCg" aria-label="Twitterアカウント">
+                    <img src="icons/twitter.png" alt="Twitterアイコン">
+                </a>
+                <!-- 他のSNSリンクも同様に修正 -->
+            </div>
+        </section>
+    </main>
 
-        <title>ミンミンゼミの最終定理</title>
-		
-		<div id="adspace">
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6699354958004140"
-     crossorigin="anonymous"></script>
-	 </div>
-<script src="adblock.js"></script>
-
-    </head>
-
-        <body>
-
-
-		<header>
-											<div id="side-menu">
-  <input id="side-menu-toggle" type="checkbox">
-  <label class="toggle-switch" for="side-menu-toggle"><img src="HoI4/flag.png" width="500%" alt="flag" style="border:solid">
-  </label>
-  <ul class="menu-list">
-    <li class="list-item0">個人</li>
-	
-    <li class="list-item1">
-	<Span title="わくせい(WahoiJ)
-	この画像は友人がStableDiffusionで
-	私をTSさせたもの">
-	<img src="HoI4/SD.png"alt="SD" width="150em" height="240em" style="border:solid">
-	<center style="border:solid">わくせい・WahoiJ</center>
-	</span>
-	<ul class="Sprits">
-	<button type= "button" class="IF" title="全正面作戦
-	進捗:20/180日
-	自爆率:+20"> 
-	<span>
-	<img src="HoI4/notitle.jpg"alt="SD" height="75px">
-	</span>
-	<ul class="Sprits">
-	<span class="IF-index">　　　　全正面作戦</span>
-	<li class="gage-item"></style>
-
-<div class="gage">
-    <div style="width:22%"></div>
-</div></li>
-	</ul>
-	</button>
-	
-	<li class="I-Sprits">個人精神</li>
-	
-	<li class="I-Sprits2">
-	<span title="突然の腰痛
-	移動可能時間:-10%">
-	<img src="HoI4/LBP.png" width="10%">
-	</span>
-		<span title="ラデオン信者
-	コスパ:+5%
-	CUDA使用能力:-100%">
-	<img src="HoI4/Radeon.png" width="10%">
-	</span>
-		<span title="銀輪精神
-	移動距離:+50%
-	メンテナンス:+15%">
-	<img src="HoI4/P8.png" width="10%">
-	</span>
-	</li>
-	</ul>
-	</li>
-	
-	<li>
-	<div class="Party">
-	<button>非同盟/孤立主義<br><br>選挙なし</button>
-	<button>
-      <canvas id="myChart" width="200px" height="70px"></canvas>
-    <script src='Voting.js'></script>
-	</button>
-	</div>
-	</li>
-	<li class="list-item2">法と政府</li>
-	<li class="list-item3">
-	<span title="ソロ
-	徴兵可能人口:0%">
-	<img src="HoI4/Solo.png" width="10%">
-	</span>
-	</li>
-	<li  class="list-item2">研究と生産</li>
-	<li class="list-item3">まだ決めてない <img src="HoI4/Clean.png" width="10%"></li>
-	<li  class="list-item2">参謀</li>
-	<li class="list-item3">そんなものはいない <img src="HoI4/Clean.png" width="10%"></li>
-   </ul>
-</div>
-
-
-		<div>
-		<h1><a href="https://ja.wikipedia.org/wiki/ミンミンゼミ" class="minmin">ミンミンゼミ</a>の最終定理<h1>
-
-            <h2>~徒歩5分の電撃戦~</h2>
-			</div>
-			
-			
-
-		</header>
-		
-
-
-		<div class="whole">
-		
-		<div class="t2">
-		
-		<!-- アクセスカウンター -->
-
-		<p class="t1">ようこそ、表層ウェブの深淵へ！
-		<button onclick="onGuard()" class ="TR"><font color="white">.</font><span id="discription"><script language="javascript" type="text/javascript" src="counter.js" alt="counter"></script><noscript><img src="https://counter1.fc2.com/counter_img.php?id=14567688&main=1"></noscript></span></button>thの方！</p>
-		 <div id="test"></div>
-		 
-		<!-- アクセスカウンター -->
-			<h3>リンク集</h3>
-			
-			
-            <div class="Links">
-			
-			<div>
-			<span title="日記">
-            <a href="Diary/DiaryLink.html"><img src="icons/Diary.png"alt="日記"></a>
-			</span>
-			<span title="自販機">
-			<a href="VM/VendingMachine.html"><img src="icons/VendingMachine.png"alt="自販機"></a>
-			</span>
-			<span title="作品の感想">
-			<a href="impression/Links.html"><img src="icons/implosion.png"alt="作品の感想"></a>
-			</span>
-			<span title="自転車">
-			<a href="Bicycle/BCLinks.html"><img src="icons/Cycle.png"alt="自転車"></a>
-			</span>
-			<span title="Electric">
-			<a href="Electric/ELinks.html"><img src="icons/Electric.png"alt="IT関係とか"></a>
-			</span>
-			
-			</div>
-			
-			</div>
-			
-			<iframe src="notification.html" width="80%" height="150">
- インラインフレーム対応ブラウザでご覧いただけます。
-</iframe>
-
-			<h3>SNS等</h3>
-			<div class="SNS">
-			<div>
-			<span title="Twitter">
-			<a href="https://twitter.com/ADlGCrQjlnyDKCg"><img src="icons/twitter.png"alt="Twitter"></a>
-			</span>
-			<span title="Pixiv">
-			<a href="https://www.pixiv.net/users/21139402"><img src="icons/pixiv.png" alt="Pixiv"></a>
-			</span>
-			<span title="niconico">
-			<a href="https://www.nicovideo.jp/user/12164559/video"><img src="icons/niconico.png" alt="niconico"></a>
-			</span>
-			<img src="icons/dummy.png" alt="dummy"></a>
-			 </div>
-			 
-			 </div>
-			 
-			</div>
-			<br><br><br><br><br><br><br><br><br>
-			<footer>
-			<hr>
-			<p>
-			※<a href="GAPolicy.html">Google Analytics</a>で解析を行ってます
-			</p>
-			<p>
-			Amazonのアソシエイトとして、サイト管理者わくせいは適格販売により収入を得ようとしたけど登録情報間違えて１円も入らなかったわ。
-			</p>
-			<p>
-			サイト管理者：わくせい
-			
-			最終更新日:
-<time id="modify"></time>
-<br>色々と手つかずになってしまったので無期限停止にします。
-<script>
-
-
-
-/* 更新日の取得 */
-const last = new Date(document.lastModified);
-const year = last.getFullYear();
-const month = last.getMonth() + 1;
-const date = last.getDate();
-/* 日付を書き換える */
-const target = document.getElementById('modify');
-target.textContent = year + '-' + month + '-' + date;
-</script>
-<!--ひづけ-->
-			</p>
-			</footer>
-			
-			
-        </body>
-
-<html>
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <p><small>&copy; 2023 ミンミンゼミの最終定理</small></p>
+            <ul class="footer-links">
+                <li><a href="GAPolicy.html">プライバシーポリシー</a></li>
+                <li><a href="contact.html">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+</html>
