@@ -63,8 +63,6 @@
                 <h3>リンク集</h3>
                 <div class="Links" aria-label="主要コンテンツへのリンク">
                     <div>
-                        <a href="Diary/DiaryLink.html" aria-label="日記一覧">
-                            <img src="icons/Diary.png" alt="日記アイコン">
                         </a>
                         <a href="VM/VendingMachine.html" aria-label="自販機コンテンツ">
                             <img src="icons/VendingMachine.png" alt="自販機アイコン">
@@ -75,8 +73,6 @@
                         <a href="Bicycle/BCLinks.html" aria-label="自転車関連コンテンツ">
                             <img src="icons/Cycle.png" alt="自転車アイコン">
                         </a>
-                        <a href="Electric/ELinks.html" aria-label="電子工作コンテンツ">
-                            <img src="icons/Electric.png" alt="電子工作アイコン">
                         </a>
                     </div>
                 </div>
@@ -103,17 +99,8 @@
         </div>
     </main>
 
-    <footer role="contentinfo">
-        <hr>
-        <p>※<a href="GAPolicy.html" aria-label="Google Analyticsポリシー">Google Analytics</a>で解析を行ってます</p>
-        <p>Amazonのアソシエイトとして、サイト管理者わくせいは適格販売により収入を得ようとしたけど登録情報間違えて１円も入らなかったわ。</p>
-        <p>
-            サイト管理者：わくせい<br>
-            問い合わせメールアドレス:wahoijbusiness2025@gmail.com<br>
-            最終更新日: <time id="modify"></time>
-        </p>
-    </footer>
-
+    <div id="footer">
+    </div>
     <script>
         /* 更新日の取得 */
         const last = new Date(document.lastModified);
@@ -121,6 +108,9 @@
         const month = last.getMonth() + 1;
         const date = last.getDate();
         document.getElementById('modify').textContent = `${year}-${month}-${date}`;
+        fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => document.querySelector("main").insertAdjacentHTML('afterend', data));
     </script>
 </body>
 </html>
