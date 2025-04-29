@@ -262,3 +262,22 @@ width:50%;
 height:11em;
 background: #303030;
 }
+
+footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+footer nav ul {
+  list-style: none;
+  padding: 0;
+}
+footer nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+footer nav ul li a {
+  text-decoration: none;
+  color: #007bff;
+}

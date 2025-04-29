@@ -100,6 +100,7 @@
     </main>
 
     <div id="footer">
+    <script src="./js/main.js"></script>
     </div>
     <script>
         /* 更新日の取得 */
@@ -108,9 +109,6 @@
         const month = last.getMonth() + 1;
         const date = last.getDate();
         document.getElementById('modify').textContent = `${year}-${month}-${date}`;
-        fetch("footer.html")
-        .then((response) => response.text())
-        .then((data) => document.querySelector("main").insertAdjacentHTML('afterend', data));
     </script>
 </body>
 </html>
