@@ -31,8 +31,8 @@
 
 ## Montague-Paratrooper編
 
-- [購入](Maintenance/Paratrooper/0.html)
-- [改造](Maintenance/Paratrooper/1.html)
+- [購入](./Paratrooper/0.md)
+- [改造](./Paratrooper/1.md)
 
 ---
 
