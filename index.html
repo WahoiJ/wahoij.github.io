@@ -1,116 +1,13 @@
-﻿<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="favicons/icon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO基本設定 -->
-    <title>ミンミンゼミの最終定理 | ゲーム・自転車・イラスト日記</title>
-    <meta name="description" content="ゲーム攻略・自転車整備・イラスト制作の記録と日記。個人の趣味を発信するウェブサイト。">
-    <meta name="keywords" content="ゲーム,自転車,イラスト,日記,趣味">
-
-    <!-- OGP設定 -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="ミンミンゼミの最終定理">
-    <meta property="og:site_name" content="ミンミンゼミの最終定理">
-    <meta property="og:description" content="ゲームや自転車整備、イラスト制作の記録を発信する個人サイト">
-    <meta property="og:image" content="https://wahoij.github.io/favicons/icon.png">
-    <meta property="og:url" content="https://wahoij.github.io/">
-
-    <!-- Twitterカード -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="ミンミンゼミの最終定理">
-    <meta name="twitter:description" content="ゲームや自転車整備、イラスト制作の記録を発信する個人サイト">
-    <meta name="twitter:image" content="https://wahoij.github.io/favicons/icon.png">
-
-    <!-- スタイルシート -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CBDYCV7V3"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-9CBDYCV7V3');
-    </script>
-</head>
-
-<body>
-    <header role="banner">
-        <div>
-            <h1><a href="https://ja.wikipedia.org/wiki/ミンミンゼミ" class="minmin">ミンミンゼミ</a>の最終定理</h1>
-            <h2>~徒歩5分の電撃戦~</h2>
-        </div>
-    </header>
-
-    <main role="main">
-        <div class="whole">
-            <div class="t2">
-                <!-- アクセスカウンター -->
-                <p class="t1">ようこそ、表層ウェブの深淵へ！
-                    <button onclick="onGuard()" class="TR"><font color="white">.</font>
-                        <span id="discription">
-                            <script src="counter.js"></script>
-                            <noscript><img src="https://counter1.fc2.com/counter_img.php?id=14567688&main=1" alt="アクセスカウンター"></noscript>
-                        </span>
-                    </button>thの方！
-                </p>
-                <div id="test"></div>
-
-                <!-- リンク集 -->
-                <h3>リンク集</h3>
-                <div class="Links" aria-label="主要コンテンツへのリンク">
-                    <div>
-                        </a>
-                        <a href="VM/VendingMachine.html" aria-label="自販機コンテンツ">
-                            <img src="icons/VendingMachine.png" alt="自販機アイコン">
-                        </a>
-                        <a href="impression/Links.html" aria-label="作品感想一覧">
-                            <img src="icons/implosion.png" alt="作品感想アイコン">
-                        </a>
-                        <a href="Bicycle/BCLinks.html" aria-label="自転車関連コンテンツ">
-                            <img src="icons/Cycle.png" alt="自転車アイコン">
-                        </a>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- SNSリンク -->
-                <h3>SNS等</h3>
-                <div class="SNS" aria-label="ソーシャルメディアリンク">
-                    <div>
-                        <a href="https://twitter.com/ADlGCrQjlnyDKCg" aria-label="Twitterプロフィール">
-                            <img src="icons/twitter.png" alt="Twitterアイコン">
-                        </a>
-                        <a href="https://www.pixiv.net/users/21139402" aria-label="Pixivプロフィール">
-                            <img src="icons/pixiv.png" alt="Pixivアイコン">
-                        </a>
-                        <a href="https://www.nicovideo.jp/user/12164559/video" aria-label="ニコニコ動画">
-                            <img src="icons/niconico.png" alt="ニコニコ動画アイコン">
-                        </a>
-                        <a href="https://wahoijhobby.booth.pm/" aria-label="BOOTHショップ">
-                            <img src="icons/dummy.png" alt="BOOTHアイコン">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <div id="footer">
-    </div>
-    <script>
-        /* 更新日の取得 */
-        const last = new Date(document.lastModified);
-        const year = last.getFullYear();
-        const month = last.getMonth() + 1;
-        const date = last.getDate();
-        document.getElementById('modify').textContent = `${year}-${month}-${date}`;
-        fetch("footer.html")
-        .then((response) => response.text())
-        .then((data) => document.querySelector("main").insertAdjacentHTML('afterend', data));
-    </script>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ミンミンゼミの最終定理</title>
+    <script type="module" crossorigin src="/assets/index-CBOWzTz3.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D1djlavu.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
