@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head prefix="og: https://ogp.me/ns#">
+    <meta charset="UTF-8">
+	
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta property="og:site_name" content="ミンミンゼミの最終定理">
+<meta property="og:title" content="ラズパイ弄りたい編">
+ <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ラズパイ弄りたい編">
+ <meta name="twitter:description" content="第0回:中華はんだごて購入。紛争開始。">
+<meta name="twitter:image" content="https://wahoij.github.io/Electric/RaspberryPi/images0/r5.jpg">
+<meta property="og:image" content="https://wahoij.github.io/Electric/RaspberryPi/images0/r5.jpg">
+<meta property="og:type" content="article">
+<link rel="icon" href="favicons/icon.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://wahoij.github.io">
+<meta property="og:description" content="第0回:中華はんだごて購入。紛争開始。">
+<meta name="discription" content="第0回:中華はんだごて購入。紛争開始。">
+
+
+
+	<link rel="icon" href="../../favicons/icon.png">
+	<link rel="stylesheet" href="../Electric_style.css">
+	<link rel="stylesheet" href="../OGP.css">
+    <title>
+        
+    </title>
+	<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9CBDYCV7V3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9CBDYCV7V3');
+</script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6699354958004140"
+     crossorigin="anonymous"></script>
+	 
+
+	 
+	 <script type="text/javascript" src="prenex.js"></script>
+	 <script type="text/javascript" src="OGP.js"></script>
+</head>
+<body>
+		<a href="../../index.html">
+		<header>
+		<div>
+		<h1>ミンミンゼミの最終定理</h1>
+
+            <h2>~ラズパイ弄りたい編~</h2>
+
+			</div>
+			
+		</header>
+	</a>
+<article>
+<!--ここから本文-->
+<strong>"第0回:中華はんだごて購入。紛争開始。"</strong><br>
+
+投稿日:<time datetime="2022-11-26">2022-11-26</time>
+
+
+<h3>注意事項</h3>
+<p>
+　電子回路もプログラミングもほとんど素養がないよ。何もかも間違えてるから参考にしないでね。
+</p>
+
+<h3>ラズパイでつよつよになりたい準備体操</h3>
+<p>
+　今まで<a href="../../Bicycle/BCLinks">自転車関係の記事</a>ばっかりラッシュで更新してきたが、別にサイクルブログとしてこのサイトをおーぷんしたわけではない。<br>
+自分のささやかな成果をポータルするためとhtmlいじってみたいという目的がメインなのである。<br>
+　と、いうことで今回は家で二年くらい放置されていたラズパイをまた弄り直そうと思ったのである。
+<br><img src="images0/r0.jpg" class="pct"alt="ラズパイ"><br>
+どういうのを作るかは行き当たりばったりで決めるのと、知識もないのでガバガバだが、当時キャンプ場等の温湿度,気圧を記録してプロットできるようにしたのでそれを拡張する方向で考えている。ちなみに、書いたコードも配線も全てごちゃごちゃになったのでゼロから作り直す。そもそもコンソールの弄り方も忘れてしまいましたわ～。
+</p>
+<h3>はんだごてを買う。</h3>
+<p>
+　さて前回はブレッドボードに刺して終わったが今回こそは基盤に載せてポータブル端末として機能させたい。　
+とりあえず馬鹿だからよくわからねえけど調温はんだごて買えばいいんだろ。何を隠そう私の家にはダイソーのはんだごてが1本あるだけでほかに機材など存在しないのである。えっへん。今までなんかはんだごてが必要なときはこて台すらなかったので適当な皿にティッシュ濡らして使ってたぞ。と、そんな自分が高いはんだごてなんて買うはずもなく……。
+<br><img src="images0/r1.jpg" class="pct"alt="購入画面"><br>
+AliExpressでJCD製908Sの格安はんだごてキットを購入したぞ。Amazonに似たような商品あるし大丈夫でしょ。え？PSE認証？さあ……。
+</p>
+<h3>着弾</h3>
+<p>
+　最近のAliExpressは早いもので1週間もすれば商品が届いた。<br>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">Aliではんだごて頼むとかいう暴挙<br>まあこれ明らかにAmazonにもあったやつなので買ったんだけど <a href="https://t.co/l0phlIUsTb">pic.twitter.com/l0phlIUsTb</a></p>&mdash; わくせい (@ADlGCrQjlnyDKCg) <a href="https://twitter.com/ADlGCrQjlnyDKCg/status/1593063126018424832?ref_src=twsrc%5Etfw">November 17, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+　ぱっと見良さそう。ただこの日は忙しかったので後回しにしていたので3日後あらためては動作テストをした。
+</p>
+<h3>なんか君…赤くない？</h3>
+<p>
+　さてさて、動作テスト。とは言ってもこて先の温度計なんてないから詳細はわからんけど。とりあえず温まってればいいだろ。とりあえず350度が一番使うらしいからそれにセットして。
+　<br><img src="images0/r3.jpg" class="pct"alt="はんだごて"><br>
+　わあ赤いなぁ。これがセラミックヒーターなのか。僕のダイソーのとは大違いだ。と思いながら電工2種持ってる友人に画像を送ってみる。
+　<br><img src="images0/r4.jpg" class="pct"alt="はんだごて"><br>
+　どうやら大変なことになってるらしい。なになに、鉄は600~800度で赤くなって……。へえ……。
+</p>
+<strong>ゑ？</strong>
+<p>
+　じゃあ何かい、300度～700度くらい温度差あるってわけかい。じゃあこれ設定は500度までだから1200度とかになっちゃうこともあるのかい？ウッソだぁ。
+<br><img src="images0/r5.jpg" class="pct"alt="はんだごて"><br>
+　クリスマスキャンドルみたいできれいだなぁ……。今年ももうのこりわずかかぁ……。
+</p>
+<h3>紛争開始</h3>
+<p>
+　どう見ても不良品です本当にありがとうございます。ということで返金請求をすることにした。なにやら返品は基本元払いっぽいので。<br>
+AliExpressの購入履歴には”紛争を開始”という物騒な文字が存在する。これは訳が適当なだけで要は商品に不備がある場合に交渉できるサービスだ。Amazonみたいにワンクリックで返金できるわけではなくセラーと話してそれでも解決不能ならAliが仲裁に入る。<br>
+　一応紛争前にメッセージセンターでやり取りをしてからがセオリーらしいが、正直そんな事しても意味があるのか不明。さっさと電撃戦と行こうじゃないか。
+</p>
+<strong>「紛争を開始」ﾎﾟﾁｰ</strong>
+<strong>ﾊﾟﾊﾟﾊﾟｳｰｳｳｰﾄﾞﾄﾞﾝ</strong>
+<h3>我々は紛争状態である！</h3>
+<p>
+とりあえず明らかに赤いはんだごてと異常な温度ということを表記して紛争を開始した。<br>
+　あと、なにやらこのセラー星5つけたらギフト上げるよとかやってるのでついでにメッセージセンターから直接「返金か、低評価か」という交渉材料を出すことにした。
+<br><img src="images0/r6.jpg" class="pct"alt="クレーム"><br>
+　見返すと過激な気もするが、基本中華セラーもわりとつっけんどんな態度で来るのでこれくらい主張しないと心が折れる。
+<br><img src="images0/r7.jpg" class="pct"alt="クレーム"><br>
+　メッセージセンターは無視され、紛争画面で15円という0.1ドルというどう算出したのかわからない額を提示された。拒否だ拒否。
+<br><img src="images0/r8.jpg" class="pct"alt="クレーム"><br>
+　その後,今度は0.5ドル。競りじゃないんだが？と拒否し再度メッセージセンターから連絡を試みる。<br>
+と、まあこんな感じに続けていたら反応があった１ドルと新しいはんだごて送るから勘弁してくれ～との連絡。これも拒否。返金してくれ～っていったら「いやまあはんだごて以外は普通に動くだろ？だから8ドルな」と主張された。「いや、はんだごて単品12ドルだから最低それくらい返してくれ。そしたら星3くらいはつける。」と返したら紛争画面で新たな提案が<br>
+<br><img src="images0/r9.jpg" class="pct"alt="クレーム"><br>
+8ドル何処行ったんだよ！！とこれも拒否。それから数時間後タイムアップでAli運営側による講和が開かれた。
+</p>
+<h3>主張無くして勝利なし</h3>
+<p>
+　<br><img src="images0/r10.jpg" class="pct"alt="解決"><br>
+　どうやらこちらの正当性が認められ全額返金。商品を送り返す必要はないらしい。
+</p>
+
+ JCDは降伏し、JCDはんだキットを供出。
+<p>
+　と、なったわけである。とりあえず付属品は鹵獲できちゃったみたいなのではんだごてだけちゃんとしたのを買おう。<br>
+<iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=wkswhj-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B006MQD7M4&linkId=04f378683d7f21f46c325c7ba50e0e0b"></iframe><br>
+ということでHAKKOのFX-600を買った。
+<br>
+<iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//rcm-fe.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=wkswhj-22&language=ja_JP&o=9&p=8&l=as4&m=amazon&f=ifr&ref=as_ss_li_til&asins=B006Z0JPRS&linkId=3b3466c58aef8a2827f50c0b929e6169"></iframe>
+<br>
+ちなみにFX-601の方がブラックフライデーセールに来ているので一応貼っておく。
+　<br><img src="images0/r11.jpg" class="pct"alt="HAKKO FX-600"><br>
+350度程度にセットしても全然赤くならないなぁ。これが普通なのか。いやまあ冷静に考えればDIY動画で赤くなってるはんだごてなんて見たこと無いもんな。
+　<br><img src="images0/r12.jpg" class="pct"alt="HAKKO FX-600の2"><br>
+　鹵獲したこて台が狭かったので伸ばしたら割りとフィットした。どうもFX-600はふとっちょらしい。
+</p>
+<h3>で？ラズパイは？</h3>
+<p>
+　オレはようやくのぼりはじめたばかりだからな このはてしなく遠い男坂をよ…。あ、ちなみに今回の中華はんだごて抵抗取り付けて温度調整してるブログあったので貼っておく。
+<iframe class="bookmarklet hatena-embed" src="https://hatenablog-parts.com/embed?url=http%3A%2F%2Fdj-higo.cocolog-nifty.com%2Fblog%2F2020%2F04%2Fpost-1f7b7b.html" title="中華製温調はんだごて（２）: DJ HIGO オフィシャルブログ" style="border:none;display:block;margin:0 0 1.7rem;overflow:hidden;height:155px;width:100%;max-width:100%;"><a href="http://dj-higo.cocolog-nifty.com/blog/2020/04/post-1f7b7b.html" target="_blank">中華製温調はんだごて（２）: DJ HIGO オフィシャルブログ</a></iframe>
+…で、ではまた～。
+</p>
+</article>
+
+	
+	<br>
+
+<script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=14567688&main=1"></script><noscript><img src="//counter1.fc2.com/counter_img.php?id=14567688&main=1" /></noscript><br>
+<a href="../BCLinks.html">一覧へ</a><br>
+<a href="../../index.html">トップへ</a><br>
+
+
+
+</div>
+</body>
+			<footer>
+			<hr>
+			<div>
+			※<a href="https://wahoij.github.io/GAPolicy.html">Google Analytics</a>で解析を行ってます.
+			<br>
+			サイト管理者：わくせい
+			<div>	
+最終更新日:
+<time id="modify"></time>
+<script>
+
+
+
+/* 更新日の取得 */
+const last = new Date(document.lastModified);
+const year = last.getFullYear();
+const month = last.getMonth() + 1;
+const date = last.getDate();
+/* 日付を書き換える */
+const target = document.getElementById('modify');
+target.textContent = year + '-' + month + '-' + date;
+</script>
+</div>
+<!--ひづけ-->
+			</div>
+			</footer>
+
+
+</html>
