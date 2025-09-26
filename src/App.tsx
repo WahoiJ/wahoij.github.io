@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Outlet, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Outlet, Link } from "react-router-dom";
 import VendingMachine from "./contents/VendingMachine";
 import Header from "./fragments/Header";
 import Footer from "./fragments/Footer";
