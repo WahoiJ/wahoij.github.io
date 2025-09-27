@@ -11,7 +11,16 @@
 
 ### 序章
 
-大学生になって数ヶ月が過ぎた。1年生の前期から夏休みにかけておおよそ大学生の一番新鮮な時期が終わろうとしていた。大学生活の理想と現実、崩壊する人間関係、いつまでも研修扱いの労基法違反のアルバイト。私はとても鬱屈していた。
+大学生になって数ヶ月が過ぎた。1年生の前期から夏休みにかけておおよそ大学生の一番新鮮な時期が終わろうとしていた。大学生活の理想と現実、崩壊する人間関係、いつまでも研修扱いの### コスパ最強10速化
+
+<img alt="バラす" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2837%29.jpg">
+<img alt="Tiagra105" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2838%29.jpg">
+中古パーツを寄せ集めれば2万ちょいで10速できる！というブログに出会い早速実行。シフターとスプロケットは新品を買ったがそれ以外は中古パーツの寄せ集め。tiagra4600のクランクに105の5701のディレーラー。
+ついでにブルホーン化もした。実際かなり走行性能が上がってびっくりした。
+<img alt="湘南" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2839%29.jpg">
+うっきうきで湘南あたりをテストライドしてた。ちょうど"いざ鎌倉"から1年だったのでリベンジマッチみたいなものか。今回は楽しく漕げた。
+<img alt="比較" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2840%29.jpg">
+年式が同じEscapeR3が停めてあったので比較に写真を撮ったらしい。こいつ絶対悦に浸ってただろうな。ト。私はとても鬱屈していた。
 その夏始めて一人で旅行をした。『JR北海道＆東日本パス』でなんとなく函館まで行ってみた。初めて宿を予約して、朝一で青函フェリーに乗り北の大地へ。大沼でクロスバイクを借りて散策をして、函館山からの夜景を麓行きのバスから眺め、塩ラーメンを食べた。あとラッキーピエロにいった。
 帰りは福島の駅で震災の爪痕を見ることになる。代行バスに乗りながら自然の脅威を思い知る。無人駅では男性がセンチな曲を吹いていた。
 水戸のスーパーホテルで初めて朝食バイキングを食べてた。なんとなくカレーを食べてた記憶がある。大洗にも行った。お盆だったのであんこう鍋の店は開いてなかった。
@@ -23,7 +32,7 @@
 
 ### 馴れ初め
 
-![邂逅](/bike/md/EscapeR3/Photo/EscapeR3%20%281%29.jpg)
+<img alt="邂逅" src="/bike/md/EscapeR3/Photo/EscapeR3%20%281%29.jpg">
 そして一月後、初めてスポーツバイクを購入した。Giant Escape R3の確か2013年モデル。リアエンド幅が130mmで新品なら5万と、当時はベース車としてはもってこいの自転車だった。(今はだいぶ値上がりしたけど)
 サイズはMサイズ、160前半のわたしにとって米国Mサイズは少々デカかったがヤフオクで安く出回ってたのがそれだけだったので、金のない私に選択の余地はなかった。確か届いた時は両輪とペダルが外してある状態だったので最初から修羅の道だった。もしかしたらハンドルもステムから取って梱包されていたかもしれない。ここらへんは記憶が曖昧だ。
 
@@ -31,13 +40,13 @@
 
 ### ファーストステップ
 
-![ペダル](/bike/md/EscapeR3/Photo/EscapeR3%20%283%29.jpg)
+<img alt="ペダル" src="/bike/md/EscapeR3/Photo/EscapeR3%20%283%29.jpg">
 写真に拠ると初めてのパーツ交換はペダルらしい。友人に「三ヶ島にしろ」というダイマを受けて買ってみた。クルクルクルクル回る。これ以降ずっと三ヶ島使うようになった。
 
-![Escape](/bike/md/EscapeR3/Photo/EscapeR3%20%282%29.jpg)
+<img alt="Escape" src="/bike/md/EscapeR3/Photo/EscapeR3%20%282%29.jpg">
 ちなみにCATEYEのど定番サイコンとライトを購入してたらしい。
 
-![快活クラブ](/bike/md/EscapeR3/Photo/20221124_113548.jpg)
+<img alt="快活クラブ" src="/bike/md/EscapeR3/Photo/20221124_113548.jpg">
 このあと宇都宮までぽたサイ(片道80km)して初快活クラブ泊を果たした。単に、江戸川の果てを見に行くはずが気がついたら宇都宮にいた。もう夕方だったので銭湯に入ってから適当に飯を食べて、深夜割料金で泊まった。
 朝4時に外へ出たらオリオン座が輝いていた。この時期にオリオン座を見るなんて変な気分だなと思いながら帰宅路へ。帰りは向かい風が強くて大変だった。
 
@@ -45,8 +54,8 @@
 
 ### 峠へ
 
-![バーエンド](/bike/md/EscapeR3/Photo/EscapeR3%20%284%29.jpg)
-![大ダルミ峠](/bike/md/EscapeR3/Photo/EscapeR3%20%285%29.jpg)
+<img alt="バーエンド" src="/bike/md/EscapeR3/Photo/EscapeR3%20%284%29.jpg">
+<img alt="大ダルミ峠" src="/bike/md/EscapeR3/Photo/EscapeR3%20%285%29.jpg">
 その後バーエンドを生やして大ダルミ峠へ行ってみた。宇都宮後、輪行というものを試してみたかったので高尾山口駅へ。
 白状するとこの時期はドッペルギャンガーの前輪外し輪行袋を使用していた。罪である……。
 
@@ -54,7 +63,7 @@
 
 ### 東京ドイツ村
 
-![東京ドイツ村](/bike/md/EscapeR3/Photo/EscapeR3%20%285_2%29.jpg)
+<img alt="東京ドイツ村" src="/bike/md/EscapeR3/Photo/EscapeR3%20%285_2%29.jpg">
 別に大した目的はないが東京ドイツ村に行った。カントリークラブだらけで迷って無駄に坂を往復した。
 園内は家族連れが多かった気がする。『Willkommen!』と『Welcome!』の標識がやけに印象に残ってる。ああ、ドイツ語の授業で見た単語だと思った。ちなみにこの後ドイツ語の単位は落とすことになる。
 フランクフルト、ソーセージ。あとなんか水鳥と羊。うーん場違いなところに来たな、と思いながら一巡だけして帰った。
@@ -63,7 +72,7 @@
 
 ### ボトルケージ
 
-![ボトルケージ](/bike/md/EscapeR3/Photo/EscapeR3%20%286%29.jpg)
+<img alt="ボトルケージ" src="/bike/md/EscapeR3/Photo/EscapeR3%20%286%29.jpg">
 ２月になり、ボトルケージを買った。クロスバイクは積載箇所がないので、やはりあるとないとでは大違いである。
 これにダイソーのワンタッチキャップを合わせると信号待ちで楽だしペットボトルをいちいち移し替える必要がない。
 もちろんこのボトルケージもダイソーのものである。
@@ -72,10 +81,10 @@
 
 ### その時期のあれこれ
 
-![momentum](/bike/md/EscapeR3/Photo/EscapeR3%20%287%29.jpg)
+<img alt="momentum" src="/bike/md/EscapeR3/Photo/EscapeR3%20%287%29.jpg">
 イオンバイクが出していたmomentum i NeedシリーズのZ-5AIR。たしかこれはEscapeとOEM元が同じとかなんとかでコスパがいいとか言われてた記憶がある。当時はだいぶ見たけどもう絶滅したか。
 
-![AC](/bike/md/EscapeR3/Photo/EscapeR3%20%288%29.jpg)
+<img alt="AC" src="/bike/md/EscapeR3/Photo/EscapeR3%20%288%29.jpg">
 元々ニコニコの車載動画をきっかけにクロスバイクを買ったので自分もどうにか撮ってみようと中華アッカムを買ってみた。
 この時は結局殆ど撮らず、カメラが文鎮化した。
 [ゆっくりと行く東北自転車の旅。～準備編～](https://www.nicovideo.jp/watch/sm13726371)
@@ -85,20 +94,20 @@
 
 ### いざ鎌倉
 
-![鎌倉へ](/bike/md/EscapeR3/Photo/EscapeR3%20%289%29.jpg)
-![鎌倉](/bike/md/EscapeR3/Photo/EscapeR3%20%2811%29.jpg)
+<img alt="鎌倉へ" src="/bike/md/EscapeR3/Photo/EscapeR3%20%289%29.jpg">
+<img alt="鎌倉" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2811%29.jpg">
 さて、すっかり季節は初夏、GWに友人2人とTARITARIの聖地巡礼だ！と鎌倉目指し深夜に東京を横断し、昼についた。
 深夜の都内の人気の無さにびっくりしながら走り、昼に鎌倉についた時には暑さと眠気で死にかけていた。ほぼ観光しないで帰った。
 帰りに初めてリカンベントとタンデム自転車を見かけた。
 
-![サイコン](/bike/md/EscapeR3/Photo/EscapeR3%20%2812%29.jpg)
+<img alt="サイコン" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2812%29.jpg">
 ちなみに友人のうち一人はママチャリでついてきた。今考えればとんでもないことしてるな。
 
 ---
 
 ### ブレーキをDeoreに
 
-![DeoreのBR-T610](/bike/md/EscapeR3/Photo/EscapeR3%20%2813%29.jpg)
+<img alt="DeoreのBR-T610" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2813%29.jpg">
 これもまたど定番のパーツ交換。DeoreのBR-T610にVブレーキを替えた。正直テクトロですらジャックナイフしかけたのに必要だったのか。
 是非はともかくとして当時は2000円で買えるコスパ最強ブレーキだった。今は3000円。ひえ～。もう時代はディスクだしね……。
 
@@ -106,27 +115,27 @@
 
 ### 印旛沼へ
 
-![印旛沼1](/bike/md/EscapeR3/Photo/EscapeR3%20%2814%29.jpg)
-![印旛沼2](/bike/md/EscapeR3/Photo/EscapeR3%20%2815%29.jpg)
+<img alt="印旛沼1" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2814%29.jpg">
+<img alt="印旛沼2" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2815%29.jpg">
 梅雨明け頃印旛沼へ、ひまわりと風車を目的に行ってみた。春にNikon D5200を買ったので自転車✕カメラという目的が強くなっていたはず。
 
 ---
 
 ### ボトルケージ交換
 
-![Topeak](/bike/md/EscapeR3/Photo/EscapeR3%20%2816%29.jpg)
+<img alt="Topeak" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2816%29.jpg">
 外置き駐輪のせいなのか単に劣化か、ダイソーのボトルケージがひん曲がっていたので本家Topeak製を近所の中古サイクルショップで買った。正直100円にしては出来はいいと思う。
 
 ---
 
 ### 色々追加
 
-![追加](/bike/md/EscapeR3/Photo/EscapeR3%20%2818%29.jpg)
+<img alt="追加" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2818%29.jpg">
 ライトが中華の"すごいルーメン大きいライト"になってたりドッペルギャンガーのキャリアをつけたりクッションシートを追加したりしている。
-![Continental1](/bike/md/EscapeR3/Photo/EscapeR3%20%2819%29.jpg)
-![Continental2](/bike/md/EscapeR3/Photo/EscapeR3%20%2820%29.jpg)
+<img alt="Continental1" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2819%29.jpg">
+<img alt="Continental2" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2820%29.jpg">
 そして愛すべきコンチネンタルの28cタイヤ。コンチしか勝たん。Wiggleで輸入したらハリボーがついてきた。この頃ドイツ語の再履修を受けてたので複雑な気持ちで食べた。
-![チェーンオイル](/bike/md/EscapeR3/Photo/EscapeR3%20%2821%29.jpg)
+<img alt="チェーンオイル" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2821%29.jpg">
 しれっとシマノ純正のチェーンオイルを丁寧に注油している様子。今じゃAZのチェーンソーオイルしか使ってない。
 
 ---
@@ -134,31 +143,31 @@
 ### 満を持してロングライド
 
 ここまでカスタムしたのには理由がある。
-![ゴミ輪行](/bike/md/EscapeR3/Photo/EscapeR3%20%2822%29.jpg)
+<img alt="ゴミ輪行" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2822%29.jpg">
 例のごとくゴミ輪行である。本当に申し訳ない。
-![高尾山口駅](/bike/md/EscapeR3/Photo/EscapeR3%20%2823%29.jpg)
+<img alt="高尾山口駅" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2823%29.jpg">
 高尾山口駅まで輪行した。季節は一巡し、大学二年の夏休みの終わり、学内で知り合った友人と高尾山口駅→甲府→松本→（輪行で）軽井沢→高崎→荒川のロングライドを計画していたのだ。
-![予定は狂う](/bike/md/EscapeR3/Photo/EscapeR3%20%2824%29.jpg)
+<img alt="予定は狂う" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2824%29.jpg">
 ちなみにこの旅程は初日友人のホイールが外れないという珍事により、スタートから３時間の遅延を喰らう。
 深夜に通りたくないねと言った旧笹子峠を20時過ぎに通る羽目になった。ちなみにフォークにつけていたキャットアイのライトをその時落としたので拾ってたら誰か届けてくれ（無理）。
-![幸楽苑](/bike/md/EscapeR3/Photo/EscapeR3%20%2825%29.jpg)
+<img alt="幸楽苑" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2825%29.jpg">
 初めて火球を見たり、生還したときの夜景がやけに美しく思えたり、新鮮な経験をしてくたくたになりながら幸楽苑で晩飯を食べた。
 ホテルのチェックインが0時過ぎになり、入湯税を取られるのに大浴場に入れないというギャグをかましながらなんとか甲府にたどり着く。
-![竜王駅](/bike/md/EscapeR3/Photo/EscapeR3%20%2826%29.jpg)
+<img alt="竜王駅" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2826%29.jpg">
 2日目、今度は自分のトルク管理のいい加減さでキャリアのボルトが外れてグラグラに。慌ててホムセンへ駆け込む。これ以降の旅でなぜかホムセンへ行く風潮が生まれる。
-![道の駅はくしゅう1](/bike/md/EscapeR3/Photo/EscapeR3%20%2827%29.jpg)
-![道の駅はくしゅう2](/bike/md/EscapeR3/Photo/EscapeR3%20%2828%29.jpg)
-![道の駅はくしゅう3](/bike/md/EscapeR3/Photo/EscapeR3%20%2829%29.jpg)
+<img alt="道の駅はくしゅう1" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2827%29.jpg">
+<img alt="道の駅はくしゅう2" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2828%29.jpg">
+<img alt="道の駅はくしゅう3" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2829%29.jpg">
 道の駅で途中昼食を。当時は道の駅がやたら新鮮な施設に思えた。
-![富士見駅](/bike/md/EscapeR3/Photo/EscapeR3%20%2830%29.jpg)
+<img alt="富士見駅" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2830%29.jpg">
 流石に前日の疲れが取れてなかったので富士見駅で輪行をして松本まで行くことにした。
 高ボッチで星を撮る計画があったが疲労と自分が三脚を家においてくる凡ミスで消えた。数年後車で高ボッチ行ったけど、あの時行ってたらやばかったなと思った。
-![松本](/bike/md/EscapeR3/Photo/EscapeR3%20%2831%29.jpg)
+<img alt="松本" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2831%29.jpg">
 そして松本へ。当時はスタンプを集めようと思ってたがスタンプ帳を毎回置いてくるので最近はもう押してすらいない。
-![軽井沢](/bike/md/EscapeR3/Photo/EscapeR3%20%2832%29.jpg)
+<img alt="軽井沢" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2832%29.jpg">
 3日目なんとか帳尻を合わせて軽井沢へ。当日は曇っていて寒かった。ファミマで食べたおでんが体に滲みた。
 その後碓氷峠を下っている最中にEscapeくんのフロントホイールのベアリングが崩壊して左右に揺れだした。当時は無頓着に下っていたがとんでもないことをしていた。
-![高崎](/bike/md/EscapeR3/Photo/EscapeR3%20%2833%29.jpg)
+<img alt="高崎" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2833%29.jpg">
 その後、絶対に自転車を通さないという強い意志を感じさせるサイクリングロードを通って高崎へ。
 自転車があんな状態なのに翌日荒サイ行く気満々だった。ただ起きてみたら土砂降りだったので諦めて電車で帰った。
 こうして初のロングライドは幕を閉じる。正直初日がピークだった気もするけど結果楽しかったからいいとしよう。
@@ -167,7 +176,7 @@
 
 ### ホイール交換
 
-![フロントハブ崩壊](/bike/md/EscapeR3/Photo/EscapeR3%20%2834%29.jpg)
+<img alt="フロントハブ崩壊" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2834%29.jpg">
 さて、フロントホイールがだめになってしまったのでこれまたど定番のWH-R501に替えた。
 こいつは鉄下駄と言われる前後セット1万円のコスパ最強ホイールで……あれ今2万するの？ひええ～。
 
@@ -175,8 +184,8 @@
 
 ### 盗難被害にあう
 
-![盗難被害１](/bike/md/EscapeR3/Photo/EscapeR3%20%2835%29.jpg)
-![盗難被害2](/bike/md/EscapeR3/Photo/EscapeR3%20%2836%29.jpg)
+<img alt="盗難被害１" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2835%29.jpg">
+<img alt="盗難被害2" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2836%29.jpg">
 駅までの通学に使っていたのでバイト先に停めておいたら帰りに盗まれていた。
 何が？って中華ライトとボトルケージが……。いやなんでそんなもん盗むん？？と思ったけども。
 なんかやたら駐輪場所前でライト照らしてたやついたけどひょっとしてすれ違いだったのかもしれない。というかせめてボルトだけは置いていってほしかった。地味に買うのめんどくさいんだよ、それ。
@@ -199,19 +208,19 @@
 
 ### ブレーキレバーを変える
 
-![RL520](/bike/md/EscapeR3/Photo/EscapeR3%20%2842%29.jpg)
+<img alt="RL520" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2842%29.jpg">
 1ヶ月くらい使っているとブルホーンの角を持って走りたくなったのでブレーキレバーをテクトロのRL520に変更。
 これでコンポーネントは全とっかえしたことになる。
-![Fバッグ](/bike/md/EscapeR3/Photo/EscapeR3%20%2843%29.jpg)
+<img alt="Fバッグ" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2843%29.jpg">
 あとカメラを気軽に出せるようにフロントバッグをつけてみる。
-![リアライト](/bike/md/EscapeR3/Photo/EscapeR3%20%2844%29.jpg)
+<img alt="リアライト" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2844%29.jpg">
 リアライトをソーラー充電式にしたがあまりいいアイデアではなかった。
 
 ---
 
 ### サドルとシートポスト交換
 
-![サドルとシートポスト](/bike/md/EscapeR3/Photo/EscapeR3%20%2845%29.jpg)
+<img alt="サドルとシートポスト" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2845%29.jpg">
 完全に忘れていたがサドルが加水分解でボロボロになったのでシートポストも同時に変えていたらしい。
 軽量化とかではなくドレスアップが目的だと思う。あとはステムを黒にすればほぼいい感じだなとか思ってた記憶がある。
 あとこのドッペルのリアキャリアいよいよやばそうだったので後日買い替えた。
@@ -220,14 +229,14 @@
 
 ### 房総はいいぞ
 
-![千葉輪](/bike/md/EscapeR3/Photo/EscapeR3%20%2846%29.jpg)
-![千葉輪2](/bike/md/EscapeR3/Photo/EscapeR3%20%2847%29.jpg)
+<img alt="千葉輪" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2846%29.jpg">
+<img alt="千葉輪2" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2847%29.jpg">
 やっと両輪外しに目覚めた。紅葉を求めに蘇我から養老渓谷を経由して鴨川、野島崎灯台、館山とぐるり2泊3日を計画した。
-![チバニアン](/bike/md/EscapeR3/Photo/EscapeR3%20%2848%29.jpg)
+<img alt="チバニアン" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2848%29.jpg">
 天気が悪すぎて紅葉は諦めた。代わりにチバニアンを見ることに。正直知識がないからあんまり覚えてない。チバニアン時代。
-![バンガロー](/bike/md/EscapeR3/Photo/EscapeR3%20%2849%29.jpg)
+<img alt="バンガロー" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2849%29.jpg">
 この頃色々あってキャンプ場に泊まるという発想を得たため途中のバンガローで1泊した。最近はテント泊メインだが3人くらいならバンガローは快適だと思う。寝袋かストーブさえ有れば。
-![バンガロー2](/bike/md/EscapeR3/Photo/EscapeR3%20%2850%29.jpg)
+<img alt="バンガロー2" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2850%29.jpg">
 翌日は南房総の宿で一泊して最終日に野島崎灯台に行った。房総はいいぞ。ちなみにこの後何度も南房総に行ったがまったく飽きない。
 自転車通行可の標識の真下がが砂に埋れてる「渡れるもんなら渡ってみろ」と言わんばかりの道があるのでぜひ通ってほしい。
 
@@ -235,7 +244,7 @@
 
 ### STI化
 
-![STI](/bike/md/EscapeR3/Photo/EscapeR3%20%2850_3%29.jpg)
+<img alt="STI" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2850_3%29.jpg">
 それから一年は目立ったことはしていなかった。強いて言えば自転車通学不可にもかかわらず部室に自転車ぶちこんで置くことで通学したことがあるくらいだろうか。
 そんなこんなで3年目の秋、STIレバーとミニVブレーキを手に入れたので満を持してロードライクなカスタムをした。EscapeR3の王道カスタムを結局やることに。
 
@@ -243,19 +252,19 @@
 
 ### 山形県南陽市
 
-![南陽へ](/bike/md/EscapeR3/Photo/EscapeR3%20%2851%29.jpg)
+<img alt="南陽へ" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2851%29.jpg">
 暇を持て余していたのでバイクの免許を取るために山形へ。あと天の川を取るときの足がほしかったのもある。
 車の免許合宿のとき自転車貸出がなかったのを教訓に輪行して行った。
-![南陽へ2](/bike/md/EscapeR3/Photo/EscapeR3%20%2851_2%29.jpg)
-![南陽へ3](/bike/md/EscapeR3/Photo/EscapeR3%20%2854%29.jpg)
-![南陽へ4](/bike/md/EscapeR3/Photo/EscapeR3%20%2852%29.jpg)
+<img alt="南陽へ2" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2851_2%29.jpg">
+<img alt="南陽へ3" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2854%29.jpg">
+<img alt="南陽へ4" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2852%29.jpg">
 結構楽しかった。1週間くらいベースキャンプ決めて散策するのは割りと性に合ってるのかもしれない。かなり贅沢だけど。
 
 ---
 
 ### 有終の美
 
-![東京タワー](/bike/md/EscapeR3/Photo/EscapeR3%20%2856%29.jpg)
+<img alt="東京タワー" src="/bike/md/EscapeR3/Photo/EscapeR3%20%2856%29.jpg">
 バイクを手に入れてからというもののメインがそっちに移ってしまった。しかもゴリゴリ弄ってしまったので街乗りにはちょっと強すぎる。ということで、乗らなくなったため手放すことになった。やはり、道具は使われてこそ意味がある。最後の記念として東京タワーまでライドした。その後メルカリで買い手が見つかったので新たな持ち主へと。どうなったんだろなぁ。実はなぜかブレーキ調整がおかしくてあさひの店員も調整失敗した（とはいえじぶんがやるよりバッチリ決まっていたが）。週１くらいでブレーキの引きを直さないと行けなかったので謎だった。解決不能として明記して売ったが無事チューニングされて今も乗られていることを願っている。今だったらMr.Controlとか使ってみるとか発送は出てくるけど、当時は全くわからなかった。
 
 ---
