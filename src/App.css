@@ -241,10 +241,4 @@ footer {
   color: black;
 }
 
-@media (max-width: 600px) {
-  .bike-article .article-image-small,
-  .bike-article .article-image-medium,
-  .bike-article .article-image-large {
-    max-width: 100%;
-  }
-}
+
