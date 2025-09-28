@@ -1,3 +1,4 @@
+// ...existing code...
 import { HashRouter as Router, Routes, Route, Outlet, Link } from "react-router-dom";
 import VendingMachine from "./contents/VendingMachine";
 import Header from "./fragments/Header";
@@ -46,14 +47,13 @@ function App() {
   return (
     <Router>
       <div id="root">
-        <header>
-        </header>
+        <header></header>
         <main>
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Portal />} />
               <Route path="Vending" element={<VendingMachine />} />
-              <Route path="Bike" element={<BikeArticle />} />
+                  <Route path="Bike/*" element={<BikeArticle />} />
               <Route path="GAPolicy" element={<GAPolicy />} />
             </Route>
           </Routes>
@@ -64,3 +64,4 @@ function App() {
 }
 
 export default App;
+// ...existing code...

@@ -1,13 +1,16 @@
-> **注意！**  
-> このサイトのメンテや改造方法は独学、自己流が多く含まれるため正確な情報ではない場合があります。自己メンテをする際は[サイクルベースあさひ](https://www.cb-asahi.co.jp/contents/category/maintenance/)等の専門店のページをご確認ください。また、当サイトでは事故、破損等一切の責任を負いかねますのでご了承ください。
+<div id="targetEscapeR3"></div>
 
----
-## 番外編
+<details>
 
 - [EscapeR3を振り返る](./EscapeR3/EscapeR3.md)
 - [ママチャリブレーキメンテ](./P8/0.md)
 
-## Dahon Speed P8編
+</details>
+
+<div id="targetP8"></div>
+
+
+<details>
 
 - [ミニベロブレーキレバー交換](./P8/1.md)
 - [ミニベロリアキャリヤー](./P8/2.md)
@@ -28,12 +31,25 @@
 - [Deore RD-M5120を取り付け](./P8/17.md)
 - [Speed P8打ち切りへ](./P8/18.md)
 
-## Montague-Paratrooper編
+</details>
+
+<div id="targetParatrooper"></div>
+
+<details>
 
 - [購入](./Paratrooper/0.md)
 - [改造](./Paratrooper/1.md)
 
+</details>
+
+<div id='targetBoardWalk'></div>
+準備中
+
+<div id='targetMuddyFox'></div>
+準備中
+
 ---
+
 
 - [トップへ](/)
 
