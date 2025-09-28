@@ -16,14 +16,14 @@ function Footer() {
     >
       <Typography variant="body2">
         <div>
-          <Link to ="/GAPolicy">
+          <Link to ="/GAPolicy" style={{color:"#ffff"}}>
           ※Google Analyticsで解析を行ってます
           </Link>
         </div>
         <div>
         最終更新日:{new Date().toLocaleDateString()} 
         </div>
-        <div>
+        <div >
         サイト管理者：わくせい
         </div>
         <div>
