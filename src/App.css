@@ -19,12 +19,9 @@ body,
 
 /* 3. ヘッダー */
 header {
-  position: static;
-  /* ヘッダーを通常の文書フローに従わせる */
   top: 0;
   left: 0;
   width: 100%;
-  height: 56px;
   /* ヘッダーの高さを固定 */
   background-color: #fff;
   z-index: 1000;
@@ -229,10 +226,4 @@ footer {
 
 * {
   color: black;
-}
-
-img {
-  width: 80% !important;
-  display: flex !important;
-  margin: 16px 0 !important;
 }
