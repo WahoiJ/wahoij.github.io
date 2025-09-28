@@ -22,7 +22,7 @@ const BikeArticle = () => {
 
   // Markdown内のリンククリックをフック
   const handleLinkClick = useCallback(
-    (href, event) => {
+    (href:string, event: React.MouseEvent<HTMLAnchorElement>) => {
       // .mdファイルへのリンクならfetchで切り替え
       if (href.endsWith(".md")) {
         event.preventDefault();
