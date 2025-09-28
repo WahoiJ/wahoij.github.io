@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-
+import styles from "./Bike.module.css";
 const BASE_PATH = "/bike/md/";
 
 const BikeArticle = () => {
@@ -32,27 +32,9 @@ const BikeArticle = () => {
   );
 
   return (
-    <div className="bike-article">
-      <ReactMarkdown
-        rehypePlugins={[rehypeRaw]}
-        components={{
-          a: ({ href, children, ...props }) => (
-            <a
-              href={href}
-              {...props}
-              onClick={
-                href && href.endsWith(".md")
-                  ? (e) => handleLinkClick(href, e)
-                  : undefined
-              }
-            >
-              {children}
-            </a>
-          ),
-        }}
-      >
-        {content}
-      </ReactMarkdown>
+    <div className={styles.bikeArticle}>
+      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{content}</ReactMarkdown>
+      <img src="/path/to/example.jpg" alt="Example" className={styles.img} />
     </div>
   );
 };
