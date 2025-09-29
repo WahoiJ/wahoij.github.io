@@ -87,7 +87,9 @@ const images = imageData.map(function (item) {
 function VendingMachine() {
   return (
     <div>
-      <ImageGallery items={images} />
+      <ImageGallery
+              sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
+       items={images} />
     </div>
   );
 }

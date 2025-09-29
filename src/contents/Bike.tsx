@@ -56,7 +56,17 @@ const BikeArticle = () => {
               ):(
                 <div {...props}>{props.children}</div>
               );
-          }
+          },
+          img: ({...props }) => {
+             return<img {...props} 
+        style={{
+          maxWidth: '80%',
+          height: 'auto',
+          padding:'10px',
+        }}
+             /> 
+            }
+          ,
 
         }}
       >

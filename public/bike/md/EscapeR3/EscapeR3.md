@@ -22,7 +22,7 @@
 
 ### ファーストステップ
 
-<img alt="ペダル" src="/bike/md/EscapeR3/Photo/EscapeR3%20%283%29.jpg">
+<img id="blog" alt="ペダル" src="/bike/md/EscapeR3/Photo/EscapeR3%20%283%29.jpg">
 写真に拠ると初めてのパーツ交換はペダルらしい。友人に「三ヶ島にしろ」というダイマを受けて買ってみた。クルクルクルクル回る。これ以降ずっと三ヶ島使うようになった。
 
 <img alt="Escape" src="/bike/md/EscapeR3/Photo/EscapeR3%20%282%29.jpg">
