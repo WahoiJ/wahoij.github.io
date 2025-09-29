@@ -1,4 +1,3 @@
-// ...existing code...
 import { HashRouter as Router, Routes, Route, Outlet, Link } from "react-router-dom";
 import VendingMachine from "./contents/VendingMachine";
 import Header from "./fragments/Header";
@@ -64,4 +63,3 @@ function App() {
 }
 
 export default App;
-// ...existing code...

@@ -1,72 +1,15 @@
+
+
 .bikeArticle {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 16px 24px;
-}
-
-.bikeArticle img {
-  display: inline-block;
-  max-width: 80%;
-  width: 100%;
-  height: auto;
-  margin: 16px 0;
-  padding: 10%;
-}
-
-.target {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 2/1;
-  overflow: hidden;
-}
-
-.target img {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0px;   /* 右のパディング */
-  object-fit: cover;
-  /* 画像を比率に合わせてトリミング */
-  display: block;
-}
-
-.target h2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* 中央に配置 */
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* テキストの背景に半透明の黒 */
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-align: center;
-  font-size: 1.5rem;
-}
-
-/* フィルター用のスタイル */
-.filter {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  /* 黒いフィルター */
-  z-index: 1;
-  /* フィルターを画像の上に配置 */
-}
-
-.target img {
-  position: relative;
-  z-index: 0;
-  /* 画像をフィルターの下に配置 */
-}
-
-.target h2 {
-  z-index: 2;
-  /* テキストをフィルターの上に配置 */
+}.bikeArticle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
 }

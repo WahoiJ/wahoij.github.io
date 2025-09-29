@@ -4,16 +4,16 @@ import rehypeRaw from "rehype-raw";
 import { Link, useParams } from "react-router-dom";
 import styles from "./Bike.module.css";
 const BASE_PATH = "/bike/md/";
-import EscapeR3 from "./ToLink/EscapeR3"; //
-import PEight from "./ToLink/pEight"; //
-import Paratrooper from "./ToLink/paratrooper"; // 
-import MuddyFox from "./ToLink/MuddyFox"; //
+import EscapeR3 from "./ToLink/EscapeR3"; 
+import PEight from "./ToLink/pEight"; 
+import Paratrooper from "./ToLink/paratrooper"; 
+import MuddyFox from "./ToLink/MuddyFox"; 
 import BoardWalk from "./ToLink/BoardWalk";
 
 
 const BikeArticle = () => {
-  const params = useParams<{ "*": string }>(); // ワイルドカードでパスを取得
-  const mdPath = params["*"] || "Link.md"; // デフォルトは "Link.md"
+  const params = useParams<{ "*": string }>();
+  const mdPath = params["*"] || "Link.md";
   const [content, setContent] = useState("");
 
   // Markdown ファイルを取得
