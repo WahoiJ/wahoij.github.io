@@ -7,8 +7,9 @@ const BASE_PATH = "/bike/md/";
 import EscapeR3 from "./ToLink/EscapeR3"; 
 import MuddyFox from "./ToLink/MuddyFox"; 
 import BoardWalk from "./ToLink/BoardWalk";
-import Paratrooper from "./ToLink/Paratrooper"; 
-import PEight from "./ToLink/PEight";
+import PEight from "./ToLink/P8";
+import PARATROOPER from "./ToLink/Paratrooper";
+
 
 const BikeArticle = () => {
   const params = useParams<{ "*": string }>();
@@ -47,7 +48,7 @@ const BikeArticle = () => {
               : props.id === "targetP8" ? (
                 <PEight />
               ) : props.id === "targetParatrooper" ? (
-                <Paratrooper />
+                <PARATROOPER />
               ) : props.id === "targetMuddyFox" ? (
                 <MuddyFox />
               ) : props.id === "targetBoardWalk"?(
