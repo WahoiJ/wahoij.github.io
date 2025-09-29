@@ -1,6 +1,19 @@
-.gallery {
-  display: grid;
-  overflow: hidden;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+.customGallery {
+  position: relative;
 }
 
+/* !importantを追加して優先度を上げる */
+.customGallery .image-gallery-description {
+  position: absolute !important;
+  bottom: 70px !important;
+  left: 20px !important;
+  right: 20px !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  color: white !important;
+  padding: 15px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  max-height: 120px !important;
+  overflow-y: auto !important;
+}

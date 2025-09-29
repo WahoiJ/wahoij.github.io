@@ -2,7 +2,6 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 
-
 const comment = {
 
   VM1: `2020年の夏に甲府で見つけた自販機。
@@ -51,12 +50,11 @@ Mastercardのロゴが入った自販機って日本にあったっけ？
 この頃五輪前なので一気に自販機が観光仕様に変わっていた
 そういえば公衆トイレ用のティッシュの自販機もあったが撮り忘れていた。(腹が痛かったのでそれどころではなかったけど)`,
 
-// コメントエリア
+  // コメントエリア
 
 };
 
 const imageData = [
-
   { file: "VM1_1.jpg", description: comment.VM1 },
   { file: "VM1_2.jpg", description: comment.VM1 },
   { file: "VM2_1.jpg", description: comment.VM2 },
@@ -71,8 +69,6 @@ const imageData = [
   { file: "VM9.jpg", description: comment.VM9 },
   { file: "VM10.jpg", description: comment.VM10 },
   { file: "VM11.jpg", description: comment.VM11 },
-
-
   // 必要なファイル名追加
 ];
 
@@ -85,11 +81,16 @@ const images = imageData.map(function (item) {
 });
 
 function VendingMachine() {
+  const style ={
+    width:"80%",
+    margin:"0 auto",
+  };
+
   return (
-    <div>
-      <ImageGallery
-              sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
-       items={images} />
+    <div style={style}>
+      <ImageGallery 
+        items={images}
+      />
     </div>
   );
 }
