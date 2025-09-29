@@ -8,7 +8,7 @@ import EscapeR3 from "./ToLink/EscapeR3";
 import MuddyFox from "./ToLink/MuddyFox"; 
 import BoardWalk from "./ToLink/BoardWalk";
 import PEight from "./ToLink/P8";
-import PARATROOPER from "./ToLink/Paratrooper";
+import PARATROOPER from "./ToLink/PRper";
 
 
 const BikeArticle = () => {
