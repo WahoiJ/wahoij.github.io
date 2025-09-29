@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
-const Paratrooper = () => {
+const PRper = () => {
   const targetRef = useRef<HTMLDivElement>(null);
 
   const openList = () => {
@@ -54,4 +54,4 @@ const Paratrooper = () => {
   );
 };
 
-export default Paratrooper;
+export default PRper;

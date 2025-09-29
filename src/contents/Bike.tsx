@@ -8,7 +8,7 @@ import EscapeR3 from "./ToLink/EscapeR3";
 import MuddyFox from "./ToLink/MuddyFox"; 
 import BoardWalk from "./ToLink/BoardWalk";
 import PEight from "./ToLink/P8";
-import PARATROOPER from "./ToLink/PRper";
+import PRper from "./ToLink/PRper";
 
 
 const BikeArticle = () => {
@@ -48,7 +48,7 @@ const BikeArticle = () => {
               : props.id === "targetP8" ? (
                 <PEight />
               ) : props.id === "targetParatrooper" ? (
-                <PARATROOPER />
+                <PRper />
               ) : props.id === "targetMuddyFox" ? (
                 <MuddyFox />
               ) : props.id === "targetBoardWalk"?(
