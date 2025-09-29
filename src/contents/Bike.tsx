@@ -5,17 +5,16 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./Bike.module.css";
 const BASE_PATH = "/bike/md/";
 import EscapeR3 from "./ToLink/EscapeR3"; 
-import PEight from "./ToLink/pEight"; 
-import Paratrooper from "./ToLink/paratrooper"; 
 import MuddyFox from "./ToLink/MuddyFox"; 
 import BoardWalk from "./ToLink/BoardWalk";
+import Paratrooper from "./ToLink/Paratrooper"; 
+import PEight from "./ToLink/PEight"; 
 
 
 const BikeArticle = () => {
   const params = useParams<{ "*": string }>();
   const mdPath = params["*"] || "Link.md";
   const [content, setContent] = useState("");
-
   // Markdown ファイルを取得
   useEffect(() => {
     fetch(BASE_PATH + mdPath)
@@ -23,6 +22,7 @@ const BikeArticle = () => {
       .then(setContent)
       .catch(() => setContent("記事の読み込みに失敗しました。"));
   }, [mdPath]);
+  console.log(content);
 
   return (
     <div className={styles.bikeArticle}>
@@ -64,6 +64,7 @@ const BikeArticle = () => {
       </ReactMarkdown>
     </div>
   );
+  
 };
 
 export default BikeArticle;

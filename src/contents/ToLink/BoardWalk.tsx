@@ -3,7 +3,7 @@ import styles from "../Bike.module.css";
 import stylesThumbNail from "../ThumbNail.module.css";
 import { useRef } from 'react';
 import ReactMarkdown from "react-markdown";
-
+import { Link } from "react-router-dom";
 
 const BoardWalk = () => {
     const targetRef = useRef<HTMLDivElement>(null);
@@ -32,7 +32,18 @@ const BoardWalk = () => {
         <h2>ボードウォーク編</h2>
       </div>
                   <details>
-                    <ReactMarkdown>
+        <ReactMarkdown
+                components={{
+          a: ({ href, children, ...props }) => {
+            const h = href ?? "";
+            if (h.endsWith(".md")) {
+              const file = h.replace("./", "");
+              return <Link to={`/Bike/${file}`}>{children}</Link>;
+            }
+            return <a href={h} {...props}>{children}</a>;
+          }
+        }}
+        >
                       {`
                       準備中
             `}

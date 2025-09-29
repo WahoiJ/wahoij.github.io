@@ -2,8 +2,9 @@ import styles from "../Bike.module.css";
 import stylesThumbNail from "../ThumbNail.module.css";
 import { useRef } from 'react';
 import ReactMarkdown from "react-markdown";
+import { Link } from "react-router-dom";
 
-const pEight = () => {
+const PEight = () => {
   const targetRef = useRef<HTMLDivElement>(null);
 
   const openList = () => {
@@ -30,7 +31,18 @@ const pEight = () => {
         <h2>Dahon Speed P8編</h2>
       </div>
       <details>
-        <ReactMarkdown>
+        <ReactMarkdown
+                components={{
+          a: ({ href, children, ...props }) => {
+            const h = href ?? "";
+            if (h.endsWith(".md")) {
+              const file = h.replace("./", "");
+              return <Link to={`/Bike/${file}`}>{children}</Link>;
+            }
+            return <a href={h} {...props}>{children}</a>;
+          }
+        }}
+        >
           {`
 - [ミニベロブレーキレバー交換](./P8/1.md)
 - [ミニベロリアキャリヤー](./P8/2.md)
@@ -57,4 +69,4 @@ const pEight = () => {
   );
 };
 
-export default pEight;
+export default PEight;
