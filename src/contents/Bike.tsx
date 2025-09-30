@@ -4,11 +4,12 @@ import rehypeRaw from "rehype-raw";
 import { Link, useParams } from "react-router-dom";
 import styles from "./Bike.module.css";
 const BASE_PATH = "/bike/md/";
-import EscapeR3 from "./ToLink/EscapeR3"; 
-import MuddyFox from "./ToLink/MuddyFox"; 
-import BoardWalk from "./ToLink/BoardWalk";
-import PEight from "./ToLink/P8";
-import PRper from "./ToLink/PRper";
+import CommonToLink from "./ToLink/CommonToLink";
+// import EscapeR3 from "./ToLink/EscapeR3"; 
+// import MuddyFox from "./ToLink/MuddyFox"; 
+// import BoardWalk from "./ToLink/BoardWalk";
+// import PEight from "./ToLink/P8";
+// import PRper from "./ToLink/PRper";
 
 
 const BikeArticle = () => {
@@ -22,7 +23,6 @@ const BikeArticle = () => {
       .then(setContent)
       .catch(() => setContent("記事の読み込みに失敗しました。"));
   }, [mdPath]);
-  console.log(content);
 
   return (
     <div className={styles.bikeArticle}>
@@ -41,22 +41,25 @@ const BikeArticle = () => {
               </a>
             );
           },
-          div: ({ ...props }) => {
-            return props.id === "targetEscapeR3" ? (
-              <EscapeR3 />
-            )
-              : props.id === "targetP8" ? (
-                <PEight />
-              ) : props.id === "targetParatrooper" ? (
-                <PRper />
-              ) : props.id === "targetMuddyFox" ? (
-                <MuddyFox />
-              ) : props.id === "targetBoardWalk"?(
-                <BoardWalk />
-              ):(
-                <div {...props}>{props.children}</div>
-              );
+          div: ({...props}) =>{
+            return <CommonToLink id={props.id}/>
           },
+          // div: ({ ...props }) => {
+          //   return props.id === "targetEscapeR3" ? (
+          //     <EscapeR3 />
+          //   )
+          //     : props.id === "targetP8" ? (
+          //       <PEight />
+          //     ) : props.id === "targetParatrooper" ? (
+          //       <PRper />
+          //     ) : props.id === "targetMuddyFox" ? (
+          //       <MuddyFox />
+          //     ) : props.id === "targetBoardWalk"?(
+          //       <BoardWalk id={props.id}/>
+          //     ):(
+          //       <div {...props}>{props.children}</div>
+          //     );
+          // },
           img: ({...props }) => {
              return<img {...props} 
         style={{

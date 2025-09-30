@@ -5,11 +5,13 @@ import { useRef } from 'react';
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
-const BoardWalk = () => {
+const BoardWalk = (props:{ id: string}) => {
     const targetRef = useRef<HTMLDivElement>(null);
 
   const openList = () => {
     console.log("Clicked");
+    console.log(props.id);
+
     const targetElement = targetRef.current;
     console.log(targetElement);
     if (targetElement) {
