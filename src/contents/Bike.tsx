@@ -11,7 +11,6 @@ import CommonToLink from "./ToLink/CommonToLink";
 // import PEight from "./ToLink/P8";
 // import PRper from "./ToLink/PRper";
 
-
 const BikeArticle = () => {
   const params = useParams<{ "*": string }>();
   const mdPath = params["*"] || "Link.md";
@@ -41,8 +40,8 @@ const BikeArticle = () => {
               </a>
             );
           },
-          div: ({...props}) =>{
-            return <CommonToLink id={props.id}/>
+          div: ({ ...props }) => {
+            return <CommonToLink id={props.id} />;
           },
           // div: ({ ...props }) => {
           //   return props.id === "targetEscapeR3" ? (
@@ -60,15 +59,15 @@ const BikeArticle = () => {
           //       <div {...props}>{props.children}</div>
           //     );
           // },
-          img: ({...props }) => {
-             return<img {...props} 
-        style={{
-          maxWidth: '80%',
-          height: 'auto',
-          padding:'10px',
-        }}
-             /> 
-            }
+          img: ({ ...props }) => {
+            return <img {...props}
+              style={{
+                maxWidth: '80%',
+                height: 'auto',
+                padding: '10px',
+              }}
+            />
+          }
           ,
 
         }}
@@ -77,7 +76,7 @@ const BikeArticle = () => {
       </ReactMarkdown>
     </div>
   );
-  
+
 };
 
 export default BikeArticle;

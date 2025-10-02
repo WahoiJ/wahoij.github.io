@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
 type CommonToLinkProps = {
-  id?: "targetBoardWalk" | "targetEscapeR3" | "targetParatrooper" | "targetP8" | "targetMuddyFox";
+  id: string|undefined;
   //後でデフォルトidを設定してbikeのcomponentに注釈しておく
   //<CommonToLink id={id ?? "targetDefault"} />
 };
