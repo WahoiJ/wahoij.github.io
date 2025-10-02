@@ -4,7 +4,11 @@ import { useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 
-const CommonToLink = ({ id }) => {
+type CommonToLinkProps = {
+  id: "targetBoardWalk" | "targetEscapeR3" | "targetParatrooper" | "targetP8" | "targetMuddyFox";
+};
+
+const CommonToLink = ({ id }: CommonToLinkProps) => {
 
   const targetRef = useRef<HTMLDivElement>(null);
 
