@@ -97,15 +97,12 @@ const CommonToLink = ({ id }) => {
     }
   };
   const { thumbnail, message } = detailText();
-  console.log("thumnail" + thumbnail);
 
   const openList = () => {
-    console.log("Clicked");
     const targetElement = targetRef.current;
 
     if (targetElement) {
       const detailsElement = targetElement.nextElementSibling as HTMLDetailsElement;
-      console.log(detailsElement);
       if (detailsElement && detailsElement.tagName === "DETAILS") {
         detailsElement.open = !detailsElement.open;
       }
