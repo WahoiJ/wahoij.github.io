@@ -5,6 +5,7 @@ import Footer from "./fragments/Footer";
 import BikeArticle from "./contents/Bike";
 import GAPolicy from "./contents/GAPolicy";
 import { Box } from "@mui/material";
+import { useEffect } from "react";
 import "./App.css";
 
 function Layout() {
@@ -23,6 +24,7 @@ function Portal() {
   return (
     <Box textAlign="center" mt={5}>
       <h1>ポータル画面</h1>
+      <FC2Counter />
       <p>見たいコンテンツを選んでください</p>
       <Link to="/Vending">
         <img
@@ -62,3 +64,26 @@ function App() {
   );
 }
 export default App;
+
+function FC2Counter() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://counter1.fc2.com/views.php?id=14567688&main=1'; // httpsに変更
+    script.async = true;    
+    document.head.appendChild(script); // bodyではなくheadに追加
+
+    return () => {
+      const existingScript = document.head.querySelector(`script[src="${script.src}"]`);
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  return (
+    <noscript>
+      <img src="https://counter1.fc2.com/counter_now.php?id=14567688&main=1" alt="FC2 Counter" />
+    </noscript>
+  );
+}
