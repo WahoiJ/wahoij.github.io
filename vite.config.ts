@@ -7,16 +7,6 @@ export default defineConfig({
     react(),
     basicSsl() // SSL プラグインを追加
   ],
-  base: '/myNewSite/', // GitHub Pagesのリポジトリ名に合わせて変更
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    rollupOptions: {
-      output: {
-        manualChunks: undefined,
-      }
-    }
-  },
   server: {
     https: true,
     host: 'localhost',
