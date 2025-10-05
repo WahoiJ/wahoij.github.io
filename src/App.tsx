@@ -5,6 +5,7 @@ import Footer from "./fragments/Footer";
 import BikeArticle from "./contents/Bike";
 import GAPolicy from "./contents/GAPolicy";
 import { Box } from "@mui/material";
+import { useEffect } from "react";
 import "./App.css";
 
 function Layout() {
@@ -22,6 +23,7 @@ function Layout() {
 function Portal() {
   return (
     <Box textAlign="center" mt={5}>
+      <FC2Counter />
       <h1>ポータル画面</h1>
       <p>見たいコンテンツを選んでください</p>
       <Link to="/Vending">
@@ -52,7 +54,7 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Portal />} />
               <Route path="Vending" element={<VendingMachine />} />
-                  <Route path="Bike/*" element={<BikeArticle />} />
+              <Route path="Bike/*" element={<BikeArticle />} />
               <Route path="GAPolicy" element={<GAPolicy />} />
             </Route>
           </Routes>
@@ -62,4 +64,25 @@ function App() {
   );
 }
 
+function FC2Counter() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = '//counter1.fc2.com/views.php?id=14567688&main=1';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
+  return (
+    <noscript>
+      <img src="//counter1.fc2.com/counter_now.php?id=14567688&main=1" alt="FC2 Counter" />
+    </noscript>
+  );
+}
 export default App;

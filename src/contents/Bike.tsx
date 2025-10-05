@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./Bike.module.css";
 const BASE_PATH = "/bike/md/";
 import CommonToLink from "./ToLink/CommonToLink";
+import NextPage from "../fragments/NextPage";
 // import EscapeR3 from "./ToLink/EscapeR3"; 
 // import MuddyFox from "./ToLink/MuddyFox"; 
 // import BoardWalk from "./ToLink/BoardWalk";
@@ -17,6 +18,7 @@ const BikeArticle = () => {
   const [content, setContent] = useState("");
   // Markdown ファイルを取得
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetch(BASE_PATH + mdPath)
       .then((res) => (res.ok ? res.text() : Promise.reject(res.status)))
       .then(setContent)
@@ -25,6 +27,7 @@ const BikeArticle = () => {
 
   return (
     <div className={styles.bikeArticle}>
+      <NextPage />
       <ReactMarkdown
         rehypePlugins={[rehypeRaw]}
         components={{
@@ -41,24 +44,8 @@ const BikeArticle = () => {
             );
           },
           div: ({ ...props }) => {
-            return <CommonToLink id={props.id} />;
+            return <CommonToLink id={props.id ?? "targetDefault"} />;
           },
-          // div: ({ ...props }) => {
-          //   return props.id === "targetEscapeR3" ? (
-          //     <EscapeR3 />
-          //   )
-          //     : props.id === "targetP8" ? (
-          //       <PEight />
-          //     ) : props.id === "targetParatrooper" ? (
-          //       <PRper />
-          //     ) : props.id === "targetMuddyFox" ? (
-          //       <MuddyFox />
-          //     ) : props.id === "targetBoardWalk"?(
-          //       <BoardWalk id={props.id}/>
-          //     ):(
-          //       <div {...props}>{props.children}</div>
-          //     );
-          // },
           img: ({ ...props }) => {
             return <img {...props}
               style={{
@@ -73,7 +60,9 @@ const BikeArticle = () => {
         }}
       >
         {content}
+
       </ReactMarkdown>
+      <NextPage />
     </div>
   );
 

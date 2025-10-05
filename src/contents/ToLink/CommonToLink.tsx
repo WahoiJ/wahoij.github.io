@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 
 type CommonToLinkProps = {
   id: string|undefined;
-  //後でデフォルトidを設定してbikeのcomponentに注釈しておく
-  //<CommonToLink id={id ?? "targetDefault"} />
 };
 
 const CommonToLink = ({ id }: CommonToLinkProps) => {
@@ -16,6 +14,19 @@ const CommonToLink = ({ id }: CommonToLinkProps) => {
 
   const detailText = () => {
     switch (id) {
+        case "targetDefault":
+        return {
+          thumbnail: (
+            <>
+              <img src="" alt="空白" />
+              <h2>空白</h2>
+            </>
+          ),
+          message:
+            `
+          空白
+          `
+        }
       case "targetBoardWalk":
         return {
           thumbnail: (
@@ -26,6 +37,7 @@ const CommonToLink = ({ id }: CommonToLinkProps) => {
           ),
           message: "ボードウォークの詳細は準備中です。",
         };
+        
       case "targetEscapeR3":
         return {
           thumbnail: (
