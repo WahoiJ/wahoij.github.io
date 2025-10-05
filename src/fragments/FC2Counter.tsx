@@ -26,8 +26,12 @@ return (
             src="//counter1.fc2.com/counter_img.php?id=14567688&main=1"
             alt="FC2 Counter"
             style={{ display: "inline-block", margin: "0" }}
-        />
-        人目の来訪者です
+            onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.insertAdjacentHTML('afterend', '<span style="color: #ffeb3b; font-weight: bold;">Tru</span>');
+            }}
+            />
+        thの来訪者です
     </div>
 );
 }
