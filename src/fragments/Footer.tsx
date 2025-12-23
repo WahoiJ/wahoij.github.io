@@ -20,10 +20,10 @@ function Footer() {
           </Link>
         </div>
         <div>
-        最終更新日:{new Date().toLocaleDateString()} 
+        最終更新日:{new Date(document.lastModified)} 
         </div>
         <div >
-        サイト管理者：わくせい
+        サイト管理者：わくせい・わほい
         </div>
         <div>
         問い合わせメールアドレス:wahoijbusiness2025@gmail.com
