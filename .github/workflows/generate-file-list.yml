@@ -1,0 +1,32 @@
+name: Generate File List
+
+on:
+  push:
+    branches:
+      - main # mainブランチへのpush時に実行（masterの場合は変更）
+  workflow_dispatch: # 手動実行ボタンも追加
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # JSONをcommit/pushするために必要
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run file list generator
+        run: node generateFileList.cjs
+
+      - name: Commit and push updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/files.json
+          git diff --staged --quiet && echo "変更なし" || (git commit -m "chore: auto-update files.json [skip ci]" && git push)

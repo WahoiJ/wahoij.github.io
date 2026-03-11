@@ -67,7 +67,9 @@ const generateFileList = () => {
             });
         });
 
-        fs.writeFileSync(outputFile, JSON.stringify(fileStructure, null, 2));
+        fs.writeFileSync(outputFile, JSON.stringify(
+            {updatedAt: new Date().toISOString(),
+            files: fileStructure}, null, 2));
         console.log(`ファイルリストを生成しました: ${outputFile}`);
         console.log('生成された構造:');
         console.log(JSON.stringify(fileStructure, null, 2));
