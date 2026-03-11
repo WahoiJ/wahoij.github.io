@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
-import fileList from '/public/fileList.json';
+import fileList from '../../public/fileList.json';
 
 function Footer() {
   const updatedAt = new Date(fileList.updatedAt).toLocaleString('ja-JP', {
