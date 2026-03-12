@@ -3,7 +3,7 @@ name: Generate File List
 on:
   push:
     branches:
-      - main # mainブランチへのpush時に実行（masterの場合は変更）
+      - master
   workflow_dispatch: # 手動実行ボタンも追加
 
 jobs:
