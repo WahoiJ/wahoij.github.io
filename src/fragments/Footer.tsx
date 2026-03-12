@@ -30,7 +30,7 @@ function Footer() {
           最終更新日: {updatedAt}
         </div>
         <div>
-          サイト管理者：わくせい・わほい
+          サイト管理者：わほい
         </div>
         <div>
           問い合わせメールアドレス:wahoijbusiness2025@gmail.com

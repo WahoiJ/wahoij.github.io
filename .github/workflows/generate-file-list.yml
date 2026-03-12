@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 全履歴を取得（初回コミット日時の取得に必要）
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -28,5 +30,5 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/files.json
-          git diff --staged --quiet && echo "変更なし" || (git commit -m "chore: auto-update files.json [skip ci]" && git push)
+          git add public/fileList.json public/newArticles.json
+          git diff --staged --quiet && echo "変更なし" || (git commit -m "chore: auto-update fileList.json [skip ci]" && git push)
