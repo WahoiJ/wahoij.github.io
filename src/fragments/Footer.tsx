@@ -20,7 +20,7 @@ function Footer() {
         mt: "auto",
       }}
     >
-      <Typography variant="body2">
+      <Typography variant="body2" component="div">
         <div>
           <Link to="/GAPolicy" style={{color:"#ffff"}}>
             ※Google Analyticsで解析を行ってます

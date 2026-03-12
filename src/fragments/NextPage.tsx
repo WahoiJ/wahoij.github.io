@@ -17,8 +17,9 @@ function NextPage() {
         const fetchFileList = async () => {
             const response = await fetch("/fileList.json");
             const data = await response.json();
-            setFileList((data.files[currentFiles] || []).map((f:{ name:string }) => f.name));
+            setFileList((data.files[currentFiles] || []).map((f: { name: string }) => f.name));
         };
+
 
         fetchFileList();
     }, [currentFiles]);
