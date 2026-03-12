@@ -41,10 +41,10 @@ function Portal() {
           <Typography variant="h6">🆕 新着記事</Typography>
           {newArticles.newArticles.map((article, i) => (
             <div key={i}>
-              <Link to={`/Bike/${article.folder}/${article.name.replace('.md', '')}`}>
+              <Link to={`/Bike/${article.folder}/${article.name}`}>
                 [{article.folder}] {article.name.replace('.md', '')}
               </Link>
-              　{new Date(article.createdAt).toLocaleDateString('ja-JP')}
+              {new Date(article.createdAt).toLocaleDateString('ja-JP')}
             </div>
           ))}
         </Box>
