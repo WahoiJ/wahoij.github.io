@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
-import fileList from '../../public/fileList.json';
+import { useEffect, useState } from "react";
 
 function Footer() {
-  const updatedAt = new Date(fileList.updatedAt).toLocaleString('ja-JP', {
-    timeZone: 'Asia/Tokyo',
-    year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit'
-  });
+  const [updatedAt, setUpdatedAt] = useState<string>('');
+  useEffect(() => {
+    fetch('/fileList.json', { cache: 'no-store' })
+      .then(res => res.json())
+      .then(data => {
+        setUpdatedAt(new Date(data.updatedAt).toLocaleString('ja-JP', {
+          timeZone: 'Asia/Tokyo',
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit'
+        }));
+      })
+      .catch(() => setUpdatedAt(''));
+  }, []);
 
   return (
     <Box
