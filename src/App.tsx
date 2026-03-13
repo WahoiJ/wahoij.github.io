@@ -1,12 +1,11 @@
 import { HashRouter as Router, Routes, Route, Outlet, Link } from "react-router-dom";
+import { useState, useEffect } from "react"; // ← 追加
 import VendingMachine from "./contents/VendingMachine";
 import Header from "./fragments/Header";
 import Footer from "./fragments/Footer";
 import BikeArticle from "./contents/Bike";
 import GAPolicy from "./contents/GAPolicy";
-import { Box, Typography } from "@mui/material";  // ← Typography を追加
-import newArticles from '../public/newArticles.json';  // ← パスを修正（srcから見た相対パス）
-
+import { Box, Typography } from "@mui/material";
 import "./App.css";
 
 function Layout() {
@@ -22,6 +21,20 @@ function Layout() {
 }
 
 function Portal() {
+  const [newArticles, setNewArticles] = useState<{
+    name: string;
+    folder: string;
+    createdAt: string;
+  }[]>([]);
+
+  // ← fetchを追加
+  useEffect(() => {
+    fetch('/newArticles.json', { cache: 'no-store' })
+      .then(res => res.json())
+      .then(data => setNewArticles(data.newArticles || []))
+      .catch(() => setNewArticles([]));
+  }, []);
+
   return (
     <>
       <Box textAlign="center" mt={5}>
@@ -35,11 +48,11 @@ function Portal() {
         </Link>
       </Box>
 
-      {/*  新着記事*/}
-      {newArticles.newArticles.length > 0 && (
+      {/* 新着記事 */}
+      {newArticles.length > 0 && (  // ← setNewArticles → newArticles、.newArticlesを削除
         <Box sx={{ backgroundColor: '#fff3cd', p: 2, mt: 3, mx: 'auto', maxWidth: 600 }}>
           <Typography variant="h6">🆕 新着記事</Typography>
-          {newArticles.newArticles.map((article, i) => (
+          {newArticles.map((article, i) => (  // ← .newArticlesを削除
             <div key={i}>
               <Link to={`/Bike/${article.folder}/${article.name}`}>
                 [{article.folder}] {article.name.replace('.md', '')}
