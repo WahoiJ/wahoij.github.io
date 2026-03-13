@@ -49,10 +49,10 @@ function Portal() {
       </Box>
 
       {/* 新着記事 */}
-      {newArticles.length > 0 && (  // ← setNewArticles → newArticles、.newArticlesを削除
+      {newArticles.length > 0 && (
         <Box sx={{ backgroundColor: '#fff3cd', p: 2, mt: 3, mx: 'auto', maxWidth: 600 }}>
           <Typography variant="h6">🆕 新着記事</Typography>
-          {newArticles.map((article, i) => (  // ← .newArticlesを削除
+          {newArticles.map((article, i) => (
             <div key={i}>
               <Link to={`/Bike/${article.folder}/${article.name}`}>
                 [{article.folder}] {article.name.replace('.md', '')}
