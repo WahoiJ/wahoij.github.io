@@ -1,3 +1,48 @@
 {
-  "photos": []
+  "photos": [
+    {
+      "id": "20261012-1z9hlw",
+      "src": "/gallery/photos/20261012-1z9hlw.jpg",
+      "thumb": "/gallery/thumbs/20261012-1z9hlw.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "山頂より",
+      "album": "武甲山",
+      "takenAt": "2026-10-12",
+      "uploadedAt": "2026-10-13T13:11:08.214Z"
+    },
+    {
+      "id": "20261012-mmzbgk",
+      "src": "/gallery/photos/20261012-mmzbgk.jpg",
+      "thumb": "/gallery/thumbs/20261012-mmzbgk.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "入口",
+      "album": "武甲山",
+      "takenAt": "2026-10-12",
+      "uploadedAt": "2026-10-13T13:11:08.214Z"
+    },
+    {
+      "id": "20261012-mdidmn",
+      "src": "/gallery/photos/20261012-mdidmn.jpg",
+      "thumb": "/gallery/thumbs/20261012-mdidmn.jpg",
+      "width": 1363,
+      "height": 2048,
+      "caption": "水汲み場",
+      "album": "武甲山",
+      "takenAt": "2026-10-12",
+      "uploadedAt": "2026-10-13T13:11:08.214Z"
+    },
+    {
+      "id": "20261012-c8x1oj",
+      "src": "/gallery/photos/20261012-c8x1oj.jpg",
+      "thumb": "/gallery/thumbs/20261012-c8x1oj.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "杉",
+      "album": "武甲山",
+      "takenAt": "2026-10-12",
+      "uploadedAt": "2026-10-13T13:11:08.214Z"
+    }
+  ]
 }
