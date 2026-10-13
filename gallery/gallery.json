@@ -45,6 +45,17 @@
       "uploadedAt": "2026-10-13T13:11:08.214Z"
     },
     {
+      "id": "20251130-jf9zdy",
+      "src": "/gallery/photos/20251130-jf9zdy.jpg",
+      "thumb": "/gallery/thumbs/20251130-jf9zdy.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "グラデーション",
+      "album": "秋",
+      "takenAt": "2025-11-30",
+      "uploadedAt": "2026-10-13T13:21:52.474Z"
+    },
+    {
       "id": "20251130-l1psj4",
       "src": "/gallery/photos/20251130-l1psj4.jpg",
       "thumb": "/gallery/thumbs/20251130-l1psj4.jpg",
@@ -76,6 +87,28 @@
       "album": "原宿",
       "takenAt": "2025-09-20",
       "uploadedAt": "2026-10-13T13:18:05.081Z"
+    },
+    {
+      "id": "20240907-ozlf7x",
+      "src": "/gallery/photos/20240907-ozlf7x.jpg",
+      "thumb": "/gallery/thumbs/20240907-ozlf7x.jpg",
+      "width": 1363,
+      "height": 2048,
+      "caption": "甲府のどこか",
+      "album": "自転車旅行",
+      "takenAt": "2024-09-07",
+      "uploadedAt": "2026-10-13T13:21:52.474Z"
+    },
+    {
+      "id": "20240802-v4gom1",
+      "src": "/gallery/photos/20240802-v4gom1.jpg",
+      "thumb": "/gallery/thumbs/20240802-v4gom1.jpg",
+      "width": 1362,
+      "height": 2048,
+      "caption": "都庁",
+      "album": "街",
+      "takenAt": "2024-08-02",
+      "uploadedAt": "2026-10-13T13:21:52.474Z"
     }
   ]
 }
