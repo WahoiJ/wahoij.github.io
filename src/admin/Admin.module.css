@@ -104,3 +104,17 @@
     min-height: 300px;
   }
 }
+
+.shell {
+  width: 100%;
+}
+
+.tabBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  border-bottom: 1px solid #ddd;
+}

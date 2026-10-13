@@ -1,0 +1,171 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.albums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.album {
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border: 1px solid #1976d2;
+  border-radius: 999px;
+  color: #1976d2;
+  background: #fff;
+  text-decoration: none;
+}
+
+.albumActive {
+  background: #1976d2;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px;
+  width: 100%;
+}
+
+.cell {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+.cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.cell:hover img {
+  transform: scale(1.04);
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+}
+
+/* ライトボックス */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: #0b0b0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: pan-y;
+}
+
+.lbFigure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100vw;
+  padding: 16px 64px;
+  box-sizing: border-box;
+}
+
+.lbImage {
+  max-width: calc(100vw - 112px);
+  max-height: calc(100vh - 120px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.lbCaption {
+  color: #eee;
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.6;
+  max-width: 800px;
+  white-space: pre-wrap;
+}
+
+/* App.css の「* { color: black }」に負けないよう子要素にも指定 */
+.lbCaption * {
+  color: #eee;
+}
+
+.lbCaption .lbMeta {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.lbButton {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 1;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lbButton:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lbClose {
+  top: 12px;
+  right: 12px;
+}
+
+.lbPrev {
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lbNext {
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 600px) {
+  .lbFigure {
+    padding: 64px 0 72px;
+  }
+
+  .lbImage {
+    max-width: 100vw;
+    max-height: calc(100vh - 220px);
+  }
+
+  .lbPrev,
+  .lbNext {
+    top: auto;
+    bottom: 12px;
+    transform: none;
+  }
+}

@@ -1,0 +1,134 @@
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.drop {
+  border: 2px dashed #90caf9;
+  border-radius: 8px;
+  background: #fff;
+  padding: 32px 16px;
+  text-align: center;
+  cursor: pointer;
+  color: #1976d2;
+  margin-top: 8px;
+}
+
+.dropActive {
+  background: #e3f2fd;
+  border-color: #1976d2;
+}
+
+.dropNote {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.pendingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.pendingCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.pendingThumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.pendingThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 6px;
+}
+
+.cell {
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  border: 3px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #e0e0e0;
+  cursor: pointer;
+}
+
+.cellActive {
+  border-color: #1976d2;
+}
+
+.cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.editor {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #1976d2;
+  border-radius: 8px;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.editorThumb {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .editor {
+    flex-direction: column;
+  }
+
+  .editorThumb {
+    width: 100%;
+    height: 160px;
+  }
+}

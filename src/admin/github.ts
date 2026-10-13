@@ -73,26 +73,44 @@ export async function readText(token: string, path: string) {
 
 export type Change = { path: string; base64: string | null }; // null = 削除
 
+async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let next = 0;
+  const worker = async () => {
+    while (next < items.length) {
+      const i = next++;
+      results[i] = await fn(items[i]);
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+  return results;
+}
+
 /**
  * 複数ファイルの追加・更新・削除を 1 コミットで master に反映する。
  * （ファイルごとにコミットするとデプロイが何回も走るため Git Data API を使う）
  */
-export async function commitChanges(token: string, changes: Change[], message: string) {
+export async function commitChanges(
+  token: string,
+  changes: Change[],
+  message: string,
+  onProgress?: () => void
+) {
   for (let attempt = 0; ; attempt++) {
     const ref = await gh<{ object: { sha: string } }>(token, `/git/ref/heads/${BRANCH}`);
     const parent = ref.object.sha;
     const parentCommit = await gh<{ tree: { sha: string } }>(token, `/git/commits/${parent}`);
 
-    const tree = await Promise.all(
-      changes.map(async (c) => {
-        if (c.base64 === null) return { path: c.path, mode: "100644", type: "blob", sha: null };
-        const blob = await gh<{ sha: string }>(token, "/git/blobs", {
-          method: "POST",
-          body: JSON.stringify({ content: c.base64, encoding: "base64" }),
-        });
-        return { path: c.path, mode: "100644", type: "blob", sha: blob.sha };
-      })
-    );
+    // 写真をまとめて送るときに API 制限に当たらないよう、同時に 4 件まで
+    const tree = await mapLimit(changes, 4, async (c) => {
+      if (c.base64 === null) return { path: c.path, mode: "100644", type: "blob", sha: null };
+      const blob = await gh<{ sha: string }>(token, "/git/blobs", {
+        method: "POST",
+        body: JSON.stringify({ content: c.base64, encoding: "base64" }),
+      });
+      onProgress?.();
+      return { path: c.path, mode: "100644", type: "blob", sha: blob.sha };
+    });
     const newTree = await gh<{ sha: string }>(token, "/git/trees", {
       method: "POST",
       body: JSON.stringify({ base_tree: parentCommit.tree.sha, tree }),
@@ -114,3 +132,7 @@ export async function commitChanges(token: string, changes: Change[], message: s
     }
   }
 }
+
+// デプロイ前でもすぐ表示できるよう、リポジトリの生ファイルURLを使う（公開リポジトリのため可能）
+export const rawUrl = (repoPath: string) =>
+  `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${repoPath}`;
