@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { GitHubError, commitChanges, rawUrl, readText, utf8ToB64, type Change } from "./github";
 import { base64ToBlobUrl, processPhoto, type ProcessedImage } from "./imageProcess";
+import { readExifDate } from "./exif";
 import {
   GALLERY_JSON,
   PHOTO_DIR,
@@ -32,7 +33,14 @@ type Pending = {
   caption: string;
   album: string;
   takenAt: string;
+  dateSource: "exif" | "file" | "manual"; // 撮影日の取得元（Exif／Exifが無くてファイルの更新日／手入力）
 };
+
+const DATE_SOURCE_LABEL = {
+  exif: "Exifから自動入力",
+  file: "Exifなし（ファイルの日付）",
+  manual: "手動で変更",
+} as const;
 
 type Status = { type: "success" | "error" | "info"; text: string } | null;
 
@@ -104,6 +112,8 @@ export default function GalleryAdmin({ token }: { token: string }) {
     for (const [i, file] of list.entries()) {
       setProgress({ label: "写真を縮小しています", done: i, total: list.length });
       try {
+        // 縮小すると Exif は消えるので、先に元ファイルから撮影日を読む
+        const exifDate = await readExifDate(file);
         const { photo, thumb } = await processPhoto(file);
         const item: Pending = {
           key: `${Date.now()}-${i}-${file.name}`,
@@ -113,7 +123,8 @@ export default function GalleryAdmin({ token }: { token: string }) {
           previewUrl: base64ToBlobUrl(thumb.base64),
           caption: "",
           album: bulkAlbum,
-          takenAt: toDateInput(file.lastModified || Date.now()),
+          takenAt: exifDate ?? toDateInput(file.lastModified || Date.now()),
+          dateSource: exifDate ? "exif" : "file",
         };
         setPending((prev) => [...prev, item]);
       } catch (e) {
@@ -342,7 +353,8 @@ export default function GalleryAdmin({ token }: { token: string }) {
                   type="date"
                   label="撮影日"
                   value={p.takenAt}
-                  onChange={(e) => updatePending(p.key, { takenAt: e.target.value })}
+                  onChange={(e) => updatePending(p.key, { takenAt: e.target.value, dateSource: "manual" })}
+                  helperText={DATE_SOURCE_LABEL[p.dateSource]}
                   slotProps={{ inputLabel: { shrink: true } }}
                 />
               </div>
