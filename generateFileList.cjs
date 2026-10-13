@@ -20,13 +20,35 @@ const mdDir = path.join(__dirname, mdDirArg);
 const outputFile = path.join(__dirname, outputFileArg);
 const newArticlesFile = path.join(__dirname, newArticlesArg);
 
-// Markdown先頭の「# 見出し」をタイトルとして取得
-const getTitle = (filePath) => {
+// 先頭の front matter（--- で囲まれた部分）を本文から分離する
+const splitFrontMatter = (text) => {
+    const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+    return m ? { front: m[1], body: text.slice(m[0].length) } : { front: "", body: text };
+};
+
+// front matter の「tags: [a, b]」または「tags: a, b」をタグ配列にする
+const parseTags = (front) => {
+    const m = front.match(/^tags:\s*(.*)$/m);
+    if (!m) return [];
+    return [
+        ...new Set(
+            m[1]
+                .replace(/^\[|\]$/g, "")
+                .split(",")
+                .map((t) => t.trim().replace(/^["']|["']$/g, ""))
+                .filter(Boolean)
+        ),
+    ];
+};
+
+// 本文先頭の「# 見出し」をタイトルとして、front matter の tags をタグとして取得
+const getMeta = (filePath) => {
     try {
-        const match = fs.readFileSync(filePath, "utf-8").match(/^#\s+(.+)$/m);
-        return match ? match[1].trim() : null;
+        const { front, body } = splitFrontMatter(fs.readFileSync(filePath, "utf-8"));
+        const match = body.match(/^#\s+(.+)$/m);
+        return { title: match ? match[1].trim() : null, tags: parseTags(front) };
     } catch {
-        return null;
+        return { title: null, tags: [] };
     }
 };
 
@@ -78,8 +100,8 @@ const scanDirectory = (dirPath, basePath = "") => {
                 const updatedAt = getGitUpdatedAt(fullPath);
 
                 console.log(`  ${item.name}: 投稿日=${createdAt}, 更新日=${updatedAt}`);
-                const title = getTitle(fullPath);
-                result[dirKey].push({ name: item.name, title, createdAt, updatedAt });
+                const { title, tags } = getMeta(fullPath);
+                result[dirKey].push({ name: item.name, title, tags, createdAt, updatedAt });
             }
         }
     } catch (error) {
