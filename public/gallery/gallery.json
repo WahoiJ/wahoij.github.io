@@ -43,6 +43,39 @@
       "album": "武甲山",
       "takenAt": "2026-10-12",
       "uploadedAt": "2026-10-13T13:11:08.214Z"
+    },
+    {
+      "id": "20251130-l1psj4",
+      "src": "/gallery/photos/20251130-l1psj4.jpg",
+      "thumb": "/gallery/thumbs/20251130-l1psj4.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "影葉",
+      "album": "秋",
+      "takenAt": "2025-11-30",
+      "uploadedAt": "2026-10-13T13:18:05.081Z"
+    },
+    {
+      "id": "20251130-o5lk34",
+      "src": "/gallery/photos/20251130-o5lk34.jpg",
+      "thumb": "/gallery/thumbs/20251130-o5lk34.jpg",
+      "width": 1363,
+      "height": 2048,
+      "caption": "銀杏",
+      "album": "秋",
+      "takenAt": "2025-11-30",
+      "uploadedAt": "2026-10-13T13:18:05.081Z"
+    },
+    {
+      "id": "20250920-plaso1",
+      "src": "/gallery/photos/20250920-plaso1.jpg",
+      "thumb": "/gallery/thumbs/20250920-plaso1.jpg",
+      "width": 1363,
+      "height": 2048,
+      "caption": "人だかり",
+      "album": "原宿",
+      "takenAt": "2025-09-20",
+      "uploadedAt": "2026-10-13T13:18:05.081Z"
     }
   ]
 }
