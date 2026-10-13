@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { albumsOf, sortPhotos, type Photo } from "../gallery/types";
 import styles from "./Gallery.module.css";
+import { cleanSplat, galleryUrl } from "../seo/urls";
+import { usePageMeta } from "../seo/usePageMeta";
 
 const formatDate = (d: string) => (d ? d.replace(/-/g, "/") : "");
 
@@ -99,7 +101,7 @@ function Lightbox({
 
 const Gallery = () => {
   const params = useParams<{ "*": string }>();
-  const openId = params["*"] || null;
+  const openId = cleanSplat(params["*"]) || null;
   const [searchParams] = useSearchParams();
   const album = searchParams.get("album") ?? "";
   const navigate = useNavigate();
@@ -114,14 +116,21 @@ const Gallery = () => {
 
   const photos = allPhotos ? (album ? allPhotos.filter((p) => p.album === album) : allPhotos) : null;
   const albums = allPhotos ? albumsOf(allPhotos) : [];
-  const query = album ? `?album=${encodeURIComponent(album)}` : "";
   const openIndex = openId && photos ? photos.findIndex((p) => p.id === openId) : -1;
 
   const move = useCallback(
-    (i: number) => photos && navigate(`/Gallery/${photos[i].id}${query}`, { replace: true }),
-    [photos, navigate, query]
+    (i: number) => photos && navigate(galleryUrl(photos[i].id, album), { replace: true }),
+    [photos, navigate, album]
   );
-  const close = useCallback(() => navigate(`/Gallery${query}`), [navigate, query]);
+  const close = useCallback(() => navigate(galleryUrl(undefined, album)), [navigate, album]);
+
+  const opened = photos && openIndex >= 0 ? photos[openIndex] : null;
+  usePageMeta({
+    title: opened ? opened.caption || `${opened.album || "ギャラリー"}の写真` : album ? `${album} - ギャラリー` : "ギャラリー",
+    description: opened
+      ? [opened.caption, opened.album, opened.takenAt.replace(/-/g, "/")].filter(Boolean).join(" / ")
+      : "撮りためた写真のギャラリーです。",
+  });
 
   return (
     <div className={styles.gallery}>
@@ -129,13 +138,13 @@ const Gallery = () => {
 
       {albums.length > 0 && (
         <nav className={styles.albums}>
-          <Link to="/Gallery" className={`${styles.album} ${!album ? styles.albumActive : ""}`}>
+          <Link to={galleryUrl()} className={`${styles.album} ${!album ? styles.albumActive : ""}`}>
             すべて ({allPhotos?.length})
           </Link>
           {albums.map(([name, n]) => (
             <Link
               key={name}
-              to={`/Gallery?album=${encodeURIComponent(name)}`}
+              to={galleryUrl(undefined, name)}
               className={`${styles.album} ${name === album ? styles.albumActive : ""}`}
             >
               {name} ({n})
@@ -149,7 +158,7 @@ const Gallery = () => {
 
       <div className={styles.grid}>
         {photos?.map((p) => (
-          <Link key={p.id} to={`/Gallery/${p.id}${query}`} className={styles.cell} title={p.caption}>
+          <Link key={p.id} to={galleryUrl(p.id, album)} className={styles.cell} title={p.caption}>
             <img src={p.thumb} alt={p.caption || p.album || "写真"} loading="lazy" decoding="async" />
           </Link>
         ))}

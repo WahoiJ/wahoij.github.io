@@ -30,7 +30,7 @@ function Footer() {
     >
       <Typography variant="body2" component="div">
         <div>
-          <Link to="/GAPolicy" style={{color:"#ffff"}}>
+          <Link to="/GAPolicy/" style={{color:"#ffff"}}>
             ※Google Analyticsで解析を行ってます
           </Link>
         </div>

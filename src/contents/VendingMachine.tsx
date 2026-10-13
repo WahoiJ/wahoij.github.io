@@ -77,6 +77,9 @@ const images = imageData.map(function (item) {
     original: `/VM_images/${item.file}`,
     thumbnail: `/VM_images/${item.file}`,
     description: item.description,
+    // 画像検索向けに説明文の1行目を代替テキストにする
+    originalAlt: item.description.split("\n")[0].slice(0, 80),
+    thumbnailAlt: item.description.split("\n")[0].slice(0, 80),
   };
 });
 
@@ -88,6 +91,7 @@ function VendingMachine() {
 
   return (
     <div style={style}>
+      <h1 style={{ textAlign: "center", fontSize: "1.6rem" }}>自販機コレクション</h1>
       <ImageGallery 
         items={images}
       />
