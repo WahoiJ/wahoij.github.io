@@ -3,6 +3,7 @@ import stylesThumbNail from "../ThumbNail.module.css";
 import { useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
+import { resolveBikeHref } from "../../seo/urls";
 
 type CommonToLinkProps = {
   id: string|undefined;
@@ -31,7 +32,7 @@ const CommonToLink = ({ id }: CommonToLinkProps) => {
         return {
           thumbnail: (
             <>
-              <img src="bike/md/thumbNail/BoardWalk.jpg" alt="ボードウォーク編" />
+              <img src="/bike/md/thumbNail/BoardWalk.jpg" alt="ボードウォーク編" />
               <h2>ボードウォーク編</h2>
             </>
           ),
@@ -42,7 +43,7 @@ const CommonToLink = ({ id }: CommonToLinkProps) => {
         return {
           thumbnail: (
             <>
-              <img src="bike/md/thumbNail/ESCAPE_R3.jpg" alt="番外編" />
+              <img src="/bike/md/thumbNail/ESCAPE_R3.jpg" alt="番外編" />
               <h2>番外編</h2>
             </>
           ),
@@ -55,7 +56,7 @@ const CommonToLink = ({ id }: CommonToLinkProps) => {
         return {
           thumbnail: (
             <>
-              <img src="bike/md/thumbNail/PARATROOPER.JPG" alt="Montague Paratrooper編" />
+              <img src="/bike/md/thumbNail/PARATROOPER.JPG" alt="Montague Paratrooper編" />
               <h2>Montague Paratrooper編</h2>
             </>
           ),
@@ -71,7 +72,7 @@ const CommonToLink = ({ id }: CommonToLinkProps) => {
         return {
           thumbnail: (
             <>
-              <img src="bike/md/thumbNail/SPEED_P8.jpg" alt="Dahon Speed P8" />
+              <img src="/bike/md/thumbNail/SPEED_P8.jpg" alt="Dahon Speed P8" />
               <h2>Dahon Speed P8編</h2>
             </>
           ),
@@ -100,7 +101,7 @@ const CommonToLink = ({ id }: CommonToLinkProps) => {
         return {
           thumbnail: (
             <>
-              <img src="bike/md/thumbNail/MUDDY_FOX.jpg" alt="マディフォックス編" />
+              <img src="/bike/md/thumbNail/MUDDY_FOX.jpg" alt="マディフォックス編" />
               <h2>MuddyFox編</h2>
             </>
           ),
@@ -142,10 +143,8 @@ const CommonToLink = ({ id }: CommonToLinkProps) => {
           components={{
             a: ({ href, children, ...props }) => {
               const h = href ?? "";
-              if (h.endsWith(".md")) {
-                const file = h.replace("./", "");
-                return <Link to={`/Bike/${file}`}>{children}</Link>;
-              }
+              const to = resolveBikeHref(h);
+              if (to) return <Link to={to}>{children}</Link>;
               return (
                 <a href={h} {...props}>
                   {children}

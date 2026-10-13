@@ -33,6 +33,7 @@ import {
 import { SLUG_RE, composePost, parsePost, parseTags, type PostDraft } from "./postFormat";
 import styles from "./Admin.module.css";
 import GalleryAdmin from "./GalleryAdmin";
+import { usePageMeta } from "../seo/usePageMeta";
 
 const TOKEN_KEY = "blogAdminToken";
 const DRAFT_KEY = "blogAdminDraft";
@@ -370,7 +371,7 @@ function BlogEditor({ token }: { token: string }) {
           </List>
         )}
         <Stack spacing={1} sx={{ mt: 3 }}>
-          <Link to="/Blog">ブログを見る</Link>
+          <Link to="/Blog/">ブログを見る</Link>
           <a href={`https://github.com/${OWNER}/${REPO}/actions`} target="_blank" rel="noreferrer">
             デプロイ状況（GitHub Actions）
           </a>
@@ -403,7 +404,7 @@ function BlogEditor({ token }: { token: string }) {
               disabled={!isNew}
               error={!!draft.slug && !SLUG_RE.test(draft.slug)}
               helperText={
-                isNew ? `半角英数字・-・_ （例: my-first-post → #/Blog/my-first-post）` : "公開済みの記事は変更できません"
+                isNew ? `半角英数字・-・_ （例: my-first-post → /Blog/my-first-post/）` : "公開済みの記事は変更できません"
               }
               sx={{ flex: 1 }}
             />
@@ -509,6 +510,7 @@ function BlogEditor({ token }: { token: string }) {
 }
 
 export default function Admin() {
+  usePageMeta({ title: "管理画面", noindex: true });
   const [token, setToken] = useState<string | null>(() => storage.get(TOKEN_KEY));
   const [tab, setTab] = useState<"blog" | "gallery">(() =>
     storage.get(TAB_KEY) === "gallery" ? "gallery" : "blog"

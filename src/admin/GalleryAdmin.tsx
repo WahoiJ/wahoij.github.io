@@ -353,7 +353,7 @@ export default function GalleryAdmin({ token }: { token: string }) {
 
       <Stack direction="row" justifyContent="space-between" alignItems="baseline" sx={{ mt: 4, mb: 1 }}>
         <Typography variant="h6">公開済みの写真 {photos ? `(${photos.length})` : ""}</Typography>
-        <Link to="/Gallery">ギャラリーを見る</Link>
+        <Link to="/Gallery/">ギャラリーを見る</Link>
       </Stack>
       {photos === null ? (
         <CircularProgress size={20} />

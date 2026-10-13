@@ -1,77 +1,42 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { bikeUrl } from "../seo/urls";
 
+/** 自転車記事の前後ページへのリンク（ファイル名が連番のフォルダ用） */
+function NextPage({ folder, name }: { folder?: string; name?: string }) {
+  const [fileList, setFileList] = useState<string[]>([]);
+  const current = Number(name);
+  const numbered = folder !== undefined && name !== undefined && !Number.isNaN(current);
 
-function NextPage() {
-    const location = useLocation();
-    const [fileList, setFileList] = useState<string[]>([]);
-    const [nextPageExists, setNextPageExists] = useState(false); // 次のページが存在するかどうかの状態
-    const [prevPageExists, setPrevPageExists] = useState(false); // 前のページが存在するかどうかの状態
-    const nextLocation: number = Number(location.pathname.replace(/^.*\//, "").replace(".md", ""));
-    const currentLocation: string = location.pathname.replace(/\/[^/]*$/, "");
-    const currentFiles = currentLocation.replace(/^.*\//, "");
-    const NextPageLink: string = `${currentLocation}/${nextLocation + 1}.md`
-    const PrevPageLink: string = `${currentLocation}/${nextLocation - 1}.md`; // 前のページのリンク
-    useEffect(() => {
-        // ファイルリストを取得
-        const fetchFileList = async () => {
-            const response = await fetch("/fileList.json");
-            const data = await response.json();
-            setFileList((data.files[currentFiles] || []).map((f: { name: string }) => f.name));
-        };
+  useEffect(() => {
+    if (!folder) return;
+    fetch("/fileList.json")
+      .then((res) => res.json())
+      .then((data) => setFileList((data.files[folder] || []).map((f: { name: string }) => f.name)))
+      .catch(() => setFileList([]));
+  }, [folder]);
 
+  const prevExists = numbered && fileList.includes(`${current - 1}.md`);
+  const nextExists = numbered && fileList.includes(`${current + 1}.md`);
 
-        fetchFileList();
-    }, [currentFiles]);
-
-    useEffect(() => {
-        setNextPageExists(fileList.includes(`${nextLocation + 1}.md`));
-        setPrevPageExists(fileList.includes(`${nextLocation - 1}.md`));
-    }, [fileList, nextLocation]);
-
-    return (
+  return (
+    <>
+      <div>{prevExists && <Link to={bikeUrl(`${folder}/${current - 1}`)}>前のページへ</Link>}</div>
+      <div>{nextExists && <Link to={bikeUrl(`${folder}/${current + 1}`)}>次のページへ</Link>}</div>
+      {folder ? (
         <>
-            <div>
-                {prevPageExists ? (
-                    <Link to={PrevPageLink}>
-                        前のページへ
-                    </Link>
-                ) :
-                    null
-                }
-            </div>
-            <div>
-                {nextPageExists ? (
-                    <Link to={NextPageLink}>
-                        次のページへ
-                    </Link>
-                ) :
-                    null
-                }
-            </div>
-            <BacktoTop currentLocation={currentLocation}/>
+          <div>
+            <Link to={bikeUrl()}>自転車記事一覧</Link>
+          </div>
+          <div>
+            <Link to="/">トップ画面へ</Link>
+          </div>
         </>
-    );
-}
-
-function BacktoTop({ currentLocation }: { currentLocation: string }) {
-    console.log(currentLocation)
-
-    return (
-        <>
-        {currentLocation!=="/Bike" ? (
-            <>
-            <div><Link to="/Bike/Link.md">自転車記事一覧</Link></div>
-                <div><Link to="/">トップ画面へ</Link></div>
-            </>
-        ) :(
-            <>
-                <Link to="/">トップ画面へ</Link>
-            </>
-            )
-        }
-        </>
-    );
+      ) : (
+        <Link to="/">トップ画面へ</Link>
+      )}
+    </>
+  );
 }
 
 export default NextPage;

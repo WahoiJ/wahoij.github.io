@@ -5,6 +5,9 @@ import rehypeRaw from "rehype-raw";
 import { Link, useParams } from "react-router-dom";
 import styles from "./Blog.module.css";
 import Comments from "../fragments/Comments";
+import { blogTagUrl, blogUrl, cleanSplat } from "../seo/urls";
+import { usePageMeta } from "../seo/usePageMeta";
+import { mdDescription } from "../seo/mdText";
 
 const BASE_PATH = "/blog/md/";
 const LIST_PATH = "/blogList.json";
@@ -21,7 +24,7 @@ type Post = {
 const stripFrontMatter = (text: string) =>
   text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, "");
 
-const tagLink = (tag: string) => `/Blog/tag/${encodeURIComponent(tag)}`;
+const tagLink = blogTagUrl;
 
 function TagChips({ tags }: { tags?: string[] }) {
   if (!tags?.length) return null;
@@ -68,6 +71,12 @@ function BlogList({ tag }: { tag?: string }) {
   allPosts?.forEach((p) => p.tags?.forEach((t) => tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1)));
   const allTags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 
+  usePageMeta({
+    title: tag ? `「${tag}」タグの記事` : "ブログ",
+    description: tag ? `「${tag}」タグが付いたブログ記事の一覧です。` : "日々のことや作ったものについて書いているブログです。",
+    noindex: !!tag,
+  });
+
   return (
     <div className={styles.blog}>
       <h1>{tag ? `#${tag}` : "ブログ"}</h1>
@@ -90,7 +99,7 @@ function BlogList({ tag }: { tag?: string }) {
         {posts?.map((p) => (
           <li key={p.name} className={styles.item}>
             <div>
-              <Link to={`/Blog/${slugOf(p.name)}`} className={styles.itemTitle}>
+              <Link to={blogUrl(slugOf(p.name))} className={styles.itemTitle}>
                 {p.title || slugOf(p.name)}
               </Link>
               <TagChips tags={p.tags} />
@@ -99,7 +108,7 @@ function BlogList({ tag }: { tag?: string }) {
           </li>
         ))}
       </ul>
-      {tag && <Link to="/Blog">すべての記事</Link>}
+      {tag && <Link to={blogUrl()}>すべての記事</Link>}
       <Link to="/">トップ画面へ</Link>
     </div>
   );
@@ -125,6 +134,10 @@ function BlogPost({ slug }: { slug: string }) {
   const post = index >= 0 ? posts![index] : undefined;
   // posts は新しい順なので、index+1 が1つ前（古い）の記事
   const older = index >= 0 ? posts![index + 1] : undefined;
+  usePageMeta({
+    title: post?.title ?? null,
+    description: content ? mdDescription(content) : null,
+  });
   const newer = index > 0 ? posts![index - 1] : undefined;
 
   return (
@@ -147,7 +160,7 @@ function BlogPost({ slug }: { slug: string }) {
               const h = href ?? "";
               // 記事内の ./xxx.md リンクはブログ内遷移にする
               if (h.endsWith(".md") && !/^https?:/.test(h)) {
-                return <Link to={`/Blog/${slugOf(h.replace(/^\.\//, ""))}`}>{children}</Link>;
+                return <Link to={blogUrl(slugOf(h.replace(/^\.\//, "")))}>{children}</Link>;
               }
               return (
                 <a href={h} {...props}>
@@ -163,11 +176,11 @@ function BlogPost({ slug }: { slug: string }) {
       </article>
 
       <nav className={styles.pager}>
-        <div>{older && <Link to={`/Blog/${slugOf(older.name)}`}>← {older.title || slugOf(older.name)}</Link>}</div>
-        <div>{newer && <Link to={`/Blog/${slugOf(newer.name)}`}>{newer.title || slugOf(newer.name)} →</Link>}</div>
+        <div>{older && <Link to={blogUrl(slugOf(older.name))}>← {older.title || slugOf(older.name)}</Link>}</div>
+        <div>{newer && <Link to={blogUrl(slugOf(newer.name))}>{newer.title || slugOf(newer.name)} →</Link>}</div>
       </nav>
       <div>
-        <Link to="/Blog">ブログ一覧</Link> ／ <Link to="/">トップ画面へ</Link>
+        <Link to={blogUrl()}>ブログ一覧</Link> ／ <Link to="/">トップ画面へ</Link>
       </div>
 
       <Comments term={`blog/${slug}`} />
@@ -177,8 +190,8 @@ function BlogPost({ slug }: { slug: string }) {
 
 const Blog = () => {
   const params = useParams<{ "*": string }>();
-  const path = params["*"] ?? "";
-  // #/Blog/tag/<タグ名> はタグ別一覧
+  const path = cleanSplat(params["*"]);
+  // /Blog/tag/<タグ名>/ はタグ別一覧
   if (path.startsWith("tag/")) {
     let tag = path.slice(4);
     try {
