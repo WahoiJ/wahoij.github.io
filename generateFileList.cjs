@@ -13,11 +13,22 @@ const defaultNewArticlesOutput = "public/newArticles.json";
 // 引数から値を取得
 const mdDirArg = args[0] || defaultMdDir;
 const outputFileArg = args[1] || defaultOutput;
+const newArticlesArg = args[2] || defaultNewArticlesOutput;
 
 // パスを結合
 const mdDir = path.join(__dirname, mdDirArg);
 const outputFile = path.join(__dirname, outputFileArg);
-const newArticlesFile = path.join(__dirname, defaultNewArticlesOutput);
+const newArticlesFile = path.join(__dirname, newArticlesArg);
+
+// Markdown先頭の「# 見出し」をタイトルとして取得
+const getTitle = (filePath) => {
+    try {
+        const match = fs.readFileSync(filePath, "utf-8").match(/^#\s+(.+)$/m);
+        return match ? match[1].trim() : null;
+    } catch {
+        return null;
+    }
+};
 
 // gitの初回コミット日時を取得（投稿日）
 const getGitCreatedAt = (filePath) => {
@@ -67,7 +78,8 @@ const scanDirectory = (dirPath, basePath = "") => {
                 const updatedAt = getGitUpdatedAt(fullPath);
 
                 console.log(`  ${item.name}: 投稿日=${createdAt}, 更新日=${updatedAt}`);
-                result[dirKey].push({ name: item.name, createdAt, updatedAt });
+                const title = getTitle(fullPath);
+                result[dirKey].push({ name: item.name, title, createdAt, updatedAt });
             }
         }
     } catch (error) {
@@ -96,6 +108,7 @@ const detectNewArticles = (newFiles) => {
             if (!oldNames.includes(article.name)) {
                 newArticles.push({
                     name: article.name,
+                    title: article.title,
                     folder,
                     createdAt: article.createdAt,
                 });

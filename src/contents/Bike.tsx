@@ -6,6 +6,7 @@ import styles from "./Bike.module.css";
 const BASE_PATH = "/bike/md/";
 import CommonToLink from "./ToLink/CommonToLink";
 import NextPage from "../fragments/NextPage";
+import Comments from "../fragments/Comments";
 
 
 
@@ -97,6 +98,8 @@ const BikeArticle = () => {
 
       </ReactMarkdown>
       <NextPage />
+      {/* 一覧ページ(Link.md)以外の記事にコメント欄 */}
+      {mdPath.includes("/") && <Comments term={`bike/${mdPath.replace(/\.md$/, "")}`} />}
     </div>
   );
 
