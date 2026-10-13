@@ -109,6 +109,83 @@
       "album": "街",
       "takenAt": "2024-08-02",
       "uploadedAt": "2026-10-13T13:21:52.474Z"
+    },
+    {
+      "id": "20231008-gcdlre",
+      "src": "/gallery/photos/20231008-gcdlre.jpg",
+      "thumb": "/gallery/thumbs/20231008-gcdlre.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "Let's林道",
+      "album": "自転車旅行",
+      "takenAt": "2023-10-08",
+      "uploadedAt": "2026-10-13T13:30:52.141Z"
+    },
+    {
+      "id": "20220730-ze2l0g",
+      "src": "/gallery/photos/20220730-ze2l0g.jpg",
+      "thumb": "/gallery/thumbs/20220730-ze2l0g.jpg",
+      "width": 2048,
+      "height": 1367,
+      "caption": "天の川",
+      "album": "星",
+      "takenAt": "2022-07-30",
+      "uploadedAt": "2026-10-13T13:30:52.141Z"
+    },
+    {
+      "id": "20220730-z0ziy0",
+      "src": "/gallery/photos/20220730-z0ziy0.jpg",
+      "thumb": "/gallery/thumbs/20220730-z0ziy0.jpg",
+      "width": 2048,
+      "height": 1367,
+      "caption": "オリオン星雲",
+      "album": "星",
+      "takenAt": "2022-07-30",
+      "uploadedAt": "2026-10-13T13:30:52.141Z"
+    },
+    {
+      "id": "20220101-kj7byb",
+      "src": "/gallery/photos/20220101-kj7byb.jpg",
+      "thumb": "/gallery/thumbs/20220101-kj7byb.jpg",
+      "width": 1080,
+      "height": 721,
+      "caption": "2022年の年明け",
+      "album": "風景",
+      "takenAt": "2022-01-01",
+      "uploadedAt": "2026-10-13T13:30:52.141Z"
+    },
+    {
+      "id": "20220101-7k9bnw",
+      "src": "/gallery/photos/20220101-7k9bnw.jpg",
+      "thumb": "/gallery/thumbs/20220101-7k9bnw.jpg",
+      "width": 601,
+      "height": 900,
+      "caption": "犬吠埼",
+      "album": "風景",
+      "takenAt": "2022-01-01",
+      "uploadedAt": "2026-10-13T13:30:52.141Z"
+    },
+    {
+      "id": "20210811-owww2y",
+      "src": "/gallery/photos/20210811-owww2y.jpg",
+      "thumb": "/gallery/thumbs/20210811-owww2y.jpg",
+      "width": 2048,
+      "height": 1367,
+      "caption": "群馬だったはず",
+      "album": "風景",
+      "takenAt": "2021-08-11",
+      "uploadedAt": "2026-10-13T13:30:52.141Z"
+    },
+    {
+      "id": "20210430-4x6t37",
+      "src": "/gallery/photos/20210430-4x6t37.jpg",
+      "thumb": "/gallery/thumbs/20210430-4x6t37.jpg",
+      "width": 1080,
+      "height": 721,
+      "caption": "国道最高地点",
+      "album": "バイク",
+      "takenAt": "2021-04-30",
+      "uploadedAt": "2026-10-13T13:30:52.141Z"
     }
   ]
 }
