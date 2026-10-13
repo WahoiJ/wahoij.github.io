@@ -4,8 +4,16 @@
   <link href="https://wahoij.github.io/Blog/" />
   <link rel="self" href="https://wahoij.github.io/feed.xml" />
   <id>https://wahoij.github.io/Blog/</id>
-  <updated>2026-10-13T21:00:05+09:00</updated>
+  <updated>2026-10-14T02:04:57+09:00</updated>
   <author><name>わほい</name></author>
+  <entry>
+    <title>AIにサイトを構築させて思ったこと</title>
+    <link href="https://wahoij.github.io/Blog/Hatsukakiko/" />
+    <id>https://wahoij.github.io/Blog/Hatsukakiko/</id>
+    <published>2026-10-14T02:04:57+09:00</published>
+    <updated>2026-10-14T02:04:57+09:00</updated>
+    <summary>さて、本当に初カキコです。 とりあえず、ブログ機能をつけてみた。 noteはちょっと自分の書きたい内容と合わないし、はてなブログに戻るのもありかな？とは思ったものの、自分でサイトを作っておいてそれを放置するのも違うなぁ、などと思い重い腰を上…</summary>
+  </entry>
   <entry>
     <title>テスト</title>
     <link href="https://wahoij.github.io/Blog/2026_10_13/" />

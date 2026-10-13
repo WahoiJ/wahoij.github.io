@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://wahoij.github.io/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-14</lastmod>
   </url>
   <url>
     <loc>https://wahoij.github.io/Blog/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-14</lastmod>
+  </url>
+  <url>
+    <loc>https://wahoij.github.io/Blog/Hatsukakiko/</loc>
+    <lastmod>2026-10-14</lastmod>
   </url>
   <url>
     <loc>https://wahoij.github.io/Blog/2026_10_13/</loc>
