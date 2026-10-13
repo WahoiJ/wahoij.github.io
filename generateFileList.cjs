@@ -13,11 +13,44 @@ const defaultNewArticlesOutput = "public/newArticles.json";
 // 引数から値を取得
 const mdDirArg = args[0] || defaultMdDir;
 const outputFileArg = args[1] || defaultOutput;
+const newArticlesArg = args[2] || defaultNewArticlesOutput;
 
 // パスを結合
 const mdDir = path.join(__dirname, mdDirArg);
 const outputFile = path.join(__dirname, outputFileArg);
-const newArticlesFile = path.join(__dirname, defaultNewArticlesOutput);
+const newArticlesFile = path.join(__dirname, newArticlesArg);
+
+// 先頭の front matter（--- で囲まれた部分）を本文から分離する
+const splitFrontMatter = (text) => {
+    const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
+    return m ? { front: m[1], body: text.slice(m[0].length) } : { front: "", body: text };
+};
+
+// front matter の「tags: [a, b]」または「tags: a, b」をタグ配列にする
+const parseTags = (front) => {
+    const m = front.match(/^tags:\s*(.*)$/m);
+    if (!m) return [];
+    return [
+        ...new Set(
+            m[1]
+                .replace(/^\[|\]$/g, "")
+                .split(",")
+                .map((t) => t.trim().replace(/^["']|["']$/g, ""))
+                .filter(Boolean)
+        ),
+    ];
+};
+
+// 本文先頭の「# 見出し」をタイトルとして、front matter の tags をタグとして取得
+const getMeta = (filePath) => {
+    try {
+        const { front, body } = splitFrontMatter(fs.readFileSync(filePath, "utf-8"));
+        const match = body.match(/^#\s+(.+)$/m);
+        return { title: match ? match[1].trim() : null, tags: parseTags(front) };
+    } catch {
+        return { title: null, tags: [] };
+    }
+};
 
 // gitの初回コミット日時を取得（投稿日）
 const getGitCreatedAt = (filePath) => {
@@ -67,7 +100,8 @@ const scanDirectory = (dirPath, basePath = "") => {
                 const updatedAt = getGitUpdatedAt(fullPath);
 
                 console.log(`  ${item.name}: 投稿日=${createdAt}, 更新日=${updatedAt}`);
-                result[dirKey].push({ name: item.name, createdAt, updatedAt });
+                const { title, tags } = getMeta(fullPath);
+                result[dirKey].push({ name: item.name, title, tags, createdAt, updatedAt });
             }
         }
     } catch (error) {
@@ -96,6 +130,7 @@ const detectNewArticles = (newFiles) => {
             if (!oldNames.includes(article.name)) {
                 newArticles.push({
                     name: article.name,
+                    title: article.title,
                     folder,
                     createdAt: article.createdAt,
                 });

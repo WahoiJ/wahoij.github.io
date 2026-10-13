@@ -26,9 +26,12 @@ jobs:
       - name: Run file list generator
         run: node generateFileList.cjs
 
+      - name: Run blog list generator
+        run: node generateFileList.cjs public/blog/md public/blogList.json public/blogNewArticles.json
+
       - name: Commit and push updated JSON
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/fileList.json public/newArticles.json
+          git add public/fileList.json public/newArticles.json public/blogList.json public/blogNewArticles.json
           git diff --staged --quiet && echo "変更なし" || (git commit -m "chore: auto-update fileList.json [skip ci]" && git push)
