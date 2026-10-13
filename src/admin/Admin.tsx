@@ -34,6 +34,9 @@ import styles from "./Admin.module.css";
 const TOKEN_KEY = "blogAdminToken";
 const DRAFT_KEY = "blogAdminDraft";
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
+// Contents: write を事前入力したトークン作成ページ（リポジトリの選択だけは手動）
+const TOKEN_URL =
+  "https://github.com/settings/personal-access-tokens/new?name=blog-admin&description=wahoij.github.io+blog+admin&expires_in=366&contents=write";
 
 const emptyDraft: PostDraft = { slug: "", title: "", tags: "", body: "" };
 
@@ -104,14 +107,17 @@ function TokenSetup({ onSaved }: { onSaved: (token: string) => void }) {
       </Typography>
       <ol className={styles.steps}>
         <li>
-          <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noreferrer">
+          <a href={TOKEN_URL} target="_blank" rel="noreferrer">
             トークン作成ページ
           </a>
-          を開く
+          を開く（Contents の書き込み権限が入った状態で開きます）
         </li>
-        <li>Repository access →「Only select repositories」で {REPO} を選ぶ</li>
-        <li>Permissions → Repository permissions →「Contents」を Read and write にする</li>
-        <li>作成されたトークン（github_pat_…）を下に貼る</li>
+        <li>「Repository access」で「Only select repositories」を選び、{REPO} を選ぶ</li>
+        <li>
+          Permissions に「Contents: Read and write」があることを確認する（無ければ「Add permissions」から Contents
+          を追加して Read and write に）
+        </li>
+        <li>「Generate token」を押し、表示されたトークン（github_pat_…）を下に貼る</li>
       </ol>
       <Stack direction="row" spacing={1}>
         <TextField
