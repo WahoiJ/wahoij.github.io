@@ -12,6 +12,8 @@ import {
   ListItemButton,
   ListItemText,
   Stack,
+  Tab,
+  Tabs,
   TextField,
   Typography,
 } from "@mui/material";
@@ -30,9 +32,11 @@ import {
 } from "./github";
 import { SLUG_RE, composePost, parsePost, parseTags, type PostDraft } from "./postFormat";
 import styles from "./Admin.module.css";
+import GalleryAdmin from "./GalleryAdmin";
 
 const TOKEN_KEY = "blogAdminToken";
 const DRAFT_KEY = "blogAdminDraft";
+const TAB_KEY = "adminTab";
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 // Contents: write を事前入力したトークン作成ページ（リポジトリの選択だけは手動）
 const TOKEN_URL =
@@ -142,7 +146,7 @@ function TokenSetup({ onSaved }: { onSaved: (token: string) => void }) {
   );
 }
 
-function Editor({ token, onLogout }: { token: string; onLogout: () => void }) {
+function BlogEditor({ token }: { token: string }) {
   const initial = useMemo(loadSavedDraft, []);
   const [draft, setDraft] = useState<PostDraft>(initial.draft);
   const [isNew, setIsNew] = useState(initial.isNew);
@@ -373,9 +377,6 @@ function Editor({ token, onLogout }: { token: string; onLogout: () => void }) {
           <a href="https://analytics.google.com/" target="_blank" rel="noreferrer">
             アクセス解析（Google Analytics）
           </a>
-          <Button size="small" color="inherit" onClick={onLogout}>
-            トークンを削除してログアウト
-          </Button>
         </Stack>
       </aside>
 
@@ -509,6 +510,9 @@ function Editor({ token, onLogout }: { token: string; onLogout: () => void }) {
 
 export default function Admin() {
   const [token, setToken] = useState<string | null>(() => storage.get(TOKEN_KEY));
+  const [tab, setTab] = useState<"blog" | "gallery">(() =>
+    storage.get(TAB_KEY) === "gallery" ? "gallery" : "blog"
+  );
 
   const logout = () => {
     if (!window.confirm("このブラウザからトークンを削除します。よろしいですか？")) return;
@@ -516,5 +520,26 @@ export default function Admin() {
     setToken(null);
   };
 
-  return token ? <Editor token={token} onLogout={logout} /> : <TokenSetup onSaved={setToken} />;
+  if (!token) return <TokenSetup onSaved={setToken} />;
+
+  return (
+    <div className={styles.shell}>
+      <div className={styles.tabBar}>
+        <Tabs
+          value={tab}
+          onChange={(_, v) => {
+            setTab(v);
+            storage.set(TAB_KEY, v);
+          }}
+        >
+          <Tab value="blog" label="ブログ" />
+          <Tab value="gallery" label="ギャラリー" />
+        </Tabs>
+        <Button size="small" color="inherit" onClick={logout}>
+          ログアウト
+        </Button>
+      </div>
+      {tab === "blog" ? <BlogEditor token={token} /> : <GalleryAdmin token={token} />}
+    </div>
+  );
 }

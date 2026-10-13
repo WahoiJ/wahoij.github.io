@@ -6,6 +6,7 @@ import Footer from "./fragments/Footer";
 import BikeArticle from "./contents/Bike";
 import GAPolicy from "./contents/GAPolicy";
 import Blog from "./contents/Blog";
+import Gallery from "./contents/Gallery";
 import Analytics from "./fragments/Analytics";
 import { Box, Typography } from "@mui/material";
 import "./App.css";
@@ -60,6 +61,8 @@ function Portal() {
         </Link>
         <p>
           <Link to="/Blog" style={{ fontSize: '1.2rem' }}>📝 ブログ</Link>
+          {'　'}
+          <Link to="/Gallery" style={{ fontSize: '1.2rem' }}>📷 ギャラリー</Link>
         </p>
       </Box>
 
@@ -102,6 +105,7 @@ function App() {
               <Route path="Vending" element={<VendingMachine />} />
               <Route path="Bike/*" element={<BikeArticle />} />
               <Route path="Blog/*" element={<Blog />} />
+              <Route path="Gallery/*" element={<Gallery />} />
               <Route
                 path="Admin"
                 element={
