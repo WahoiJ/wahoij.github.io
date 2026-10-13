@@ -1,12 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/public/assets/favicons/icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ミンミンゼミの最終定理</title>
-    <script type="module" crossorigin src="/assets/index-BoBA-Bgo.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Bh9nRy78.css">
+    <!-- Google Analytics (GA4)。ページビューは src/fragments/Analytics.tsx からルート移動ごとに送る -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CBDYCV7V3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-9CBDYCV7V3", { send_page_view: false });
+    </script>
   </head>
   <body>
     <div id="root"></div>

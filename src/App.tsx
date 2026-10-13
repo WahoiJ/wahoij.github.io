@@ -6,6 +6,7 @@ import Footer from "./fragments/Footer";
 import BikeArticle from "./contents/Bike";
 import GAPolicy from "./contents/GAPolicy";
 import Blog from "./contents/Blog";
+import Analytics from "./fragments/Analytics";
 import { Box, Typography } from "@mui/material";
 import "./App.css";
 
@@ -91,6 +92,7 @@ function Portal() {
 function App() {
   return (
     <Router>
+      <Analytics />
       <div id="root">
         <header></header>
         <main>

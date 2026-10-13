@@ -370,6 +370,9 @@ function Editor({ token, onLogout }: { token: string; onLogout: () => void }) {
           <a href={`https://github.com/${OWNER}/${REPO}/actions`} target="_blank" rel="noreferrer">
             デプロイ状況（GitHub Actions）
           </a>
+          <a href="https://analytics.google.com/" target="_blank" rel="noreferrer">
+            アクセス解析（Google Analytics）
+          </a>
           <Button size="small" color="inherit" onClick={onLogout}>
             トークンを削除してログアウト
           </Button>
