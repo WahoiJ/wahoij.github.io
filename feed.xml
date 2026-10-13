@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ミンミンゼミの最終定理 ブログ</title>
+  <link href="https://wahoij.github.io/Blog/" />
+  <link rel="self" href="https://wahoij.github.io/feed.xml" />
+  <id>https://wahoij.github.io/Blog/</id>
+  <updated>2026-10-13T21:00:05+09:00</updated>
+  <author><name>わほい</name></author>
+  <entry>
+    <title>テスト</title>
+    <link href="https://wahoij.github.io/Blog/2026_10_13/" />
+    <id>https://wahoij.github.io/Blog/2026_10_13/</id>
+    <published>2026-10-13T21:00:05+09:00</published>
+    <updated>2026-10-13T21:00:05+09:00</updated>
+    <summary>なぜかClaude Codeを契約してブログ機能を作ってしまったのでテスト。</summary>
+  </entry>
+  <entry>
+    <title>ブログはじめました</title>
+    <link href="https://wahoij.github.io/Blog/hello/" />
+    <id>https://wahoij.github.io/Blog/hello/</id>
+    <published>2026-10-13T20:56:47+09:00</published>
+    <updated>2026-10-13T12:32:00Z</updated>
+    <summary>このサイトにブログ機能を追加しました。 - public/blog/md/ に Markdown ファイルを置く - ファイル名がURLになる（hello.md → /Blog/hello/） - 先頭の # 見出し が記事タイトルになる …</summary>
+  </entry>
+</feed>
