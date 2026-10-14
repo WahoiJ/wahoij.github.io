@@ -8,7 +8,7 @@ import { useEffect, useRef } from "react";
 const GISCUS_REPO = "WahoiJ/wahoij.github.io";
 const GISCUS_REPO_ID = "R_kgDOHxjOeQ";
 const GISCUS_CATEGORY = "Announcements";
-const GISCUS_CATEGORY_ID = ""; // ← giscus.app で表示される data-category-id を入れる
+const GISCUS_CATEGORY_ID = "DIC_kwDOHxjOec4DIXbA";
 
 type Props = {
   /** 記事を識別するキー（例: "blog/hello"）。公開後は変更しないこと */
