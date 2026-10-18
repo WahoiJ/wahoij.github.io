@@ -1,6 +1,61 @@
 {
   "photos": [
     {
+      "id": "20261017-8kgts3",
+      "src": "/gallery/photos/20261017-8kgts3.jpg",
+      "thumb": "/gallery/thumbs/20261017-8kgts3.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "三峯神社",
+      "album": "秩父旅",
+      "takenAt": "2026-10-17",
+      "uploadedAt": "2026-10-18T03:48:24.234Z"
+    },
+    {
+      "id": "20261017-w2ivmm",
+      "src": "/gallery/photos/20261017-w2ivmm.jpg",
+      "thumb": "/gallery/thumbs/20261017-w2ivmm.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "境内の階段",
+      "album": "秩父旅",
+      "takenAt": "2026-10-17",
+      "uploadedAt": "2026-10-18T03:48:24.234Z"
+    },
+    {
+      "id": "20261017-0cd55x",
+      "src": "/gallery/photos/20261017-0cd55x.jpg",
+      "thumb": "/gallery/thumbs/20261017-0cd55x.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "ヤマトタケルノミコト像？",
+      "album": "秩父旅",
+      "takenAt": "2026-10-17",
+      "uploadedAt": "2026-10-18T03:48:24.234Z"
+    },
+    {
+      "id": "20261017-0ulp46",
+      "src": "/gallery/photos/20261017-0ulp46.jpg",
+      "thumb": "/gallery/thumbs/20261017-0ulp46.jpg",
+      "width": 2048,
+      "height": 1363,
+      "caption": "長瀞",
+      "album": "秩父旅",
+      "takenAt": "2026-10-17",
+      "uploadedAt": "2026-10-18T03:48:24.234Z"
+    },
+    {
+      "id": "20261017-lad00d",
+      "src": "/gallery/photos/20261017-lad00d.jpg",
+      "thumb": "/gallery/thumbs/20261017-lad00d.jpg",
+      "width": 1363,
+      "height": 2048,
+      "caption": "秩父神社の夜間ライトアップ",
+      "album": "秩父旅",
+      "takenAt": "2026-10-17",
+      "uploadedAt": "2026-10-18T03:48:24.234Z"
+    },
+    {
       "id": "20261012-1z9hlw",
       "src": "/gallery/photos/20261012-1z9hlw.jpg",
       "thumb": "/gallery/thumbs/20261012-1z9hlw.jpg",
