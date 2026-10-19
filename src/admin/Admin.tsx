@@ -38,6 +38,15 @@ import { SLUG_RE, composePost, parsePost, parseTags, type PostDraft } from "./po
 import styles from "./Admin.module.css";
 import GalleryAdmin from "./GalleryAdmin";
 import { KEY_FILE, MIN_PASSWORD, decryptToken, encryptToken, loadVault, type Vault } from "./vault";
+import {
+  PASSKEY_FILE,
+  loadPasskeys,
+  loginWithPasskey,
+  passkeySupported,
+  registerPasskey,
+  type PasskeyEntry,
+  type PasskeyFile,
+} from "./passkey";
 import { usePageMeta } from "../seo/usePageMeta";
 
 const TOKEN_KEY = "blogAdminToken";
@@ -152,12 +161,26 @@ function TokenSetup({ onSaved }: { onSaved: (token: string) => void }) {
   );
 }
 
-function PasswordLogin({
+/** 保存されているトークンが今も使えるか確認して返す */
+const checkStoredToken = async (token: string, via: string) => {
+  try {
+    await verifyToken(token);
+  } catch (e) {
+    throw new Error(
+      `${via}の認証はできましたが、保存されているトークンが使えません（期限切れの可能性）: ${(e as Error).message}`
+    );
+  }
+  return token;
+};
+
+function LoginScreen({
   vault,
+  passkeys,
   onLogin,
   onUseToken,
 }: {
-  vault: Vault;
+  vault: Vault | null;
+  passkeys: PasskeyFile | null;
   onLogin: (token: string) => void;
   onUseToken: () => void;
 }) {
@@ -165,47 +188,57 @@ function PasswordLogin({
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
-  const login = async () => {
+  const run = async (fn: () => Promise<string>) => {
     setBusy(true);
     setError("");
     try {
-      const token = await decryptToken(vault, password);
-      try {
-        await verifyToken(token);
-      } catch (e) {
-        throw new Error(
-          `パスワードは合っていますが、保存されているトークンが使えません（期限切れの可能性）: ${(e as Error).message}`
-        );
-      }
-      storage.set(TOKEN_KEY, token);
-      onLogin(token);
+      onLogin(await fn());
     } catch (e) {
-      setError((e as Error).message);
+      const err = e as Error;
+      setError(err.name === "NotAllowedError" ? "認証がキャンセルされました" : err.message);
     } finally {
       setBusy(false);
     }
   };
+  const loginPassword = () =>
+    run(async () => checkStoredToken(await decryptToken(vault!, password), "パスワード"));
+  const loginPasskey = () => run(async () => checkStoredToken(await loginWithPasskey(passkeys!), "パスキー"));
 
   return (
     <Box className={styles.narrow}>
       <Typography variant="h5" gutterBottom>
         管理画面ログイン
       </Typography>
-      <Stack direction="row" spacing={1}>
-        <TextField
-          fullWidth
-          size="small"
-          type="password"
-          label="パスワード"
-          autoComplete="current-password"
-          autoFocus
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && password && !busy && login()}
-        />
-        <Button variant="contained" onClick={login} disabled={!password || busy}>
-          {busy ? <CircularProgress size={20} /> : "ログイン"}
-        </Button>
+      <Stack spacing={2}>
+        {passkeys && (
+          <Button variant="contained" size="large" onClick={loginPasskey} disabled={busy || !passkeySupported()}>
+            パスキーでログイン
+          </Button>
+        )}
+        {passkeys && vault && (
+          <Typography variant="body2" align="center" color="text.secondary">
+            または
+          </Typography>
+        )}
+        {vault && (
+          <Stack direction="row" spacing={1}>
+            <TextField
+              fullWidth
+              size="small"
+              type="password"
+              label="パスワード"
+              autoComplete="current-password"
+              autoFocus={!passkeys}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && password && !busy && loginPassword()}
+            />
+            <Button variant={passkeys ? "outlined" : "contained"} onClick={loginPassword} disabled={!password || busy}>
+              ログイン
+            </Button>
+          </Stack>
+        )}
+        {busy && <CircularProgress size={24} sx={{ alignSelf: "center" }} />}
       </Stack>
       {error && (
         <Alert severity="error" sx={{ mt: 2 }}>
@@ -219,22 +252,133 @@ function PasswordLogin({
   );
 }
 
-function PasswordDialog({
+const fmtDate = (iso: string) => new Date(iso).toLocaleDateString("ja-JP");
+const errText = (e: unknown) =>
+  (e as Error).name === "NotAllowedError" ? "キャンセルされたか、時間切れになりました" : (e as Error).message;
+
+function PasskeySection({
+  token,
+  passkeys,
+  onChanged,
+  busy,
+  setBusy,
+  setStatus,
+}: {
+  token: string;
+  passkeys: PasskeyFile | null;
+  onChanged: (f: PasskeyFile | null) => void;
+  busy: boolean;
+  setBusy: (b: boolean) => void;
+  setStatus: (s: Status) => void;
+}) {
+  const [name, setName] = useState("");
+  const entries = passkeys?.entries ?? [];
+
+  const save = async (next: PasskeyEntry[], message: string, done: string) => {
+    await commitChanges(
+      token,
+      [
+        {
+          path: PASSKEY_FILE,
+          base64: next.length ? utf8ToB64(JSON.stringify({ v: 1, entries: next }, null, 2) + "\n") : null,
+        },
+      ],
+      message
+    );
+    onChanged(next.length ? { v: 1, entries: next } : null);
+    setStatus({ type: "success", text: done });
+  };
+
+  const add = async () => {
+    setBusy(true);
+    setStatus(null);
+    try {
+      const label = name.trim() || "パスキー";
+      const entry = await registerPasskey(token, label);
+      await save(
+        [...entries.filter((e) => e.id !== entry.id), entry],
+        `admin: パスキー「${label}」を登録`,
+        "登録しました。次回からこのパスキーでログインできます。"
+      );
+      setName("");
+    } catch (e) {
+      setStatus({ type: "error", text: `登録できませんでした: ${errText(e)}` });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const remove = async (entry: PasskeyEntry) => {
+    if (!window.confirm(`パスキー「${entry.name}」を削除します。よろしいですか？`)) return;
+    setBusy(true);
+    setStatus(null);
+    try {
+      await save(
+        entries.filter((e) => e.id !== entry.id),
+        `admin: パスキー「${entry.name}」を削除`,
+        "削除しました。端末やパスワードマネージャーに残ったパスキーも不要なら消してください。"
+      );
+    } catch (e) {
+      setStatus({ type: "error", text: `削除できませんでした: ${errText(e)}` });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Box>
+      <Typography variant="subtitle1" fontWeight="bold">
+        パスキー
+      </Typography>
+      <Typography variant="body2" paragraph>
+        指紋・顔認証などでログインできます。端末ごと（または iCloud / Google などの同期先ごと）に登録してください。
+      </Typography>
+      {!passkeySupported() && <Alert severity="warning">このブラウザはパスキーに対応していません</Alert>}
+      {entries.length > 0 && (
+        <List dense disablePadding>
+          {entries.map((e) => (
+            <Stack key={e.id} direction="row" alignItems="center" spacing={1}>
+              <ListItemText primary={e.name} secondary={`登録日: ${fmtDate(e.createdAt)}`} />
+              <Button size="small" color="error" onClick={() => remove(e)} disabled={busy}>
+                削除
+              </Button>
+            </Stack>
+          ))}
+        </List>
+      )}
+      <Stack direction="row" spacing={1} sx={{ mt: 1 }}>
+        <TextField
+          fullWidth
+          size="small"
+          label="名前（例: iPhone, 仕事用PC）"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <Button variant="contained" onClick={add} disabled={busy || !passkeySupported()} sx={{ flexShrink: 0 }}>
+          登録
+        </Button>
+      </Stack>
+    </Box>
+  );
+}
+
+function PasswordSection({
   token,
   hasVault,
-  onClose,
   onChanged,
+  busy,
+  setBusy,
+  setStatus,
 }: {
   token: string;
   hasVault: boolean;
-  onClose: () => void;
   onChanged: (v: Vault | null) => void;
+  busy: boolean;
+  setBusy: (b: boolean) => void;
+  setStatus: (s: Status) => void;
 }) {
   const [pw, setPw] = useState("");
   const [pw2, setPw2] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [status, setStatus] = useState<Status>(null);
-
   const tooShort = pw.length < MIN_PASSWORD;
   const mismatch = pw !== pw2;
 
@@ -251,7 +395,7 @@ function PasswordDialog({
       onChanged(vault);
       setPw("");
       setPw2("");
-      setStatus({ type: "success", text: "設定しました。次回から他の端末でもパスワードでログインできます。" });
+      setStatus({ type: "success", text: "パスワードを設定しました。" });
     } catch (e) {
       setStatus({ type: "error", text: `設定に失敗しました: ${(e as Error).message}` });
     } finally {
@@ -266,7 +410,7 @@ function PasswordDialog({
     try {
       await commitChanges(token, [{ path: KEY_FILE, base64: null }], "admin: ログイン用パスワードを解除");
       onChanged(null);
-      setStatus({ type: "success", text: "解除しました。" });
+      setStatus({ type: "success", text: "パスワードログインを解除しました。" });
     } catch (e) {
       setStatus({ type: "error", text: `解除に失敗しました: ${(e as Error).message}` });
     } finally {
@@ -275,48 +419,88 @@ function PasswordDialog({
   };
 
   return (
-    <Dialog open onClose={busy ? undefined : onClose} fullWidth maxWidth="xs">
-      <DialogTitle>ログイン用パスワード</DialogTitle>
-      <DialogContent>
-        <Typography variant="body2" paragraph>
-          今のトークンをパスワードで暗号化してサイトに置きます。他の端末ではパスワードだけでログインできます。
-          暗号化されたデータは誰でも取得できるため、{MIN_PASSWORD}文字以上で他で使っていないパスワードにしてください。
-          トークンの期限が切れたら、新しいトークンでログインし直して再設定してください。
-        </Typography>
-        <Stack spacing={2}>
-          <TextField
-            size="small"
-            type="password"
-            label={`新しいパスワード（${MIN_PASSWORD}文字以上）`}
-            autoComplete="new-password"
-            value={pw}
-            onChange={(e) => setPw(e.target.value)}
-            error={!!pw && tooShort}
-          />
-          <TextField
-            size="small"
-            type="password"
-            label="もう一度入力"
-            autoComplete="new-password"
-            value={pw2}
-            onChange={(e) => setPw2(e.target.value)}
-            error={!!pw2 && mismatch}
-            helperText={pw2 && mismatch ? "一致しません" : " "}
-          />
+    <Box>
+      <Typography variant="subtitle1" fontWeight="bold">
+        パスワード{hasVault ? "（設定済み）" : "（未設定）"}
+      </Typography>
+      <Typography variant="body2" paragraph>
+        暗号化したトークンは誰でも取得できるため、{MIN_PASSWORD}
+        文字以上のランダムなパスワードにしてください。パスキーだけで足りるなら解除しておくのが安全です。
+      </Typography>
+      <Stack spacing={1}>
+        <TextField
+          size="small"
+          type="password"
+          label={`新しいパスワード（${MIN_PASSWORD}文字以上）`}
+          autoComplete="new-password"
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
+          error={!!pw && tooShort}
+        />
+        <TextField
+          size="small"
+          type="password"
+          label="もう一度入力"
+          autoComplete="new-password"
+          value={pw2}
+          onChange={(e) => setPw2(e.target.value)}
+          error={!!pw2 && mismatch}
+          helperText={pw2 && mismatch ? "一致しません" : " "}
+        />
+        <Stack direction="row" spacing={1} justifyContent="flex-end">
+          {hasVault && (
+            <Button color="error" onClick={remove} disabled={busy}>
+              解除
+            </Button>
+          )}
+          <Button variant="outlined" onClick={save} disabled={busy || tooShort || mismatch}>
+            {hasVault ? "変更" : "設定"}
+          </Button>
         </Stack>
-        {status && <Alert severity={status.type}>{status.text}</Alert>}
+      </Stack>
+    </Box>
+  );
+}
+
+function LoginSettingsDialog({
+  token,
+  vault,
+  passkeys,
+  onClose,
+  onVaultChanged,
+  onPasskeysChanged,
+}: {
+  token: string;
+  vault: Vault | null;
+  passkeys: PasskeyFile | null;
+  onClose: () => void;
+  onVaultChanged: (v: Vault | null) => void;
+  onPasskeysChanged: (f: PasskeyFile | null) => void;
+}) {
+  const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState<Status>(null);
+  const shared = { token, busy, setBusy, setStatus };
+
+  return (
+    <Dialog open onClose={busy ? undefined : onClose} fullWidth maxWidth="sm">
+      <DialogTitle>ログイン設定</DialogTitle>
+      <DialogContent>
+        {(busy || status) && (
+          <Box sx={{ mb: 2 }}>
+            {busy ? <CircularProgress size={24} /> : status && <Alert severity={status.type}>{status.text}</Alert>}
+          </Box>
+        )}
+        <Stack spacing={3}>
+          <PasskeySection {...shared} passkeys={passkeys} onChanged={onPasskeysChanged} />
+          <PasswordSection {...shared} hasVault={!!vault} onChanged={onVaultChanged} />
+          <Typography variant="body2" color="text.secondary">
+            どちらも今のトークンを暗号化して保存します。トークンの期限が切れたら、新しいトークンでログインし直して登録し直してください。
+          </Typography>
+        </Stack>
       </DialogContent>
       <DialogActions>
-        {hasVault && (
-          <Button color="error" onClick={remove} disabled={busy} sx={{ mr: "auto" }}>
-            解除
-          </Button>
-        )}
         <Button onClick={onClose} disabled={busy}>
           閉じる
-        </Button>
-        <Button variant="contained" onClick={save} disabled={busy || tooShort || mismatch}>
-          {busy ? <CircularProgress size={20} /> : hasVault ? "変更" : "設定"}
         </Button>
       </DialogActions>
     </Dialog>
@@ -693,12 +877,19 @@ export default function Admin() {
   );
   // undefined = 読み込み中, null = パスワード未設定
   const [vault, setVault] = useState<Vault | null | undefined>(undefined);
+  const [passkeys, setPasskeys] = useState<PasskeyFile | null | undefined>(undefined);
   const [useToken, setUseToken] = useState(false);
-  const [pwOpen, setPwOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   useEffect(() => {
     loadVault().then(setVault);
+    loadPasskeys().then(setPasskeys);
   }, []);
+
+  const login = (t: string) => {
+    storage.set(TOKEN_KEY, t);
+    setToken(t);
+  };
 
   const logout = () => {
     if (!window.confirm("このブラウザからログイン情報を削除します。よろしいですか？")) return;
@@ -707,14 +898,21 @@ export default function Admin() {
   };
 
   if (!token) {
-    if (vault === undefined)
+    if (vault === undefined || passkeys === undefined)
       return (
         <Box className={styles.narrow}>
           <CircularProgress />
         </Box>
       );
-    if (vault && !useToken)
-      return <PasswordLogin vault={vault} onLogin={setToken} onUseToken={() => setUseToken(true)} />;
+    if ((vault || passkeys) && !useToken)
+      return (
+        <LoginScreen
+          vault={vault}
+          passkeys={passkeys}
+          onLogin={login}
+          onUseToken={() => setUseToken(true)}
+        />
+      );
     return <TokenSetup onSaved={setToken} />;
   }
 
@@ -732,8 +930,8 @@ export default function Admin() {
           <Tab value="gallery" label="ギャラリー" />
         </Tabs>
         <Stack direction="row" spacing={1}>
-          <Button size="small" color="inherit" onClick={() => setPwOpen(true)}>
-            パスワード{vault ? "変更" : "設定"}
+          <Button size="small" color="inherit" onClick={() => setSettingsOpen(true)}>
+            ログイン設定
           </Button>
           <Button size="small" color="inherit" onClick={logout}>
             ログアウト
@@ -741,12 +939,14 @@ export default function Admin() {
         </Stack>
       </div>
       {tab === "blog" ? <BlogEditor token={token} /> : <GalleryAdmin token={token} />}
-      {pwOpen && (
-        <PasswordDialog
+      {settingsOpen && (
+        <LoginSettingsDialog
           token={token}
-          hasVault={!!vault}
-          onClose={() => setPwOpen(false)}
-          onChanged={setVault}
+          vault={vault ?? null}
+          passkeys={passkeys ?? null}
+          onClose={() => setSettingsOpen(false)}
+          onVaultChanged={setVault}
+          onPasskeysChanged={setPasskeys}
         />
       )}
     </div>
