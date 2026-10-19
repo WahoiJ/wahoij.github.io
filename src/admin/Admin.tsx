@@ -43,8 +43,11 @@ import {
   loadPasskeys,
   loginWithPasskey,
   passkeySupported,
-  registerPasskey,
+  createPasskey,
+  finishPasskey,
+  prfCapability,
   type PasskeyEntry,
+  type PendingPasskey,
   type PasskeyFile,
 } from "./passkey";
 import { usePageMeta } from "../seo/usePageMeta";
@@ -253,8 +256,12 @@ function LoginScreen({
 }
 
 const fmtDate = (iso: string) => new Date(iso).toLocaleDateString("ja-JP");
-const errText = (e: unknown) =>
-  (e as Error).name === "NotAllowedError" ? "キャンセルされたか、時間切れになりました" : (e as Error).message;
+const errText = (e: unknown) => {
+  const err = e as Error;
+  if (err.name === "NotAllowedError") return "キャンセルされたか、時間切れになりました（NotAllowedError）";
+  if (err.name === "InvalidStateError") return "この端末には既にこのサイトのパスキーがあります（InvalidStateError）";
+  return err.name && err.name !== "Error" ? `${err.message}（${err.name}）` : err.message;
+};
 
 function PasskeySection({
   token,
@@ -289,18 +296,45 @@ function PasskeySection({
     setStatus({ type: "success", text: done });
   };
 
+  const [pending, setPending] = useState<PendingPasskey | null>(null);
+  const [prfOk, setPrfOk] = useState<boolean | null>(null);
+  useEffect(() => {
+    prfCapability().then(setPrfOk);
+  }, []);
+
+  const store = async (entry: PasskeyEntry) => {
+    await save(
+      [...entries.filter((e) => e.id !== entry.id), entry],
+      `admin: パスキー「${entry.name}」を登録`,
+      "登録しました。次回からこのパスキーでログインできます。"
+    );
+    setName("");
+    setPending(null);
+  };
+
   const add = async () => {
     setBusy(true);
     setStatus(null);
     try {
-      const label = name.trim() || "パスキー";
-      const entry = await registerPasskey(token, label);
-      await save(
-        [...entries.filter((e) => e.id !== entry.id), entry],
-        `admin: パスキー「${label}」を登録`,
-        "登録しました。次回からこのパスキーでログインできます。"
-      );
-      setName("");
+      const r = await createPasskey(token, name.trim() || "パスキー");
+      if ("entry" in r) await store(r.entry);
+      else {
+        setPending(r.pending);
+        setStatus({ type: "info", text: "パスキーを作成しました。下の「登録を完了」を押して、もう一度パスキーで認証してください。" });
+      }
+    } catch (e) {
+      setStatus({ type: "error", text: `登録できませんでした: ${errText(e)}` });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const finish = async () => {
+    if (!pending) return;
+    setBusy(true);
+    setStatus(null);
+    try {
+      await store(await finishPasskey(token, pending));
     } catch (e) {
       setStatus({ type: "error", text: `登録できませんでした: ${errText(e)}` });
     } finally {
@@ -334,6 +368,17 @@ function PasskeySection({
         指紋・顔認証などでログインできます。端末ごと（または iCloud / Google などの同期先ごと）に登録してください。
       </Typography>
       {!passkeySupported() && <Alert severity="warning">このブラウザはパスキーに対応していません</Alert>}
+      {prfOk === false && (
+        <Alert severity="warning">
+          このブラウザはパスキーの PRF 機能に対応していないため登録できません。最新の Chrome / Safari / Edge
+          を使ってください。
+        </Alert>
+      )}
+      {pending && (
+        <Button variant="contained" color="success" onClick={finish} disabled={busy} sx={{ my: 1 }}>
+          登録を完了（もう一度パスキーで認証）
+        </Button>
+      )}
       {entries.length > 0 && (
         <List dense disablePadding>
           {entries.map((e) => (
