@@ -62,13 +62,37 @@ async function evaluatePrf(credId: Uint8Array, salt: Uint8Array): Promise<ArrayB
   return first;
 }
 
-/** パスキーを新しく作り、そのパスキーでトークンを暗号化したエントリを返す */
-export async function registerPasskey(token: string, name: string): Promise<PasskeyEntry> {
+/** 登録の途中（PRF の値を取るためにもう一度パスキーを使ってもらう必要がある状態） */
+export type PendingPasskey = { credId: Uint8Array; salt: Uint8Array; name: string };
+
+async function makeEntry(token: string, p: PendingPasskey, output: ArrayBuffer): Promise<PasskeyEntry> {
+  const iv = random(12);
+  const key = await aesKey(output);
+  const data = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, new TextEncoder().encode(token));
+  return {
+    id: b64u(p.credId),
+    name: p.name,
+    salt: b64u(p.salt),
+    iv: b64u(iv),
+    data: b64u(data),
+    createdAt: new Date().toISOString(),
+  };
+}
+
+/**
+ * パスキーを新しく作る。作成と同時に PRF の値が返ればそのまま完成（entry）。
+ * Safari などは作成時に値を返さず、続けての認証もボタン操作が必要なので pending を返す
+ * → finishPasskey() をボタンのクリックから呼ぶ。
+ */
+export async function createPasskey(
+  token: string,
+  name: string
+): Promise<{ entry: PasskeyEntry } | { pending: PendingPasskey }> {
   const salt = random(32);
   const cred = (await navigator.credentials.create({
     publicKey: {
       rp: { name: "wahoij.github.io 管理画面", id: location.hostname },
-      user: { id: random(16), name: `admin (${name})`, displayName: `管理者 (${name})` },
+      user: { id: random(16), name: `admin-${name}`, displayName: `管理者 ${name}` },
       challenge: random(32),
       pubKeyCredParams: [
         { type: "public-key", alg: -7 },
@@ -81,21 +105,29 @@ export async function registerPasskey(token: string, name: string): Promise<Pass
   if (!cred) throw new Error("パスキーの作成がキャンセルされました");
 
   const prf = prfOf(cred);
-  if (!prf?.enabled && !prf?.results?.first) throw new Error(NOT_SUPPORTED);
-  const credId = new Uint8Array(cred.rawId);
-  const output = prf.results?.first ?? (await evaluatePrf(credId, salt));
+  const pending: PendingPasskey = { credId: new Uint8Array(cred.rawId), salt, name };
+  if (prf?.results?.first) return { entry: await makeEntry(token, pending, prf.results.first) };
+  if (prf?.enabled === false) throw new Error(NOT_SUPPORTED);
+  // enabled: true（値は後で取れる）か、enabled が不明（対応状況を返さない環境）→ 認証して確かめる
+  return { pending };
+}
 
-  const iv = random(12);
-  const key = await aesKey(output);
-  const data = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, new TextEncoder().encode(token));
-  return {
-    id: b64u(credId),
-    name,
-    salt: b64u(salt),
-    iv: b64u(iv),
-    data: b64u(data),
-    createdAt: new Date().toISOString(),
-  };
+/** 登録の仕上げ（ボタンのクリックから呼ぶ） */
+export async function finishPasskey(token: string, pending: PendingPasskey): Promise<PasskeyEntry> {
+  return makeEntry(token, pending, await evaluatePrf(pending.credId, pending.salt));
+}
+
+/** ブラウザが PRF に対応しているか（判定できなければ null） */
+export async function prfCapability(): Promise<boolean | null> {
+  try {
+    const pkc = PublicKeyCredential as unknown as {
+      getClientCapabilities?: () => Promise<Record<string, boolean>>;
+    };
+    const caps = await pkc.getClientCapabilities?.();
+    return caps && "extension:prf" in caps ? !!caps["extension:prf"] : null;
+  } catch {
+    return null;
+  }
 }
 
 /** 登録済みのパスキーのどれかで認証し、トークンを取り出す */
