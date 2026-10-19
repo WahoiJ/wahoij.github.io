@@ -14,7 +14,7 @@ body,
   flex-direction: column;
   min-height: 100vh;
   /* ビューポート全体の高さを確保 */
-  background-color: #f5f5f5;
+  background-color: var(--bg);
 }
 
 /* 3. ヘッダー */
@@ -23,7 +23,7 @@ header {
   left: 0;
   width: 100%;
   /* ヘッダーの高さを固定 */
-  background-color: #fff;
+  background-color: var(--surface);
   z-index: 1000;
 }
 
@@ -51,7 +51,7 @@ footer {
   box-sizing: border-box;
   padding: 1.5rem 0;
   min-height: 56px;
-  background: #f5f5f5;
+  background: var(--bg);
   border: none;
 }
 
@@ -110,9 +110,9 @@ footer {
   margin: 0 auto;
   padding: 2rem 1rem;
   max-width: 800px;
-  background: #fff;
+  background: var(--surface);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px var(--shadow);
   text-align: left;
   font-size: 1.1rem;
   line-height: 1.7;
@@ -120,7 +120,7 @@ footer {
 }
 
 .bike-article a {
-  color: #1976d2;
+  color: var(--accent);
   text-decoration: underline;
   word-break: break-all;
 }
@@ -173,7 +173,7 @@ footer {
 }
 
 .read-the-docs {
-  color: #888;
+  color: var(--text-muted);
 }
 
 /* 11. レスポンシブ */
@@ -197,6 +197,11 @@ footer {
 }
 
 @media (max-width: 600px) {
+  /* 表示モード切り替えボタンとサイト名が重ならないように */
+  .site-header {
+    padding-top: 44px !important;
+  }
+
   .layout-main {
     padding: 8px 0;
   }
@@ -225,5 +230,5 @@ footer {
 }
 
 * {
-  color: black;
+  color: var(--text);
 }

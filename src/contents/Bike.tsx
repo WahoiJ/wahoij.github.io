@@ -74,7 +74,7 @@ const BikeArticle = () => {
       {isIndex && <h1>自転車の記事一覧</h1>}
 
       {createdAt && (
-        <div style={{ color: "#888", fontSize: "0.85rem", margin: "8px 0" }}>
+        <div style={{ color: "var(--text-muted)", fontSize: "0.85rem", margin: "8px 0" }}>
           投稿日: {formatDate(createdAt)}
           {updatedAt && updatedAt !== createdAt && <> 更新日: {formatDate(updatedAt)}</>}
         </div>

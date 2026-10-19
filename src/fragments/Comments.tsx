@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useColorMode } from "../theme/colorMode";
 
 /**
  * giscus（GitHub Discussions）を使ったコメント欄。
@@ -17,6 +18,9 @@ type Props = {
 
 function Comments({ term }: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const { mode } = useColorMode();
+  const modeRef = useRef(mode);
+  modeRef.current = mode;
 
   useEffect(() => {
     const container = ref.current;
@@ -39,7 +43,7 @@ function Comments({ term }: Props) {
       "data-reactions-enabled": "1",
       "data-emit-metadata": "0",
       "data-input-position": "bottom",
-      "data-theme": "light",
+      "data-theme": modeRef.current,
       "data-lang": "ja",
       "data-loading": "lazy",
     };
@@ -50,6 +54,12 @@ function Comments({ term }: Props) {
       container.innerHTML = "";
     };
   }, [term]);
+
+  // 表示モードを切り替えたら、読み込み済みのコメント欄にもテーマ変更を伝える
+  useEffect(() => {
+    const frame = ref.current?.querySelector<HTMLIFrameElement>("iframe.giscus-frame");
+    frame?.contentWindow?.postMessage({ giscus: { setConfig: { theme: mode } } }, "https://giscus.app");
+  }, [mode]);
 
   if (!GISCUS_CATEGORY_ID) return null;
 
