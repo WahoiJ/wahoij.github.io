@@ -21,8 +21,7 @@ function Footer() {
     <Box
       component="footer"
       sx={{
-        backgroundColor: "#1976d2",
-        color: "#fff",
+        backgroundColor: "var(--brand-bg)",
         py: 2,
         textAlign: "center",
         mt: "auto",

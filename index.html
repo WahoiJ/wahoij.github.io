@@ -6,6 +6,18 @@
     <link rel="icon" type="image/png" href="/assets/favicons/icon.png" />
     <link rel="apple-touch-icon" href="/assets/favicons/icon.png" />
     <meta name="theme-color" content="#1976d2" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- 表示モード（ライト/ダーク）を描画前に決める。詳細は src/theme/colorMode.ts -->
+    <script>
+      (function () {
+        var p = null;
+        try {
+          p = localStorage.getItem("colorMode");
+        } catch (e) {}
+        var dark = p === "dark" || (p !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
     <link rel="alternate" type="application/atom+xml" title="ミンミンゼミの最終定理 ブログ" href="/feed.xml" />
     <!-- seo:start（ビルド時に scripts/prerender.mjs がページごとの内容に置き換える） -->
     <title>ミンミンゼミの最終定理</title>

@@ -6,25 +6,25 @@
 }
 
 .drop {
-  border: 2px dashed #90caf9;
+  border: 2px dashed var(--accent);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   padding: 32px 16px;
   text-align: center;
   cursor: pointer;
-  color: #1976d2;
+  color: var(--accent);
   margin-top: 8px;
 }
 
 .dropActive {
-  background: #e3f2fd;
-  border-color: #1976d2;
+  background: var(--accent-soft);
+  border-color: var(--accent);
 }
 
 .dropNote {
   margin-top: 6px;
   font-size: 0.8rem;
-  color: #777;
+  color: var(--text-muted);
 }
 
 .pendingGrid {
@@ -37,8 +37,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 6px;
   padding: 10px;
 }
@@ -46,7 +46,7 @@
 .pendingThumb {
   position: relative;
   aspect-ratio: 4 / 3;
-  background: #eee;
+  background: var(--placeholder);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -86,12 +86,12 @@
   border: 3px solid transparent;
   border-radius: 4px;
   overflow: hidden;
-  background: #e0e0e0;
+  background: var(--placeholder);
   cursor: pointer;
 }
 
 .cellActive {
-  border-color: #1976d2;
+  border-color: var(--accent);
 }
 
 .cell img {
@@ -108,8 +108,8 @@
   gap: 16px;
   margin-top: 16px;
   padding: 16px;
-  background: #fff;
-  border: 1px solid #1976d2;
+  background: var(--surface);
+  border: 1px solid var(--accent);
   border-radius: 8px;
   box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12);
 }

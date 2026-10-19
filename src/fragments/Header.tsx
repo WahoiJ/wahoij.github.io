@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import FC2Counter from "./FC2Counter";
+import ThemeToggle from "../theme/ThemeToggle";
 
 function Header() {
   const location = useLocation();
@@ -9,7 +10,8 @@ function Header() {
   const linkURL = isHome ? "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%B3%E3%83%9F%E3%83%B3%E3%82%BC%E3%83%9F" : "/";
   const headerTitle = isBike ? "淋しい日々にはチャリを組め" : "ミンミンゼミの最終定理";
   return (
-    <header style={{ background: "#1976d2", color: "#fff", padding: "16px 0", marginBottom: "24px" }}>
+    <header className="site-header" style={{ position: "relative", background: "var(--brand-bg)", padding: "16px 0", marginBottom: "24px" }}>
+      <ThemeToggle />
       <Link to={linkURL}>
         {/* 見出し(h1)はページごとに1つにするため、トップ以外ではサイト名を h1 にしない */}
         {isHome ? (

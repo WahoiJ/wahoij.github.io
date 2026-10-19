@@ -19,16 +19,16 @@
 .album {
   font-size: 0.85rem;
   padding: 4px 12px;
-  border: 1px solid #1976d2;
+  border: 1px solid var(--accent);
   border-radius: 999px;
-  color: #1976d2;
-  background: #fff;
+  color: var(--accent);
+  background: var(--surface);
   text-decoration: none;
 }
 
 .albumActive {
-  background: #1976d2;
-  color: #fff;
+  background: var(--accent);
+  color: var(--accent-contrast);
 }
 
 .grid {
@@ -42,7 +42,7 @@
   display: block;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: #e0e0e0;
+  background: var(--placeholder);
   border-radius: 4px;
 }
 

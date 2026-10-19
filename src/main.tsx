@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import AppTheme from './theme/AppTheme.tsx'
 
 // 旧URL（https://wahoij.github.io/#/Blog/hello）を新URL（/Blog/hello/）に置き換える
 if (window.location.hash.startsWith('#/')) {
@@ -10,6 +11,8 @@ if (window.location.hash.startsWith('#/')) {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <AppTheme>
+      <App />
+    </AppTheme>
   </StrictMode>,
 )

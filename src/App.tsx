@@ -90,7 +90,7 @@ function Portal() {
 
       {/* 新着記事 */}
       {(newArticles.length > 0 || newBlogPosts.length > 0) && (
-        <Box sx={{ backgroundColor: '#fff3cd', p: 2, mt: 3, mx: 'auto', maxWidth: 600 }}>
+        <Box sx={{ backgroundColor: 'var(--notice-bg)', p: 2, mt: 3, mx: 'auto', maxWidth: 600 }}>
           <Typography variant="h6">🆕 新着記事</Typography>
           {newBlogPosts.map((post, i) => (
             <div key={`blog-${i}`}>
