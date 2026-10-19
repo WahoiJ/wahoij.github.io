@@ -6,6 +6,18 @@
     <link rel="icon" type="image/png" href="/assets/favicons/icon.png" />
     <link rel="apple-touch-icon" href="/assets/favicons/icon.png" />
     <meta name="theme-color" content="#1976d2" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- 表示モード（ライト/ダーク）を描画前に決める。詳細は src/theme/colorMode.ts -->
+    <script>
+      (function () {
+        var p = null;
+        try {
+          p = localStorage.getItem("colorMode");
+        } catch (e) {}
+        var dark = p === "dark" || (p !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
     <link rel="alternate" type="application/atom+xml" title="ミンミンゼミの最終定理 ブログ" href="/feed.xml" />
     <title>グラデーション | ミンミンゼミの最終定理</title>
     <meta name="description" content="グラデーション / 秋 / 2025/11/30" />
@@ -29,8 +41,8 @@
       gtag("js", new Date());
       gtag("config", "G-9CBDYCV7V3", { send_page_view: false });
     </script>
-    <script type="module" crossorigin src="/assets/index-CjOMZ9Mr.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DwE4Sset.css">
+    <script type="module" crossorigin src="/assets/index-BHwB6nzO.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DaQzbzE6.css">
   </head>
   <body>
     <div id="root"><div style="max-width:760px;margin:0 auto;padding:16px;line-height:1.8;font-family:sans-serif"><nav><a href="/">トップ</a> | <a href="/Bike/">自転車</a> | <a href="/Blog/">ブログ</a> | <a href="/Gallery/">ギャラリー</a> | <a href="/Vending/">自販機</a></nav><main><figure><img src="/gallery/photos/20251130-jf9zdy.jpg" alt="グラデーション" width="2048" height="1363" /><figcaption>グラデーション / 秋 / 2025/11/30</figcaption></figure></main></div></div>
