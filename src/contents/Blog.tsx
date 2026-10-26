@@ -5,6 +5,7 @@ import rehypeRaw from "rehype-raw";
 import { Link, useParams } from "react-router-dom";
 import styles from "./Blog.module.css";
 import Comments from "../fragments/Comments";
+import ShareButtons from "../fragments/ShareButtons";
 import { blogTagUrl, blogUrl, cleanSplat } from "../seo/urls";
 import { usePageMeta } from "../seo/usePageMeta";
 import { mdDescription } from "../seo/mdText";
@@ -173,6 +174,7 @@ function BlogPost({ slug }: { slug: string }) {
         >
           {stripFrontMatter(content)}
         </ReactMarkdown>
+        <ShareButtons title={post?.title} />
       </article>
 
       <nav className={styles.pager}>
