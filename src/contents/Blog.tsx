@@ -10,6 +10,15 @@ import { usePageMeta } from "../seo/usePageMeta";
 import { mdDescription } from "../seo/mdText";
 
 const BASE_PATH = "/blog/md/";
+
+// 管理画面にログイン済みのブラウザでだけ「編集」リンクを出す（見た目だけの判定。権限は GitHub 側で確認される）
+const isAdminBrowser = () => {
+  try {
+    return !!localStorage.getItem("blogAdminToken");
+  } catch {
+    return false;
+  }
+};
 const LIST_PATH = "/blogList.json";
 
 type Post = {
@@ -116,6 +125,7 @@ function BlogList({ tag }: { tag?: string }) {
 
 function BlogPost({ slug }: { slug: string }) {
   const posts = useBlogList();
+  const [isAdmin] = useState(isAdminBrowser);
   const [content, setContent] = useState("");
 
   useEffect(() => {
@@ -152,6 +162,11 @@ function BlogPost({ slug }: { slug: string }) {
           </div>
         )}
         <TagChips tags={post?.tags} />
+        {isAdmin && (
+          <Link to={`/Admin/?edit=${encodeURIComponent(slug)}`} className={styles.editLink}>
+            ✏️ この記事を編集
+          </Link>
+        )}
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}

@@ -583,6 +583,23 @@ function BlogEditor({ token }: { token: string }) {
     refreshPosts();
   }, [refreshPosts]);
 
+  // 記事ページの「この記事を編集」から来たとき（/Admin/?edit=<slug>）はその記事を開く
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("edit");
+    if (!slug || !SLUG_RE.test(slug)) return;
+    params.delete("edit");
+    const rest = params.toString();
+    window.history.replaceState(null, "", window.location.pathname + (rest ? `?${rest}` : ""));
+    const hasOtherDraft =
+      !!(initial.draft.title || initial.draft.body) && (initial.isNew || initial.draft.slug !== slug);
+    if (hasOtherDraft && !window.confirm("保存されている書きかけの下書きを破棄して、この記事を開きます。よろしいですか？"))
+      return;
+    openPost(slug);
+    // 初回だけ
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // 下書きの自動保存
   useEffect(() => {
     storage.set(DRAFT_KEY, JSON.stringify({ draft, isNew }));
@@ -918,7 +935,7 @@ export default function Admin() {
   usePageMeta({ title: "管理画面", noindex: true });
   const [token, setToken] = useState<string | null>(() => storage.get(TOKEN_KEY));
   const [tab, setTab] = useState<"blog" | "gallery">(() =>
-    storage.get(TAB_KEY) === "gallery" ? "gallery" : "blog"
+    storage.get(TAB_KEY) === "gallery" && !new URLSearchParams(window.location.search).has("edit") ? "gallery" : "blog"
   );
   // undefined = 読み込み中, null = パスワード未設定
   const [vault, setVault] = useState<Vault | null | undefined>(undefined);
