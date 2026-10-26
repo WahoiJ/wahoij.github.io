@@ -6,6 +6,7 @@ import styles from "./Bike.module.css";
 import CommonToLink from "./ToLink/CommonToLink";
 import NextPage from "../fragments/NextPage";
 import Comments from "../fragments/Comments";
+import ShareButtons from "../fragments/ShareButtons";
 import { bikeUrl, cleanSplat, resolveBikeHref } from "../seo/urls";
 import { usePageMeta } from "../seo/usePageMeta";
 import { mdDescription, mdTitle, promoteTitle } from "../seo/mdText";
@@ -113,6 +114,7 @@ const BikeArticle = () => {
       >
         {promoteTitle(content)}
       </ReactMarkdown>
+      {!isIndex && content && <ShareButtons title={mdTitle(content)} />}
       <NextPage folder={folder} name={name} />
       {/* 一覧ページ以外の記事にコメント欄 */}
       {!isIndex && <Comments term={`bike/${path}`} />}

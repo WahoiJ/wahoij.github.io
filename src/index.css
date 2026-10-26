@@ -20,6 +20,8 @@
   --brand-bg: #1976d2;
   --button-bg: #f9f9f9;
   --shadow: rgba(0, 0, 0, 0.06);
+  --share-x-bg: #000000;
+  --share-x-fg: #ffffff;
 
   color: var(--text);
   background-color: var(--bg);
@@ -47,6 +49,8 @@
   --brand-bg: #0d3f78;
   --button-bg: #2a2a2a;
   --shadow: rgba(0, 0, 0, 0.4);
+  --share-x-bg: #ffffff;
+  --share-x-fg: #000000;
 }
 
 a {
