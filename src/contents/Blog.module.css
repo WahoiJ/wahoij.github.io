@@ -90,3 +90,9 @@
   background: var(--accent);
   color: var(--accent-contrast);
 }
+
+.editLink {
+  display: inline-block;
+  margin: 4px 0;
+  font-size: 0.85rem;
+}
