@@ -96,3 +96,10 @@
   margin: 4px 0;
   font-size: 0.85rem;
 }
+
+/* 本文中の1回の改行もそのまま改行として表示する（Markdown 標準では空行が必要なため） */
+.article p,
+.article li,
+.article blockquote {
+  white-space: pre-line;
+}
