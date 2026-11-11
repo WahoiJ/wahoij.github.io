@@ -1,100 +1,151 @@
-import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import styles from "./VendingMachine.module.css";
+import data from "../data/vending.json";
 
+// 自販機の写真と説明は src/data/vending.json で管理（画像は public/VM_images/、縮小版は thumbs/）
+type Item = { id: string; title: string; place: string; year: string; images: string[]; comment: string };
+const items: Item[] = data.items;
 
-const comment = {
+const full = (f: string) => `/VM_images/${f}`;
+const thumb = (f: string) => `/VM_images/thumbs/${f}`;
 
-  VM1: `2020年の夏に甲府で見つけた自販機。
-70円で500mlのZONEとペプシが買えるの!?と小躍りしながら小銭を入れた記憶
-ちなみに次の年行ったら商品が変わってた。ランダム性高い。`,
+// ライトボックスで前後に移動するための、全写真の通し番号
+const slides = items.flatMap((item) => item.images.map((file, i) => ({ item, file, n: i + 1 })));
 
-  VM2: `2022年6月石川県七尾市あたりで発見したエロ本自販機。
-すっかり淘汰されたと思っていたので見つけたときは感激した。
-2枚目の酒用自販機はもう廃れていたがメインの18禁本は健在だった。
-一応写真は撮ったがなんかコンプラ的にめんどくさそうなので載せないでおく。`,
+function Lightbox({ index, onClose, onMove }: { index: number; onClose: () => void; onMove: (d: number) => void }) {
+  const { item, file, n } = slides[index];
 
-  VM3: `2022年石川県小松駅近くのアーケード街内部にあったストッキング自販機。
-なぜこんな大量にストッキングばかりを並べているのか.
-そんなに需要があるのか…考えたが理解不能だった。`,
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") onMove(-1);
+      if (e.key === "ArrowRight") onMove(1);
+    };
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose, onMove]);
 
-  VM4: `2019年5月頃たしか秋葉原駅構内で見かけた一円単位で料金が設定されている自販機。
-確かにIC専用にすれば端数出ても問題ないか。`,
-
-  VM5: `2019年5月に大阪で撮った自販機。
-大阪名物安い缶ジュースを初めてみて感動した。`,
-
-  VM6: `同じく2019年5月に大阪で撮った自販機。
-街角の自販機で紙パックは珍しいなと思って撮ったはず。`,
-
-
-  VM7: `2019年8月関空の貸しロッカー
-1枚目を撮影した日から3日位したら2枚目の状態になってた。
-全部小銭で入れないといけないから大変そうだ…。`,
-
-
-  VM8: `同じく2019年8月の関空の自動チェックインカウンター
-今まで乗ったことある飛行機全部有人カウンターだったから新鮮だった。
-割と最近増えているらしい？`,
-
-  VM9: `2019年8月台湾の電気街あたりで撮った自販機。
-Mastercardのロゴが入った自販機って日本にあったっけ？
-※これから5年後日本でもクレジットカード決済の端末が増えて時代を感じる
-`,
-
-  VM10: `見つけると嬉しい180円モンスターエナジー
-噂によると170円以下もあるらしいがまだ見たことがない。
-※2023年以降の値上げラッシュでこの価格すら見られなくなってしまった……
-`,
-
-  VM11: `2019年7月に京都の伏見稲荷神社で撮った自販機。
-この頃五輪前なので一気に自販機が観光仕様に変わっていた
-そういえば公衆トイレ用のティッシュの自販機もあったが撮り忘れていた。(腹が痛かったのでそれどころではなかったけど)`,
-
-  // コメントエリア
-
-};
-
-const imageData = [
-  { file: "VM1_1.jpg", description: comment.VM1 },
-  { file: "VM1_2.jpg", description: comment.VM1 },
-  { file: "VM2_1.jpg", description: comment.VM2 },
-  { file: "VM2_2.jpg", description: comment.VM2 },
-  { file: "VM3.jpg", description: comment.VM3 },
-  { file: "VM4.jpg", description: comment.VM4 },
-  { file: "VM5.jpg", description: comment.VM5 },
-  { file: "VM6.jpg", description: comment.VM6 },
-  { file: "VM7_1.jpg", description: comment.VM7 },
-  { file: "VM7_2.jpg", description: comment.VM7 },
-  { file: "VM8.jpg", description: comment.VM8 },
-  { file: "VM9.jpg", description: comment.VM9 },
-  { file: "VM10.jpg", description: comment.VM10 },
-  { file: "VM11.jpg", description: comment.VM11 },
-  // 必要なファイル名追加
-];
-
-const images = imageData.map(function (item) {
-  return {
-    original: `/VM_images/${item.file}`,
-    thumbnail: `/VM_images/${item.file}`,
-    description: item.description,
-    // 画像検索向けに説明文の1行目を代替テキストにする
-    originalAlt: item.description.split("\n")[0].slice(0, 80),
-    thumbnailAlt: item.description.split("\n")[0].slice(0, 80),
-  };
-});
-
-function VendingMachine() {
-  const style ={
-    width:"80%",
-    margin:"0 auto",
-  };
+  // スワイプで前後へ
+  const [touchX, setTouchX] = useState<number | null>(null);
 
   return (
-    <div style={style}>
-      <h1 style={{ textAlign: "center", fontSize: "1.6rem" }}>自販機コレクション</h1>
-      <ImageGallery 
-        items={images}
-      />
+    <div
+      className={styles.lightbox}
+      role="dialog"
+      aria-modal="true"
+      aria-label={item.title}
+      onClick={onClose}
+      onTouchStart={(e) => setTouchX(e.touches[0].clientX)}
+      onTouchEnd={(e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 50) onMove(dx < 0 ? 1 : -1);
+        setTouchX(null);
+      }}
+    >
+      <figure className={styles.lbFigure} onClick={(e) => e.stopPropagation()}>
+        <img className={styles.lbImage} src={full(file)} alt={item.title} />
+        <figcaption className={styles.lbCaption}>
+          <strong>{item.title}</strong>
+          {item.images.length > 1 && (
+            <span className={styles.lbCount}>
+              {n} / {item.images.length}
+            </span>
+          )}
+          <span className={styles.lbMeta}>{[item.place, item.year && `${item.year}年`].filter(Boolean).join(" ・ ")}</span>
+        </figcaption>
+      </figure>
+      <button type="button" className={`${styles.lbButton} ${styles.lbClose}`} onClick={onClose} aria-label="閉じる">
+        ×
+      </button>
+      <button
+        type="button"
+        className={`${styles.lbButton} ${styles.lbPrev}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          onMove(-1);
+        }}
+        aria-label="前の写真"
+      >
+        ‹
+      </button>
+      <button
+        type="button"
+        className={`${styles.lbButton} ${styles.lbNext}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          onMove(1);
+        }}
+        aria-label="次の写真"
+      >
+        ›
+      </button>
+    </div>
+  );
+}
+
+function Card({ item, onOpen }: { item: Item; onOpen: (file: string) => void }) {
+  const [main, ...rest] = item.images;
+  return (
+    <article className={styles.card} id={item.id}>
+      <button type="button" className={styles.photo} onClick={() => onOpen(main)} aria-label={`${item.title}の写真を拡大`}>
+        <img src={thumb(main)} alt={item.title} loading="lazy" />
+        {item.images.length > 1 && <span className={styles.count}>📷 {item.images.length}</span>}
+      </button>
+      {rest.length > 0 && (
+        <div className={styles.subPhotos}>
+          {rest.map((f) => (
+            <button key={f} type="button" className={styles.subPhoto} onClick={() => onOpen(f)} aria-label="別の写真を拡大">
+              <img src={thumb(f)} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      )}
+      <div className={styles.body}>
+        <h2 className={styles.title}>{item.title}</h2>
+        {(item.place || item.year) && (
+          <div className={styles.meta}>
+            {item.place && <span>📍 {item.place}</span>}
+            {item.year && <span>🗓 {item.year}年</span>}
+          </div>
+        )}
+        <p className={styles.comment}>{item.comment}</p>
+      </div>
+    </article>
+  );
+}
+
+function VendingMachine() {
+  const [open, setOpen] = useState<number | null>(null);
+  const close = useCallback(() => setOpen(null), []);
+  const move = useCallback(
+    (d: number) => setOpen((i) => (i === null ? i : (i + d + slides.length) % slides.length)),
+    []
+  );
+  const indexOf = useMemo(() => new Map(slides.map((s, i) => [s.file, i])), []);
+
+  return (
+    <div className={styles.page}>
+      <div className={styles.intro}>
+        <h1>自販機コレクション</h1>
+        <p>旅先や街角で見つけた、ちょっと変わった自動販売機の記録。写真をタップすると大きく表示します。</p>
+        <p className={styles.total}>
+          {items.length}台 ・ 写真{slides.length}枚
+        </p>
+      </div>
+
+      <div className={styles.grid}>
+        {items.map((item) => (
+          <Card key={item.id} item={item} onOpen={(f) => setOpen(indexOf.get(f) ?? 0)} />
+        ))}
+      </div>
+
+      {open !== null && <Lightbox index={open} onClose={close} onMove={move} />}
     </div>
   );
 }

@@ -358,11 +358,22 @@ for (const p of photos) {
   });
 }
 
+const vendingItems = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/vending.json"), "utf-8")).items;
+
 page("/Vending/", {
   title: "自販機コレクション",
   description: "旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。",
   image: "/VM_images/VM1_1.jpg",
-  body: `<h1>自販機コレクション</h1><p>旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。</p>`,
+  body:
+    `<h1>自販機コレクション</h1><p>旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。</p>` +
+    vendingItems
+      .map(
+        (v) =>
+          `<article><h2>${esc(v.title)}</h2><p>${esc([v.place, v.year && `${v.year}年`].filter(Boolean).join(" ・ "))}</p>` +
+          `<img src="/VM_images/thumbs/${esc(v.images[0])}" alt="${esc(v.title)}" loading="lazy" />` +
+          `<p>${esc(v.comment)}</p></article>`
+      )
+      .join(""),
 });
 
 page("/GAPolicy/", {

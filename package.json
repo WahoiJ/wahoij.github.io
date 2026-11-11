@@ -18,7 +18,6 @@
     "@mui/material": "^7.3.9",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-image-gallery": "^1.4.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.9.3",
     "rehype-raw": "^7.0.0",
