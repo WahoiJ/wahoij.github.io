@@ -118,3 +118,10 @@
   padding: 0 16px;
   border-bottom: 1px solid var(--border);
 }
+
+/* 公開ページと同じく、1回の改行をそのまま改行として表示する */
+.preview p,
+.preview li,
+.preview blockquote {
+  white-space: pre-line;
+}
