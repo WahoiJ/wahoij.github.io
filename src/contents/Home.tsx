@@ -29,7 +29,7 @@ type Card = {
   /** 画像の代わりに表示する絵文字 */
   emoji?: string;
   /** 絵文字タイルの色（未指定は赤） */
-  emojiClass?: "nico" | "x";
+  emojiClass?: "x";
   /** 外部サイト（新しいタブで開く） */
   external?: boolean;
 };
@@ -42,7 +42,7 @@ function ContentCard({ card }: { card: Card }) {
           card.iconIsPhoto
             ? styles.photoIcon
             : card.emoji
-              ? `${styles.emojiTile} ${card.emojiClass === "nico" ? styles.emojiNico : card.emojiClass === "x" ? styles.emojiX : ""}`
+              ? `${styles.emojiTile} ${card.emojiClass === "x" ? styles.emojiX : ""}`
               : styles.iconTile
         }
       >
@@ -147,9 +147,7 @@ export default function Home() {
             to: NICONICO_URL,
             title: "ニコニコ動画",
             description: "ニコニコ動画にも動画を投稿しています。",
-            icon: "",
-            emoji: "📺",
-            emojiClass: "nico" as const,
+            icon: "/assets/icons/niconico.png",
             meta: "投稿動画を見る ↗",
             external: true,
           },
