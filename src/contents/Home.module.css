@@ -58,6 +58,10 @@
   padding-left: 4px;
   box-sizing: border-box;
 }
+.emojiNico {
+  background: #252525;
+  padding-left: 0;
+}
 .iconTile {
   background: #fff;
   border: 1px solid var(--border);
