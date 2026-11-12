@@ -6,6 +6,12 @@ import { NICONICO_URL, X_URL, YOUTUBE_URL } from "../links";
 
 const CONTACT = "wahoijbusiness2025@gmail.com";
 
+const SNS = [
+  { url: YOUTUBE_URL, label: "YouTube" },
+  { url: NICONICO_URL, label: "ニコニコ動画" },
+  { url: X_URL, label: "X（@WahoiJ_hobby）" },
+].filter((l) => l.url);
+
 const LINKS = [
   { to: "/", label: "トップ" },
   { to: blogUrl(), label: "ブログ" },
@@ -52,6 +58,19 @@ function Footer() {
           </ul>
         </nav>
 
+        <nav aria-label="SNS・動画" className={styles.col}>
+          <div className={styles.heading}>SNS・動画 ↗</div>
+          <ul className={styles.links}>
+            {SNS.map((l) => (
+              <li key={l.url}>
+                <a href={l.url} target="_blank" rel="noopener noreferrer">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <div className={`${styles.col} ${styles.contact}`}>
           <div className={styles.heading}>お問い合わせ・ポリシー</div>
           <ul className={styles.links}>
@@ -61,27 +80,6 @@ function Footer() {
             <li>
               <Link to="/GAPolicy/">Google Analytics の利用について</Link>
             </li>
-            {YOUTUBE_URL && (
-              <li>
-                <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer">
-                  ▶ YouTube チャンネル
-                </a>
-              </li>
-            )}
-            {NICONICO_URL && (
-              <li>
-                <a href={NICONICO_URL} target="_blank" rel="noopener noreferrer">
-                  📺 ニコニコ動画
-                </a>
-              </li>
-            )}
-            {X_URL && (
-              <li>
-                <a href={X_URL} target="_blank" rel="noopener noreferrer">
-                  𝕏 @WahoiJ_hobby
-                </a>
-              </li>
-            )}
             <li>
               <a href="/feed.xml">RSS フィード</a>
             </li>

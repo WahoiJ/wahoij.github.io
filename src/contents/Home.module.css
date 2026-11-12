@@ -127,6 +127,39 @@
 .section {
   margin-top: 36px;
 }
+.sectionFirst {
+  margin-top: 0;
+}
+.sectionNote {
+  margin-left: 10px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* 外部リンク（SNS・動画）は小さめのカードを3列で */
+.snsCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.snsCards .card {
+  padding: 10px 12px;
+  gap: 10px;
+  border-style: dashed;
+}
+.snsCards .emojiTile {
+  width: 44px;
+  height: 44px;
+  font-size: 1.3rem;
+  border-radius: 10px;
+}
+.snsCards .cardTitle {
+  font-size: 0.98rem;
+}
+.snsCards .cardDesc {
+  font-size: 0.78rem;
+}
 .sectionHead {
   display: flex;
   align-items: baseline;
@@ -204,6 +237,12 @@
 }
 .photo:hover img {
   transform: scale(1.06);
+}
+
+@media (max-width: 760px) {
+  .snsCards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
