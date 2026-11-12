@@ -178,11 +178,31 @@ export default function Home() {
     <div className={styles.home}>
       <p className={styles.lead}>{SITE_DESCRIPTION}</p>
 
-      <section aria-label="コンテンツ一覧" className={styles.cards}>
-        {cards.map((c) => (
-          <ContentCard key={c.to} card={c} />
-        ))}
+      <section className={styles.sectionFirst}>
+        <h2 className={styles.sectionTitle}>コンテンツ</h2>
+        <div className={styles.cards}>
+          {cards
+            .filter((c) => !c.external)
+            .map((c) => (
+              <ContentCard key={c.to} card={c} />
+            ))}
+        </div>
       </section>
+
+      {cards.some((c) => c.external) && (
+        <section className={styles.section}>
+          <h2 className={styles.sectionTitle}>
+            SNS・動画<span className={styles.sectionNote}>外部サイトが開きます</span>
+          </h2>
+          <div className={styles.snsCards}>
+            {cards
+              .filter((c) => c.external)
+              .map((c) => (
+                <ContentCard key={c.to} card={c} />
+              ))}
+          </div>
+        </section>
+      )}
 
       {bikeNew.length > 0 && (
         <section className={styles.section}>
