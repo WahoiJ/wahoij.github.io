@@ -58,6 +58,15 @@
   padding-left: 4px;
   box-sizing: border-box;
 }
+.emojiX {
+  background: #000;
+  padding-left: 0;
+  font-weight: 700;
+}
+:root[data-theme="dark"] .emojiX,
+:root[data-theme="dark"] .emojiNico {
+  outline: 1px solid var(--border);
+}
 .emojiNico {
   background: #252525;
   padding-left: 0;
