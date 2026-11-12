@@ -41,6 +41,7 @@
 
 /* アイコンは白背景の画像なので、ダークでも白いタイルに載せる */
 .iconTile,
+.emojiTile,
 .photoIcon {
   flex-shrink: 0;
   width: 64px;
@@ -49,6 +50,13 @@
   overflow: hidden;
   display: grid;
   place-items: center;
+}
+.emojiTile {
+  background: #e53935;
+  color: #fff;
+  font-size: 1.8rem;
+  padding-left: 4px;
+  box-sizing: border-box;
 }
 .iconTile {
   background: #fff;
