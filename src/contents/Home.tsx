@@ -5,7 +5,7 @@ import { bikeUrl, blogTagUrl, blogUrl, galleryUrl } from "../seo/urls";
 import { usePageMeta } from "../seo/usePageMeta";
 import { SITE_DESCRIPTION } from "../seo/site";
 import { sortPhotos, type Photo } from "../gallery/types";
-import { NICONICO_URL, YOUTUBE_URL } from "../links";
+import { NICONICO_URL, X_URL, YOUTUBE_URL } from "../links";
 
 type BlogEntry = { name: string; title?: string | null; tags?: string[]; createdAt: string | null };
 type BikeNew = { name: string; title?: string | null; folder: string; createdAt: string };
@@ -29,7 +29,7 @@ type Card = {
   /** 画像の代わりに表示する絵文字 */
   emoji?: string;
   /** 絵文字タイルの色（未指定は赤） */
-  emojiClass?: "nico";
+  emojiClass?: "nico" | "x";
   /** 外部サイト（新しいタブで開く） */
   external?: boolean;
 };
@@ -42,7 +42,7 @@ function ContentCard({ card }: { card: Card }) {
           card.iconIsPhoto
             ? styles.photoIcon
             : card.emoji
-              ? `${styles.emojiTile} ${card.emojiClass === "nico" ? styles.emojiNico : ""}`
+              ? `${styles.emojiTile} ${card.emojiClass === "nico" ? styles.emojiNico : card.emojiClass === "x" ? styles.emojiX : ""}`
               : styles.iconTile
         }
       >
@@ -151,6 +151,20 @@ export default function Home() {
             emoji: "📺",
             emojiClass: "nico" as const,
             meta: "投稿動画を見る ↗",
+            external: true,
+          },
+        ]
+      : []),
+    ...(X_URL
+      ? [
+          {
+            to: X_URL,
+            title: "X（旧Twitter）",
+            description: "@WahoiJ_hobby で更新情報などをつぶやいています。",
+            icon: "",
+            emoji: "𝕏",
+            emojiClass: "x" as const,
+            meta: "フォローする ↗",
             external: true,
           },
         ]
