@@ -5,6 +5,7 @@ import { bikeUrl, blogTagUrl, blogUrl, galleryUrl } from "../seo/urls";
 import { usePageMeta } from "../seo/usePageMeta";
 import { SITE_DESCRIPTION } from "../seo/site";
 import { sortPhotos, type Photo } from "../gallery/types";
+import { YOUTUBE_URL } from "../links";
 
 type BlogEntry = { name: string; title?: string | null; tags?: string[]; createdAt: string | null };
 type BikeNew = { name: string; title?: string | null; folder: string; createdAt: string };
@@ -25,13 +26,17 @@ type Card = {
   iconIsPhoto?: boolean;
   meta?: string;
   isNew?: boolean;
+  /** 画像の代わりに表示する絵文字 */
+  emoji?: string;
+  /** 外部サイト（新しいタブで開く） */
+  external?: boolean;
 };
 
 function ContentCard({ card }: { card: Card }) {
-  return (
-    <Link to={card.to} className={styles.card}>
-      <span className={card.iconIsPhoto ? styles.photoIcon : styles.iconTile}>
-        <img src={card.icon} alt="" loading="lazy" />
+  const inner = (
+    <>
+      <span className={card.iconIsPhoto ? styles.photoIcon : card.emoji ? styles.emojiTile : styles.iconTile}>
+        {card.emoji ? card.emoji : <img src={card.icon} alt="" loading="lazy" />}
       </span>
       <span className={styles.cardBody}>
         <span className={styles.cardTitle}>
@@ -41,6 +46,15 @@ function ContentCard({ card }: { card: Card }) {
         <span className={styles.cardDesc}>{card.description}</span>
         {card.meta && <span className={styles.cardMeta}>{card.meta}</span>}
       </span>
+    </>
+  );
+  return card.external ? (
+    <a href={card.to} className={styles.card} target="_blank" rel="noopener noreferrer">
+      {inner}
+    </a>
+  ) : (
+    <Link to={card.to} className={styles.card}>
+      {inner}
     </Link>
   );
 }
@@ -104,6 +118,19 @@ export default function Home() {
       description: "街角で見つけた、ちょっと変わった自動販売機。",
       icon: "/assets/icons/VendingMachine.png",
     },
+    ...(YOUTUBE_URL
+      ? [
+          {
+            to: YOUTUBE_URL,
+            title: "YouTube",
+            description: "YouTubeアカウントです。チャンネル登録してね。",
+            icon: "",
+            emoji: "▶",
+            meta: "チャンネルを見る ↗",
+            external: true,
+          },
+        ]
+      : []),
   ];
 
   const recentPosts = blog?.slice(0, 3) ?? [];
