@@ -123,7 +123,7 @@ export default function Home() {
           {
             to: YOUTUBE_URL,
             title: "YouTube",
-            description: "自転車やお出かけの動画を投稿しています。",
+            description: "YouTubeアカウントです。チャンネル登録してね。",
             icon: "",
             emoji: "▶",
             meta: "チャンネルを見る ↗",
