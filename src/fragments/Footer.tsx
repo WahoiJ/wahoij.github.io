@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./Footer.module.css";
 import { SITE_NAME, bikeUrl, blogUrl, galleryUrl } from "../seo/urls";
-import { YOUTUBE_URL } from "../links";
+import { NICONICO_URL, YOUTUBE_URL } from "../links";
 
 const CONTACT = "wahoijbusiness2025@gmail.com";
 
@@ -65,6 +65,13 @@ function Footer() {
               <li>
                 <a href={YOUTUBE_URL} target="_blank" rel="noopener noreferrer">
                   ▶ YouTube チャンネル
+                </a>
+              </li>
+            )}
+            {NICONICO_URL && (
+              <li>
+                <a href={NICONICO_URL} target="_blank" rel="noopener noreferrer">
+                  📺 ニコニコ動画
                 </a>
               </li>
             )}

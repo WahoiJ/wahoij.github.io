@@ -5,7 +5,7 @@ import { bikeUrl, blogTagUrl, blogUrl, galleryUrl } from "../seo/urls";
 import { usePageMeta } from "../seo/usePageMeta";
 import { SITE_DESCRIPTION } from "../seo/site";
 import { sortPhotos, type Photo } from "../gallery/types";
-import { YOUTUBE_URL } from "../links";
+import { NICONICO_URL, YOUTUBE_URL } from "../links";
 
 type BlogEntry = { name: string; title?: string | null; tags?: string[]; createdAt: string | null };
 type BikeNew = { name: string; title?: string | null; folder: string; createdAt: string };
@@ -28,6 +28,8 @@ type Card = {
   isNew?: boolean;
   /** 画像の代わりに表示する絵文字 */
   emoji?: string;
+  /** 絵文字タイルの色（未指定は赤） */
+  emojiClass?: "nico";
   /** 外部サイト（新しいタブで開く） */
   external?: boolean;
 };
@@ -35,7 +37,15 @@ type Card = {
 function ContentCard({ card }: { card: Card }) {
   const inner = (
     <>
-      <span className={card.iconIsPhoto ? styles.photoIcon : card.emoji ? styles.emojiTile : styles.iconTile}>
+      <span
+        className={
+          card.iconIsPhoto
+            ? styles.photoIcon
+            : card.emoji
+              ? `${styles.emojiTile} ${card.emojiClass === "nico" ? styles.emojiNico : ""}`
+              : styles.iconTile
+        }
+      >
         {card.emoji ? card.emoji : <img src={card.icon} alt="" loading="lazy" />}
       </span>
       <span className={styles.cardBody}>
@@ -127,6 +137,20 @@ export default function Home() {
             icon: "",
             emoji: "▶",
             meta: "チャンネルを見る ↗",
+            external: true,
+          },
+        ]
+      : []),
+    ...(NICONICO_URL
+      ? [
+          {
+            to: NICONICO_URL,
+            title: "ニコニコ動画",
+            description: "ニコニコ動画にも動画を投稿しています。",
+            icon: "",
+            emoji: "📺",
+            emojiClass: "nico" as const,
+            meta: "投稿動画を見る ↗",
             external: true,
           },
         ]
