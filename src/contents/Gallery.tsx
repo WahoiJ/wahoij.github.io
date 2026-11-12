@@ -129,7 +129,7 @@ const Gallery = () => {
     title: opened ? opened.caption || `${opened.album || "ギャラリー"}の写真` : album ? `${album} - ギャラリー` : "ギャラリー",
     description: opened
       ? [opened.caption, opened.album, opened.takenAt.replace(/-/g, "/")].filter(Boolean).join(" / ")
-      : "撮りためた写真のギャラリーです。",
+      : "旅先やお出かけで撮りためた写真のギャラリーです。秩父や武甲山の風景、星空、街角のスナップなどをアルバムごとに見られます。",
   });
 
   return (

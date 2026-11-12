@@ -59,7 +59,7 @@ function App() {
               <Route
                 path="Vending/*"
                 element={
-                  <Page title="自販機コレクション" description="旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。">
+                  <Page title="自販機コレクション" description="旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。激安ジュースや1円単位の自販機、ストッキング自販機などを紹介。">
                     <VendingMachine />
                   </Page>
                 }
@@ -78,7 +78,7 @@ function App() {
               <Route
                 path="GAPolicy/*"
                 element={
-                  <Page title="Google Analyticsについて" description="当サイトでのGoogleアナリティクスの利用とCookieについて。">
+                  <Page title="Google Analyticsについて" description="当サイトでのアクセス解析ツール Googleアナリティクスの利用と、Cookie によるデータ収集・無効化の方法について説明します。">
                     <GAPolicy />
                   </Page>
                 }
