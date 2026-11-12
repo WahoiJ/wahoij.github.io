@@ -83,7 +83,7 @@ function BlogList({ tag }: { tag?: string }) {
 
   usePageMeta({
     title: tag ? `「${tag}」タグの記事` : "ブログ",
-    description: tag ? `「${tag}」タグが付いたブログ記事の一覧です。` : "日々のことや作ったものについて書いているブログです。",
+    description: tag ? `「${tag}」タグが付いたブログ記事の一覧です。` : "日々のこと、作ったもの、考えたことを書いているブログです。サイト作りや AI の活用、日記など、気ままに更新しています。",
     noindex: !!tag,
   });
 

@@ -251,7 +251,7 @@ page("/", {
 // ブログ一覧
 page(blogUrl(), {
   title: "ブログ",
-  description: "日々のことや作ったものについて書いているブログです。",
+  description: "日々のこと、作ったもの、考えたことを書いているブログです。サイト作りや AI の活用、日記など、気ままに更新しています。",
   lastmod: maxDate(...blogPosts.map((p) => p.updatedAt)),
   jsonLd: [breadcrumb([["トップ", "/"], ["ブログ", blogUrl()]])],
   body:
@@ -334,7 +334,7 @@ for (const a of bikeArticles) {
 // ギャラリー
 page(galleryUrl(), {
   title: "ギャラリー",
-  description: "撮りためた写真のギャラリーです。",
+  description: "旅先やお出かけで撮りためた写真のギャラリーです。秩父や武甲山の風景、星空、街角のスナップなどをアルバムごとに見られます。",
   image: photos[0]?.src,
   lastmod: maxDate(...photos.map((p) => p.uploadedAt)),
   images: photos.slice(0, 1000).map((p) => p.src),
@@ -362,10 +362,10 @@ const vendingItems = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/vendin
 
 page("/Vending/", {
   title: "自販機コレクション",
-  description: "旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。",
+  description: "旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。激安ジュースや1円単位の自販機、ストッキング自販機などを紹介。",
   image: "/VM_images/VM1_1.jpg",
   body:
-    `<h1>自販機コレクション</h1><p>旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。</p>` +
+    `<h1>自販機コレクション</h1><p>旅先や街角で見つけた、ちょっと変わった自動販売機の写真集です。激安ジュースや1円単位の自販機、ストッキング自販機などを紹介。</p>` +
     vendingItems
       .map(
         (v) =>
@@ -378,7 +378,7 @@ page("/Vending/", {
 
 page("/GAPolicy/", {
   title: "Google Analyticsについて",
-  description: "当サイトでのGoogleアナリティクスの利用とCookieについて。",
+  description: "当サイトでのアクセス解析ツール Googleアナリティクスの利用と、Cookie によるデータ収集・無効化の方法について説明します。",
   body: `<h1>Google Analyticsについて</h1><p>当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。</p>`,
 });
 
