@@ -63,13 +63,8 @@
   padding-left: 0;
   font-weight: 700;
 }
-:root[data-theme="dark"] .emojiX,
-:root[data-theme="dark"] .emojiNico {
+:root[data-theme="dark"] .emojiX {
   outline: 1px solid var(--border);
-}
-.emojiNico {
-  background: #252525;
-  padding-left: 0;
 }
 .iconTile {
   background: #fff;
@@ -147,6 +142,15 @@
   padding: 10px 12px;
   gap: 10px;
   border-style: dashed;
+}
+.snsCards .iconTile {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+}
+.snsCards .iconTile img {
+  width: 36px;
+  height: 36px;
 }
 .snsCards .emojiTile {
   width: 44px;
