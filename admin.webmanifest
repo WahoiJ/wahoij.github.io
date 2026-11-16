@@ -1,0 +1,13 @@
+{
+  "name": "ブログ管理",
+  "short_name": "ブログ管理",
+  "description": "ミンミンゼミの最終定理 の管理画面",
+  "start_url": "/Admin/",
+  "scope": "/Admin/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1976d2",
+  "icons": [
+    { "src": "/assets/favicons/icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
