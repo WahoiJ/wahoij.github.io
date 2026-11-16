@@ -662,6 +662,133 @@ function BlogEditor({ token }: { token: string }) {
     });
   };
 
+  // 選択範囲を前後の記号で囲む（すでに囲まれていれば外す）。選択がなければ見本の文字を入れて選択状態にする
+  const wrapSelection = (before: string, after: string, placeholder: string) => {
+    const el = bodyRef.current;
+    if (!el) return;
+    const body = draft.body;
+    const start = el.selectionStart;
+    const end = el.selectionEnd;
+    const selected = body.slice(start, end);
+    let next: string;
+    let selStart: number;
+    let selEnd: number;
+    if (
+      body.slice(Math.max(0, start - before.length), start) === before &&
+      body.slice(end, end + after.length) === after
+    ) {
+      next = body.slice(0, start - before.length) + selected + body.slice(end + after.length);
+      selStart = start - before.length;
+      selEnd = selStart + selected.length;
+    } else if (selected.startsWith(before) && selected.endsWith(after) && selected.length >= before.length + after.length) {
+      const inner = selected.slice(before.length, selected.length - after.length);
+      next = body.slice(0, start) + inner + body.slice(end);
+      selStart = start;
+      selEnd = start + inner.length;
+    } else {
+      const text = selected || placeholder;
+      next = body.slice(0, start) + before + text + after + body.slice(end);
+      selStart = start + before.length;
+      selEnd = selStart + text.length;
+    }
+    update({ body: next });
+    requestAnimationFrame(() => {
+      el.focus();
+      el.setSelectionRange(selStart, selEnd);
+    });
+  };
+
+  // 選択している行（なければカーソルのある行）の先頭に記号を付ける（同じ記号なら外す）
+  const toggleLinePrefix = (prefix: string, kind: "heading" | "list" | "ordered" | "quote") => {
+    const el = bodyRef.current;
+    if (!el) return;
+    const body = draft.body;
+    const lineStart = body.lastIndexOf("\n", el.selectionStart - 1) + 1;
+    let lineEnd = body.indexOf("\n", el.selectionEnd);
+    if (lineEnd === -1) lineEnd = body.length;
+    const lines = body.slice(lineStart, lineEnd).split("\n");
+    const stripRe = { heading: /^#{1,6}\s+/, list: /^[-*]\s+/, ordered: /^\d+\.\s+/, quote: /^>\s?/ }[kind];
+    const allHave = lines.every((l) => (kind === "heading" ? l.startsWith(prefix) : stripRe.test(l)));
+    const out = lines.map((l, i) => {
+      const bare = l.replace(stripRe, "");
+      if (allHave) return bare;
+      if (kind === "ordered") return `${i + 1}. ${bare}`;
+      return prefix + bare;
+    });
+    const joined = out.join("\n");
+    update({ body: body.slice(0, lineStart) + joined + body.slice(lineEnd) });
+    requestAnimationFrame(() => {
+      el.focus();
+      el.setSelectionRange(lineStart, lineStart + joined.length);
+    });
+  };
+
+  const insertLink = () => {
+    const el = bodyRef.current;
+    if (!el) return;
+    const body = draft.body;
+    const start = el.selectionStart;
+    const end = el.selectionEnd;
+    const label = body.slice(start, end) || "リンクの文字";
+    const url = window.prompt("リンク先のURLを入力してください", "https://");
+    if (!url) {
+      el.focus();
+      return;
+    }
+    const md = `[${label}](${url})`;
+    update({ body: body.slice(0, start) + md + body.slice(end) });
+    requestAnimationFrame(() => {
+      el.focus();
+      el.setSelectionRange(start + md.length, start + md.length);
+    });
+  };
+
+  const insertHr = () => insertAtCursor("\n\n---\n\n");
+
+  const onBodyKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const mod = e.ctrlKey || e.metaKey;
+    if (mod && !e.shiftKey && !e.altKey) {
+      const k = e.key.toLowerCase();
+      if (k === "b") {
+        e.preventDefault();
+        wrapSelection("**", "**", "太字");
+        return;
+      }
+      if (k === "i") {
+        e.preventDefault();
+        wrapSelection("*", "*", "斜体");
+        return;
+      }
+      if (k === "k") {
+        e.preventDefault();
+        insertLink();
+        return;
+      }
+    }
+    // 箇条書き・番号・引用の行で Enter を押したら、次の行にも同じ記号を付ける（空の項目で Enter なら終了）
+    if (e.key === "Enter" && !e.shiftKey && !mod && !e.nativeEvent.isComposing) {
+      const el = e.currentTarget;
+      if (el.selectionStart !== el.selectionEnd) return;
+      const pos = el.selectionStart;
+      const body = draft.body;
+      const lineStart = body.lastIndexOf("\n", pos - 1) + 1;
+      const line = body.slice(lineStart, pos);
+      const m = line.match(/^(\s*)([-*]|\d+\.|>)\s+(.*)$/);
+      if (!m) return;
+      e.preventDefault();
+      if (!m[3]) {
+        // 空の項目: 記号を消して終了
+        update({ body: body.slice(0, lineStart) + body.slice(pos) });
+        requestAnimationFrame(() => el.setSelectionRange(lineStart, lineStart));
+        return;
+      }
+      const marker = /^\d+\.$/.test(m[2]) ? `${parseInt(m[2], 10) + 1}.` : m[2];
+      const insert = `\n${m[1]}${marker} `;
+      update({ body: body.slice(0, pos) + insert + body.slice(pos) });
+      requestAnimationFrame(() => el.setSelectionRange(pos + insert.length, pos + insert.length));
+    }
+  };
+
   const onImages = async (files: FileList | null) => {
     if (!files?.length) return;
     if (!SLUG_RE.test(draft.slug)) {
@@ -866,13 +993,45 @@ function BlogEditor({ token }: { token: string }) {
             </Typography>
           </Stack>
 
+          <div className={styles.toolbar} role="toolbar" aria-label="書式">
+            {(
+              [
+                { label: "B", title: "太字 (Ctrl+B)", cls: styles.tbBold, run: () => wrapSelection("**", "**", "太字") },
+                { label: "I", title: "斜体 (Ctrl+I)", cls: styles.tbItalic, run: () => wrapSelection("*", "*", "斜体") },
+                { label: "S", title: "取り消し線", cls: styles.tbStrike, run: () => wrapSelection("~~", "~~", "取り消し") },
+                { label: "H2", title: "大見出し", run: () => toggleLinePrefix("## ", "heading") },
+                { label: "H3", title: "小見出し", run: () => toggleLinePrefix("### ", "heading") },
+                { label: "• 箇条書き", title: "箇条書き", run: () => toggleLinePrefix("- ", "list") },
+                { label: "1. 番号", title: "番号付きリスト", run: () => toggleLinePrefix("1. ", "ordered") },
+                { label: "❝ 引用", title: "引用", run: () => toggleLinePrefix("> ", "quote") },
+                { label: "🔗 リンク", title: "リンク (Ctrl+K)", run: insertLink },
+                { label: "</> コード", title: "コード", run: () => wrapSelection("`", "`", "code") },
+                { label: "― 区切り線", title: "区切り線", run: insertHr },
+              ] as { label: string; title: string; cls?: string; run: () => void }[]
+            ).map((b) => (
+              <button
+                key={b.title}
+                type="button"
+                className={`${styles.tbBtn} ${b.cls ?? ""}`}
+                title={b.title}
+                disabled={busy}
+                // ボタンを押しても本文の選択範囲が外れないようにする
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={b.run}
+              >
+                {b.label}
+              </button>
+            ))}
+          </div>
+
           <div className={styles.split}>
             <textarea
               ref={bodyRef}
               className={styles.body}
               value={draft.body}
-              placeholder="本文を Markdown で書く"
+              placeholder="本文を書く（上のボタンで太字・見出し・箇条書きなどにできます）"
               onChange={(e) => update({ body: e.target.value })}
+              onKeyDown={onBodyKeyDown}
               onDrop={(e) => {
                 if (e.dataTransfer.files.length) {
                   e.preventDefault();

@@ -125,3 +125,47 @@
 .preview blockquote {
   white-space: pre-line;
 }
+
+/* 本文入力の書式ツールバー */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: -8px;
+  padding: 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.tbBtn {
+  min-width: 36px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 0.85rem;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tbBtn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tbBold {
+  font-weight: 700;
+}
+
+.tbItalic {
+  font-style: italic;
+}
+
+.tbStrike {
+  text-decoration: line-through;
+}
