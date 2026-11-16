@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T13:48:02.574Z",
+  "updatedAt": "2026-11-16T16:01:56.769Z",
   "files": {
     "root": [
       {
@@ -21,6 +21,15 @@
         ],
         "createdAt": "2026-10-13T20:56:47+09:00",
         "updatedAt": "2026-10-13T12:32:00Z"
+      },
+      {
+        "name": "ithninktherefore.md",
+        "title": "思考の吐露",
+        "tags": [
+          "日記"
+        ],
+        "createdAt": "2026-11-17T01:01:41+09:00",
+        "updatedAt": "2026-11-17T01:01:41+09:00"
       },
       {
         "name": "SlectAndFocus.md",
