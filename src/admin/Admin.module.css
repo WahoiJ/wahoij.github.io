@@ -169,3 +169,35 @@
 .tbStrike {
   text-decoration: line-through;
 }
+
+/* スマホでは「書く / プレビュー」を切り替えて、片方だけ表示する */
+.viewToggle {
+  display: none;
+  gap: 8px;
+}
+
+@media (max-width: 900px) {
+  .viewToggle {
+    display: flex;
+  }
+
+  .showEdit .preview,
+  .showPreview .body {
+    display: none;
+  }
+
+  .body {
+    font-size: 16px; /* iOS で入力時に拡大されないようにする */
+  }
+
+  .toolbar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .tbBtn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 8px 12px;
+  }
+}

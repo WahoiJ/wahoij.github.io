@@ -88,6 +88,10 @@ function Footer() {
       </div>
       <div className={styles.copy}>
         © {new Date().getFullYear()} {SITE_NAME}
+        {" · "}
+        <Link to="/Admin/" style={{ color: "inherit" }}>
+          管理
+        </Link>
       </div>
     </footer>
   );

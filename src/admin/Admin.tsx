@@ -207,6 +207,15 @@ function LoginScreen({
     run(async () => checkStoredToken(await decryptToken(vault!, password), "パスワード"));
   const loginPasskey = () => run(async () => checkStoredToken(await loginWithPasskey(passkeys!), "パスキー"));
 
+  // パスキーがあるなら、開いた時点で自動で認証ダイアログを出す（キャンセルしたら通常の画面のまま）
+  const autoTried = useRef(false);
+  useEffect(() => {
+    if (autoTried.current || !passkeys || !passkeySupported()) return;
+    autoTried.current = true;
+    loginPasskey();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Box className={styles.narrow}>
       <Typography variant="h5" gutterBottom>
@@ -561,6 +570,7 @@ function BlogEditor({ token }: { token: string }) {
   const [images, setImages] = useState<Record<string, PendingImage>>({});
   const [status, setStatus] = useState<Status>(null);
   const [busy, setBusy] = useState(false);
+  const [mobileView, setMobileView] = useState<"edit" | "preview">("edit");
   const bodyRef = useRef<HTMLTextAreaElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
@@ -1024,7 +1034,16 @@ function BlogEditor({ token }: { token: string }) {
             ))}
           </div>
 
-          <div className={styles.split}>
+          <div className={styles.viewToggle}>
+            <Button size="small" variant={mobileView === "edit" ? "contained" : "outlined"} onClick={() => setMobileView("edit")}>
+              書く
+            </Button>
+            <Button size="small" variant={mobileView === "preview" ? "contained" : "outlined"} onClick={() => setMobileView("preview")}>
+              プレビュー
+            </Button>
+          </div>
+
+          <div className={`${styles.split} ${mobileView === "preview" ? styles.showPreview : styles.showEdit}`}>
             <textarea
               ref={bodyRef}
               className={styles.body}
@@ -1092,6 +1111,14 @@ function BlogEditor({ token }: { token: string }) {
 
 export default function Admin() {
   usePageMeta({ title: "管理画面", noindex: true });
+  // スマホのホーム画面に「ブログ管理」アプリとして追加できるようにする（管理画面でだけ有効）
+  useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "manifest";
+    link.href = "/admin.webmanifest";
+    document.head.appendChild(link);
+    return () => link.remove();
+  }, []);
   const [token, setToken] = useState<string | null>(() => storage.get(TOKEN_KEY));
   const [tab, setTab] = useState<"blog" | "gallery">(() =>
     storage.get(TAB_KEY) === "gallery" && !new URLSearchParams(window.location.search).has("edit") ? "gallery" : "blog"
