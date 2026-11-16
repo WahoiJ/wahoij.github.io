@@ -4,8 +4,16 @@
   <link href="https://wahoij.github.io/Blog/" />
   <link rel="self" href="https://wahoij.github.io/feed.xml" />
   <id>https://wahoij.github.io/Blog/</id>
-  <updated>2026-11-12T02:39:24+09:00</updated>
+  <updated>2026-11-17T01:01:41+09:00</updated>
   <author><name>わほい</name></author>
+  <entry>
+    <title>思考の吐露</title>
+    <link href="https://wahoij.github.io/Blog/ithninktherefore/" />
+    <id>https://wahoij.github.io/Blog/ithninktherefore/</id>
+    <published>2026-11-17T01:01:41+09:00</published>
+    <updated>2026-11-17T01:01:41+09:00</updated>
+    <summary>いろいろと機能をまた追加してみた。 ワンタッチで見栄えを良くしたりするなど よくmdで使われる文法を気軽に呼び出せるようにした。これらのアクションに意味があるかわからないが、自分の城が着実にできているという満足感はある。手打ちでこのサイトを…</summary>
+  </entry>
   <entry>
     <title>選択と集中</title>
     <link href="https://wahoij.github.io/Blog/SlectAndFocus/" />

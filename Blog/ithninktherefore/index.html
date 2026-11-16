@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/favicons/icon.png" />
+    <link rel="apple-touch-icon" href="/assets/favicons/icon.png" />
+    <meta name="theme-color" content="#1976d2" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- 表示モード（ライト/ダーク）を描画前に決める。詳細は src/theme/colorMode.ts -->
+    <script>
+      (function () {
+        var p = null;
+        try {
+          p = localStorage.getItem("colorMode");
+        } catch (e) {}
+        var dark = p === "dark" || (p !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
+    <link rel="alternate" type="application/atom+xml" title="ミンミンゼミの最終定理 ブログ" href="/feed.xml" />
+    <title>思考の吐露 | ミンミンゼミの最終定理</title>
+    <meta name="description" content="いろいろと機能をまた追加してみた。 ワンタッチで見栄えを良くしたりするなど よくmdで使われる文法を気軽に呼び出せるようにした。これらのアクションに意味があるかわからないが、自分の城が着実にできているという満足感はある。手打ちでこのサイトを…" />
+    <link rel="canonical" href="https://wahoij.github.io/Blog/ithninktherefore/" />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:site_name" content="ミンミンゼミの最終定理" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="思考の吐露 | ミンミンゼミの最終定理" />
+    <meta property="og:description" content="いろいろと機能をまた追加してみた。 ワンタッチで見栄えを良くしたりするなど よくmdで使われる文法を気軽に呼び出せるようにした。これらのアクションに意味があるかわからないが、自分の城が着実にできているという満足感はある。手打ちでこのサイトを…" />
+    <meta property="og:url" content="https://wahoij.github.io/Blog/ithninktherefore/" />
+    <meta property="og:image" content="https://wahoij.github.io/assets/favicons/icon.png" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"思考の吐露","description":"いろいろと機能をまた追加してみた。 ワンタッチで見栄えを良くしたりするなど よくmdで使われる文法を気軽に呼び出せるようにした。これらのアクションに意味があるかわからないが、自分の城が着実にできているという満足感はある。手打ちでこのサイトを…","mainEntityOfPage":"https://wahoij.github.io/Blog/ithninktherefore/","url":"https://wahoij.github.io/Blog/ithninktherefore/","datePublished":"2026-11-17T01:01:41+09:00","dateModified":"2026-11-17T01:01:41+09:00","author":{"@type":"Person","name":"わほい","url":"https://wahoij.github.io/"},"publisher":{"@type":"Person","name":"わほい","url":"https://wahoij.github.io/"},"inLanguage":"ja"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"トップ","item":"https://wahoij.github.io/"},{"@type":"ListItem","position":2,"name":"ブログ","item":"https://wahoij.github.io/Blog/"},{"@type":"ListItem","position":3,"name":"思考の吐露","item":"https://wahoij.github.io/Blog/ithninktherefore/"}]}</script>
+    <!-- Google Analytics (GA4)。ページビューは src/fragments/Analytics.tsx からルート移動ごとに送る -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CBDYCV7V3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-9CBDYCV7V3", { send_page_view: false });
+    </script>
+    <script type="module" crossorigin src="/assets/index-BqwpfJG5.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CXIbqOqt.css">
+  </head>
+  <body>
+    <div id="root"><div style="max-width:760px;margin:0 auto;padding:16px;line-height:1.8;font-family:sans-serif"><nav><a href="/">トップ</a> | <a href="/Bike/">自転車</a> | <a href="/Blog/">ブログ</a> | <a href="/Gallery/">ギャラリー</a> | <a href="/Vending/">自販機</a></nav><main><article><p>投稿日: 2026/11/17</p><p><a href="/Blog/tag/%E6%97%A5%E8%A8%98/">#日記</a></p><h1>思考の吐露</h1>
+<p><strong>いろいろと機能をまた追加してみた。</strong></p>
+<p>ワンタッチで見栄えを良くしたりするなど
+よくmdで使われる文法を気軽に呼び出せるようにした。これらのアクションに意味があるかわからないが、自分の城が着実にできているという満足感はある。手打ちでこのサイトを構築していた時代から比べるとかなりリッチな作りになった。</p>
+<hr/>
+<p>さて、こういう風にやりたかったけど出来なかったことをClaudeにアウトソーシングしていったらいろいろとやりたいことが増えてきた。
+逆にあきらめたこともあるわけで一概には言えない訳だが、少なくとも自分が学習するコストをほかのところに投げつけることには成功した。
+いやでも、geminiのhydrogenの方がコスパがいいし…とか沼にハマりそうではあるが、暫くはとりあえずopus5.5で耐えてみようとは思う。もし、何かの間違いでYoutubeの収益化が通ったらmaxにしてみようかしらなどと思いながら……。</p>
+<hr/>
+<p>とはいえ、取捨選択をしなければならない。
+配信ではイラストをやりつつ、CCNAの取得を目指しながら仕事を覚えていくなどやることを少し絞った。それ以外はあまり決めないでフリースタイルで生きることにした。
+長らく人生の命題にしていたゲーム制作が完全に外れた今、何に自分がすがるべかなのか、目標はどこに置くべきなのかかなり迷ってる部分はある。一応、やりたいことだけメモって終わろうか。</p>
+<ul>
+<li>学マスのキャラをイキイキと書けるようにしたい</li>
+<li>もっとITのことを知りたい</li>
+<li>チャンネル登録者増やしたい</li>
+<li>vlog&amp;3DのMRの動画を出したい</li>
+<li>Blenderか2Dのアニメーションできるようにしたい</li>
+</ul>
+<p>あたりだろうか。
+どう組み込んでいけるかちょっと謎だなと思った。</p></article></main></div></div>
+  </body>
+</html>
